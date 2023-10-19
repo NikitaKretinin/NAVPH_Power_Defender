@@ -12,8 +12,7 @@ public enum PlayerState
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float speed = 40.0f; 
-    private Rigidbody2D rb;
+    [SerializeField] float speed = 10.0f;
     private Vector3 moveVelocity;
     private Animator anim;
     public PlayerState currentState;
@@ -22,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
         currentState = PlayerState.walk;
     }
 
@@ -70,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
     void MoveCharacter()
     {
         moveVelocity.Normalize();
-        rb.MovePosition(transform.position + speed * Time.deltaTime * moveVelocity);
+        //rb.MovePosition(transform.position + speed * Time.deltaTime * moveVelocity);
+        transform.position = transform.position + speed * Time.deltaTime * moveVelocity;
     }
 }
