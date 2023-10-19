@@ -1,2 +1,2 @@
 # NAVPH project
-Team members: Mykyta kretinin, Andrii Rybak, Viktor Modroczký
+Team members: Mykyta Kretinin, Andrii Rybak, Viktor Modroczký
