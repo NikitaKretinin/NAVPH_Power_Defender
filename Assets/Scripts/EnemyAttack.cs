@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public int damageAmount = 10; // Adjust the damage amount as needed.
-    public float attackSpeed = 1.0f; // The time between consecutive attacks in seconds.
+    [SerializeField] int damageAmount = 10; // Adjust the damage amount as needed.
+    [SerializeField] float attackSpeed = 1.0f; // The time between consecutive attacks in seconds.
     private float lastAttackTime = 0.0f; // The time of the last attack.
 
     private void OnCollisionStay2D(Collision2D collision)

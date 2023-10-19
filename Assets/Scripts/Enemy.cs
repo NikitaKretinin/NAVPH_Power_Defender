@@ -5,15 +5,14 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    public float speed;
-    public int health;
-    public int damage;
-    public string enemyName;
-    public float chaseRadius;
-    public float attackRadius;
-    public Transform targetPlayer;
-    public Transform targetBase;
-
+    [SerializeField] float speed;
+    [SerializeField] int health;
+    [SerializeField] int damage;
+    [SerializeField] string enemyName;
+    [SerializeField] float chaseRadius;
+    [SerializeField] float attackRadius;
+    [SerializeField] Transform targetPlayer;
+    [SerializeField] Transform targetBase;
 
     // Start is called before the first frame update
     void Start()

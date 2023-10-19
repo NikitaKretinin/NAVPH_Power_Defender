@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public int damageAmount = 10; // Adjust the damage amount as needed.
+    [SerializeField] int damageAmount = 10; // Adjust the damage amount as needed.
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

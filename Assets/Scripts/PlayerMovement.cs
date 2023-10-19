@@ -70,6 +70,6 @@ public class PlayerMovement : MonoBehaviour
     void MoveCharacter()
     {
         moveVelocity.Normalize();
-        rb.MovePosition(transform.position + moveVelocity * speed * Time.deltaTime);
+        rb.MovePosition(transform.position + speed * Time.deltaTime * moveVelocity);
     }
 }
