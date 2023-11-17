@@ -406,6 +406,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3451643591543686597, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
   m_PrefabInstance: {fileID: 281848120}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &521362728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 442446635601388191, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
+  m_PrefabInstance: {fileID: 281848120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439fb54f850b2ee43b02fdc2a4e4418a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &672578994
 GameObject:
   m_ObjectHideFlags: 0
@@ -6728,6 +6739,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 703234531586170883, guid: 0a0e23ca37c50714e8112be4ec520b36, type: 3}
+      propertyPath: parentEntity
+      value: 
+      objectReference: {fileID: 521362728}
     - target: {fileID: 1880328163400914555, guid: 0a0e23ca37c50714e8112be4ec520b36, type: 3}
       propertyPath: m_Pivot.x
       value: 0
