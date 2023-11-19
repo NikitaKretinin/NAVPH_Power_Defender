@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveConfiguration : MonoBehaviour
 {
@@ -34,7 +33,7 @@ public class WaveConfiguration : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {   
+    {
         if (!firstWavePassed)
         {
             Debug.Log("First wave not passed!");
@@ -53,6 +52,7 @@ public class WaveConfiguration : MonoBehaviour
         else
         {
             Debug.Log("All waves passed!");
+            SceneManager.LoadScene("VictoryScreen");
         }
     }
 
