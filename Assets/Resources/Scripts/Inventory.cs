@@ -6,30 +6,30 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
 
-    [SerializeField] private List<IPlant> _plants = new(4);
+    [SerializeField] private List<IPlant> plants = new(4);
 
     private GameObject[] inventorySlots;
     private string ImagePath => "Farming Asset Pack/farming-tileset";
-    
+
     // Start is called before the first frame update
     void Start()
     {
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         for (int i = 0; i < inventorySlots.Length; i++)
         {
-            inventorySlots[i].GetComponentInChildren<Text>().text = _plants[i].Amount.ToString();
-            inventorySlots[i].GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>(ImagePath)[_plants[i].ImageIndex];
+            inventorySlots[i].GetComponentInChildren<Text>().text = plants[i].Amount.ToString();
+            inventorySlots[i].GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>(ImagePath)[plants[i].ImageIndex];
         }
     }
 
     public void AddPlant(IPlant plant)
     {
-        _plants.Add(plant);
+        plants.Add(plant);
     }
 
     public void UsePlant(int index)
     {
-        if (_plants[index].Consume())
+        if (plants[index].Consume())
         {
             Debug.Log("Plant consumed");
         };
@@ -57,7 +57,7 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < inventorySlots.Length; i++)
         {
-            inventorySlots[i].GetComponentInChildren<Text>().text = _plants[i].Amount.ToString();
+            inventorySlots[i].GetComponentInChildren<Text>().text = plants[i].Amount.ToString();
         }
     }
 }

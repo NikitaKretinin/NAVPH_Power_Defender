@@ -7,11 +7,8 @@ public class Damageable : MonoBehaviour
     [SerializeField] int maxHealth = 100;
     [SerializeField] int currentHealth;
 
-    private WaveConfiguration waveConfiguration = null;
-
     private void Start()
     {
-        waveConfiguration = GameObject.Find("WaveConfigurator").GetComponent<WaveConfiguration>();
         currentHealth = maxHealth;
     }
 
@@ -22,7 +19,7 @@ public class Damageable : MonoBehaviour
         // Check if the GameObject is dead.
         if (currentHealth <= 0)
         {
-            Die();  
+            Die();
         }
     }
 
@@ -37,12 +34,6 @@ public class Damageable : MonoBehaviour
         {
             // If the GameObject is an enemy, destroy it.
             Destroy(gameObject);
-            Debug.Log("waveConfiguration: " + waveConfiguration);
-            if (waveConfiguration != null)
-            {
-                Debug.Log("enemy killed");
-                waveConfiguration.DecreaseEnemyCount();
-            }
         }
     }
 
