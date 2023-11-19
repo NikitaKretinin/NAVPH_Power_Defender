@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/DefenseMode.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Resources/Scenes/MainMenu.unity
+    guid: 25120d30d2bdf9b4681b11f6a2dea100
+  - enabled: 1
+    path: Assets/Resources/Scenes/PlantSelection.unity
+    guid: bd5639039dbc58b47841c98a81301a88
+  - enabled: 1
+    path: Assets/Resources/Scenes/VictoryScreen.unity
+    guid: 483712a17b13ea848a7450b7971cde54
+  - enabled: 1
+    path: Assets/Resources/Scenes/AttackModeLevel1.unity
+    guid: a4e8535d4f9b18f449582c0c5f0b9307
   m_configObjects: {}
