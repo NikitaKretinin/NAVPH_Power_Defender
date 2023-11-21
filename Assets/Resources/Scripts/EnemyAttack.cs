@@ -13,7 +13,6 @@ public class EnemyAttack : MonoBehaviour
         // Check if the collision is with an object tagged as "Player."
         if ((collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Base")) && Time.time - lastAttackTime >= attackSpeed)
         {
-            Debug.Log("<color=red>Collision with player or base happened!</color>");
             // Get the Damageable script component from the collided enemy.
             Damageable enemyDamageable = collision.gameObject.GetComponent<Damageable>();
 
