@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GameMode
+{
+    defense,
+    attack
+}
+
 public enum EnemyState
 {
     walk,
@@ -16,6 +22,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRadius;
     [SerializeField] Transform targetPlayer;
     [SerializeField] Transform targetBase;
+    [SerializeField] GameMode gameMode;
 
     private Animator anim;
     public EnemyState currentState;
@@ -32,13 +39,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        CheckDistance();
+        CheckDistance2();
     }
 
-    private IEnumerator AttackCo()
+    // Will be called from the attack script
+    public IEnumerator AttackCo()
     {
         Debug.Log("Attack");
+        anim.SetBool("walking", false);
         anim.SetBool("attacking", true);
         currentState = EnemyState.attack;
         yield return null;
@@ -47,26 +55,25 @@ public class Enemy : MonoBehaviour
         currentState = EnemyState.walk;
     }
 
-    void CheckDistance()
+    void CheckDistance2()
     {
-        // Save current position for comparison
-        Vector3 currentPosition = transform.position;      
-        if (Vector3.Distance(targetPlayer.position, transform.position) <= chaseRadius)
+        if (currentState == EnemyState.walk)
         {
-            // -0.5 is a correction for animation to start, but not interrupt box colliders collision
-            if (Vector3.Distance(targetPlayer.position, transform.position) <= attackRadius && currentState != EnemyState.attack) 
-            {
-                StartCoroutine(AttackCo());
-            }
-            else 
+            // Save current position for comparison
+            Vector3 currentPosition = transform.position;
+            // If player is in chase radius -> move towards player
+            if (Vector3.Distance(targetPlayer.position, transform.position) <= chaseRadius && Vector3.Distance(targetPlayer.position, transform.position) >= attackRadius)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetPlayer.position, speed * Time.deltaTime);
             }
+            // Otherwise, move towards base (defense mode only)
+            else if (gameMode == GameMode.defense)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetBase.position, speed * Time.deltaTime);
+            }
+            // If enemy is not attacking -> set walking animation state
+            anim.SetBool("walking", true);
+            anim.SetFloat("moveX", transform.position.x - currentPosition.x);
         }
-        else
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetBase.position, speed * Time.deltaTime);
-        }
-        anim.SetFloat("moveX", transform.position.x - currentPosition.x);
     }
 }
