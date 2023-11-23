@@ -11,7 +11,7 @@ public enum PlantType
     plant5
 }
 
-public class PlantConfig : MonoBehaviour
+public class PlantFarmConfig : MonoBehaviour
 {
 
     private Animator anim;
@@ -24,24 +24,24 @@ public class PlantConfig : MonoBehaviour
 
     // Start is called before the first frame update
     void Awake()
-    {  
-        switch(plantType) 
+    {
+        switch (plantType)
         {
-        case PlantType.plant1:
-            relatedPlant = new Plant1();
-            break;
-        case PlantType.plant2:
-            relatedPlant = new Plant2();
-            break;
-        case PlantType.plant3:
-            relatedPlant = new Plant3();
-            break;
-        case PlantType.plant4:
-            relatedPlant = new Plant4();
-            break;
-        default:
-            relatedPlant = new Plant1();
-            break;
+            case PlantType.plant1:
+                relatedPlant = new Plant1();
+                break;
+            case PlantType.plant2:
+                relatedPlant = new Plant2();
+                break;
+            case PlantType.plant3:
+                relatedPlant = new Plant3();
+                break;
+            case PlantType.plant4:
+                relatedPlant = new Plant4();
+                break;
+            default:
+                relatedPlant = new Plant1();
+                break;
         }
 
         HUDObject = GameObject.FindWithTag("HUD").transform;
@@ -65,6 +65,6 @@ public class PlantConfig : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
