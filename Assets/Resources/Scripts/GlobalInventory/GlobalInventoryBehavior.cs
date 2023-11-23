@@ -2,6 +2,7 @@ using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class GlobalInventoryBehaviour : MonoBehaviour
 {
@@ -14,20 +15,59 @@ public class GlobalInventoryBehaviour : MonoBehaviour
 
   private void LoadGlobalInventory()
   {
-    try
+    if (File.Exists(Application.persistentDataPath + "/GlobalInventory.json"))
     {
       globalInventory = JsonUtility.FromJson<GlobalInventory>(
         File.ReadAllText(Application.persistentDataPath + "/GlobalInventory.json")
       );
     }
-    catch (Exception)
+    else
     {
       globalInventory = new GlobalInventory
       {
-        unlockedPlants = new HashSet<string> { "plant1" },
+        unlockedPlants = new List<GenericPlant> {
+          new GenericPlant
+          {
+            name = "Plant1",
+            ripeTime = 6,
+            imageIndex = 67,
+            isUnlocked = true,
+          },
+          new GenericPlant
+          {
+            name = "Plant2",
+            ripeTime = 5,
+            imageIndex = 56,
+            isUnlocked = false,
+          },
+          new GenericPlant
+          {
+            name = "Plant3",
+            ripeTime = 2,
+            imageIndex = 55,
+            isUnlocked = false,
+          },
+          new GenericPlant
+          {
+            name = "Plant4",
+            ripeTime = 3,
+            imageIndex = 52,
+            isUnlocked = false,
+          },
+          new GenericPlant
+          {
+            name = "Plant5",
+            ripeTime = 7,
+            imageIndex = 68,
+            isUnlocked = false,
+          }
+        },
+        availableMaps = 0,
       };
       SaveGlobalInventory();
     }
+    Debug.Log("Loaded global inventory");
+    Debug.Log(globalInventory);
   }
 
   public void SaveGlobalInventory()
@@ -36,15 +76,25 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     File.WriteAllText(Application.persistentDataPath + "/GlobalInventory.json", json);
   }
 
-  public void AddPlant(string plantName)
+  public void UnlockNextPlant()
   {
-    globalInventory.unlockedPlants.Add(plantName);
+    globalInventory = JsonUtility.FromJson<GlobalInventory>(
+        File.ReadAllText(Application.persistentDataPath + "/GlobalInventory.json")
+      );
+    var firstMatch = globalInventory.unlockedPlants.FirstOrDefault(s => s.isUnlocked == false);
+    if(firstMatch != null)
+    {
+      firstMatch.isUnlocked = true;
+    }
     SaveGlobalInventory();
   }
 
-  public void AddMap(string mapName)
+  public void AddMap()
   {
-    globalInventory.availableMaps.Add(mapName);
+    globalInventory = JsonUtility.FromJson<GlobalInventory>(
+        File.ReadAllText(Application.persistentDataPath + "/GlobalInventory.json")
+      );
+    globalInventory.availableMaps++;
     SaveGlobalInventory();
   }
 

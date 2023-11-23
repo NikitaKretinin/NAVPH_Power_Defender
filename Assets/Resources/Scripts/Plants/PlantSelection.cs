@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlantSelection : MonoBehaviour
 {
-  private HashSet<string> availablePlants = null;
+  private List<GenericPlant> availablePlants = null;
   private GlobalInventory globalInventory = null;
   GameObject[] selectedPlantSlots = null;
 
