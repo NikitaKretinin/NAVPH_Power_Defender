@@ -4,6 +4,7 @@ using System.Collections.Generic;
 [Serializable]
 public class GlobalInventory
 {
-  public List<GenericPlant> unlockedPlants;
+  public List<GenericPlant> plants;
   public int availableMaps;
+  public int prevAttackLevel;
 }

@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
-using System;
 using System.Linq;
 
 public class GlobalInventoryBehaviour : MonoBehaviour
@@ -25,37 +24,32 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     {
       globalInventory = new GlobalInventory
       {
-        unlockedPlants = new List<GenericPlant> {
-          new GenericPlant
-          {
+        plants = new List<GenericPlant> {
+          new() {
             name = "Plant1",
             ripeTime = 6,
             imageIndex = 67,
             isUnlocked = true,
           },
-          new GenericPlant
-          {
+          new() {
             name = "Plant2",
             ripeTime = 5,
             imageIndex = 56,
             isUnlocked = false,
           },
-          new GenericPlant
-          {
+          new() {
             name = "Plant3",
             ripeTime = 2,
             imageIndex = 55,
             isUnlocked = false,
           },
-          new GenericPlant
-          {
+          new() {
             name = "Plant4",
             ripeTime = 3,
             imageIndex = 52,
             isUnlocked = false,
           },
-          new GenericPlant
-          {
+          new() {
             name = "Plant5",
             ripeTime = 7,
             imageIndex = 68,
@@ -63,6 +57,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
           }
         },
         availableMaps = 0,
+        prevAttackLevel = 0
       };
       SaveGlobalInventory();
     }
@@ -81,8 +76,8 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     globalInventory = JsonUtility.FromJson<GlobalInventory>(
         File.ReadAllText(Application.persistentDataPath + "/GlobalInventory.json")
       );
-    var firstMatch = globalInventory.unlockedPlants.FirstOrDefault(s => s.isUnlocked == false);
-    if(firstMatch != null)
+    var firstMatch = globalInventory.plants.FirstOrDefault(s => s.isUnlocked == false);
+    if (firstMatch != null)
     {
       firstMatch.isUnlocked = true;
     }
@@ -98,7 +93,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     SaveGlobalInventory();
   }
 
-  private void Start()
+  private void Awake()
   {
     LoadGlobalInventory();
   }
