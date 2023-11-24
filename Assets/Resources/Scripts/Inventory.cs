@@ -1,41 +1,57 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-
-    [SerializeField] private List<IPlant> plants = new(4);
+    [SerializeField] private List<GenericPlant> plants = null;
 
     private GameObject[] inventorySlots;
-    private string ImagePath => "Farming Asset Pack/farming-tileset";
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        plants = InterScene.selectedPlants;
+        GameObject[] farmSlots = null;
+        if (InterScene.gameMode == GameMode.Defense)
+        {
+            farmSlots = GameObject.FindGameObjectsWithTag("FarmSlot");
+            farmSlots = farmSlots.OrderBy(slot => slot.name).ToArray();
+        }
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
+        inventorySlots = inventorySlots.OrderBy(slot => slot.name).ToArray();
         for (int i = 0; i < inventorySlots.Length; i++)
         {
-            inventorySlots[i].GetComponentInChildren<Text>().text = plants[i].Amount.ToString();
-            inventorySlots[i].GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>(ImagePath)[plants[i].ImageIndex];
+            if (i < plants.Count() && plants[i] != null)
+            {
+                inventorySlots[i].GetComponentInChildren<Text>().text = plants[i].amount.ToString();
+                inventorySlots[i].GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>(InterScene.ImagePath)[plants[i].imageIndex];
+                if (farmSlots != null && farmSlots[i] != null)
+                {
+                    farmSlots[i].GetComponent<PlantFarmConfig>().relatedPlant = plants[i];
+                }
+            }
+            else
+            {
+                inventorySlots[i].transform.Find("AmountText").GetComponent<Text>().gameObject.SetActive(false);
+                inventorySlots[i].transform.Find("PlantSprite").GetComponent<Image>().gameObject.SetActive(false);
+                if (farmSlots != null && farmSlots[i] != null)
+                {
+                    farmSlots[i].GetComponent<SpriteRenderer>().gameObject.SetActive(false);
+                }
+            }
         }
-    }
-
-    public void AddPlant(IPlant plant)
-    {
-        plants.Add(plant);
     }
 
     public void UsePlant(int index)
     {
-        if (plants[index].Consume())
+        if (index < plants.Count() && plants[index] != null && plants[index].amount > 0)
         {
-            Debug.Log("Plant consumed");
-        };
+            plants[index].amount--;
+            FruitsEffects.ActivateFruitEffect(plants[index].ability);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("InventorySlot1"))
@@ -57,7 +73,10 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < inventorySlots.Length; i++)
         {
-            inventorySlots[i].GetComponentInChildren<Text>().text = plants[i].Amount.ToString();
+            if (i < plants.Count() && plants[i] != null)
+            {
+                inventorySlots[i].transform.Find("AmountText").GetComponent<Text>().text = plants[i].amount.ToString();
+            }
         }
     }
 }

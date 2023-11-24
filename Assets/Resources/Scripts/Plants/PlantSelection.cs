@@ -9,7 +9,6 @@ public class PlantSelection : MonoBehaviour
 {
   private GlobalInventory globalInventory = null;
   GameObject[] selectedPlantSlots = null;
-  private readonly string ImagePath = "Farming Asset Pack/farming-tileset";
 
   private void SelectPlant(int plantIndex, Sprite[] sprites)
   {
@@ -42,7 +41,8 @@ public class PlantSelection : MonoBehaviour
 
     foreach (var plant in selectedPlants)
     {
-      InterScene.selectedPlants.Add(globalInventory.plants.FirstOrDefault(p => p.name == plant));
+      var selected = globalInventory.plants.FirstOrDefault(p => p.name == plant);
+      InterScene.selectedPlants.Add(new GenericPlant(selected));
     }
 
     if (InterScene.gameMode == GameMode.Defense)
@@ -58,7 +58,7 @@ public class PlantSelection : MonoBehaviour
   private void Start()
   {
     globalInventory = GameObject.Find("GlobalInventory").GetComponent<GlobalInventoryBehaviour>().GetGlobalInventory();
-    var sprites = Resources.LoadAll<Sprite>(ImagePath);
+    var sprites = Resources.LoadAll<Sprite>(InterScene.ImagePath);
 
     GameObject[] availablePlantSlots = GameObject.FindGameObjectsWithTag("AvailablePlantSlot");
     selectedPlantSlots = GameObject.FindGameObjectsWithTag("SelectedPlantSlot");

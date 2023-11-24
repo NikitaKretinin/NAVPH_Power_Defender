@@ -11,6 +11,7 @@ TagManager:
   - InventorySlot
   - AvailablePlantSlot
   - SelectedPlantSlot
+  - FarmSlot
   layers:
   - Default
   - TransparentFX

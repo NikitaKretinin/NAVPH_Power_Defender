@@ -27,33 +27,43 @@ public class GlobalInventoryBehaviour : MonoBehaviour
         plants = new List<GenericPlant> {
           new() {
             name = "Plant1",
+            id = "plant1",
             ripeTime = 6,
             imageIndex = 67,
             isUnlocked = true,
+            ability = Effect.Heal
           },
           new() {
             name = "Plant2",
+            id = "plant2",
             ripeTime = 5,
             imageIndex = 56,
             isUnlocked = false,
+            ability = Effect.AttackUp
           },
           new() {
             name = "Plant3",
+            id = "plant3",
             ripeTime = 2,
             imageIndex = 55,
             isUnlocked = false,
+            ability = Effect.SpeedUp
           },
           new() {
             name = "Plant4",
+            id = "plant4",
             ripeTime = 3,
             imageIndex = 52,
             isUnlocked = false,
+            ability = Effect.AttackEnemiesDown
           },
           new() {
             name = "Plant5",
+            id = "plant5",
             ripeTime = 7,
             imageIndex = 68,
             isUnlocked = false,
+            ability = Effect.SpeedEnemiesDown
           }
         },
         availableMaps = 0,
@@ -61,8 +71,6 @@ public class GlobalInventoryBehaviour : MonoBehaviour
       };
       SaveGlobalInventory();
     }
-    Debug.Log("Loaded global inventory");
-    Debug.Log(globalInventory);
   }
 
   public void SaveGlobalInventory()
