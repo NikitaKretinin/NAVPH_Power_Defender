@@ -9,6 +9,9 @@ TagManager:
   - Spawner
   - HUD
   - InventorySlot
+  - AvailablePlantSlot
+  - SelectedPlantSlot
+  - FarmSlot
   layers:
   - Default
   - TransparentFX

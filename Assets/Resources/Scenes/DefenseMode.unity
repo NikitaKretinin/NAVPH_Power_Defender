@@ -5392,7 +5392,7 @@ GameObject:
   - component: {fileID: 924120662}
   m_Layer: 0
   m_Name: Plant2
-  m_TagString: Untagged
+  m_TagString: FarmSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5699,7 +5699,7 @@ GameObject:
   - component: {fileID: 1160673750}
   m_Layer: 0
   m_Name: Plant1
-  m_TagString: Untagged
+  m_TagString: FarmSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6216,7 +6216,7 @@ GameObject:
   - component: {fileID: 1600805045}
   m_Layer: 0
   m_Name: Plant4
-  m_TagString: Untagged
+  m_TagString: FarmSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6661,7 +6661,7 @@ GameObject:
   - component: {fileID: 2014253678}
   m_Layer: 0
   m_Name: Plant3
-  m_TagString: Untagged
+  m_TagString: FarmSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
