@@ -24,11 +24,15 @@ public class Inventory : MonoBehaviour
         {
             if (i < plants.Count() && plants[i] != null)
             {
-                inventorySlots[i].GetComponentInChildren<Text>().text = plants[i].amount.ToString();
-                inventorySlots[i].GetComponentsInChildren<Image>()[1].sprite = Resources.LoadAll<Sprite>(InterScene.ImagePath)[plants[i].imageIndex];
+                inventorySlots[i].transform.Find("AmountText").GetComponent<Text>().text = plants[i].amount.ToString();
+                inventorySlots[i].transform.Find("PlantSprite").GetComponent<Image>().sprite = Resources.LoadAll<Sprite>(InterScene.ImagePath)[plants[i].imageIndex];
                 if (farmSlots != null && farmSlots[i] != null)
                 {
                     farmSlots[i].GetComponent<PlantFarmConfig>().relatedPlant = plants[i];
+                }
+                if (InterScene.gameMode == GameMode.Attack)
+                {
+                    plants[i].amount = 2;
                 }
             }
             else
