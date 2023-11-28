@@ -9,7 +9,7 @@ public class Chest : MonoBehaviour
     public UnityEvent myEvents;
     
     public string collisionListenToTag = "Player";
-    public GenericPlant plant;
+    private bool _wasTriggered = false;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,10 +17,18 @@ public class Chest : MonoBehaviour
         {
             print("myEventTriggerOnEnter was triggered but myEvents was null");
         }
-        else if(collision.CompareTag(collisionListenToTag))
+        else if(!_wasTriggered && collision.CompareTag(collisionListenToTag))
         {
             print("myEventTriggerOnEnter Activated. Triggering" + myEvents);
+            _wasTriggered = true;
             myEvents.Invoke();
+            
+            GlobalInventoryBehaviour globalInventory = new GlobalInventoryBehaviour();
+            GenericPlant unlockedPlant = globalInventory.UnlockNextPlant();
+            if (unlockedPlant != null)
+            {
+                // show image to player (show that new plant was unlocked)
+            }
         }
     }
 }

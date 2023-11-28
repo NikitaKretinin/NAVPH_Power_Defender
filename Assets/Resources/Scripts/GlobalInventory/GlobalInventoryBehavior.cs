@@ -79,7 +79,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     File.WriteAllText(Application.persistentDataPath + "/GlobalInventory.json", json);
   }
 
-  public void UnlockNextPlant()
+  public GenericPlant UnlockNextPlant()
   {
     globalInventory = JsonUtility.FromJson<GlobalInventory>(
         File.ReadAllText(Application.persistentDataPath + "/GlobalInventory.json")
@@ -88,8 +88,9 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     if (firstMatch != null)
     {
       firstMatch.isUnlocked = true;
+      SaveGlobalInventory();
     }
-    SaveGlobalInventory();
+    return firstMatch;
   }
 
   public void AddMap()
