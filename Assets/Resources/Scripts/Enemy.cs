@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameMode
-{
-    defense,
-    attack
-}
-
 public enum EnemyState
 {
     walk,
@@ -22,7 +16,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRadius;
     [SerializeField] Transform targetPlayer;
     [SerializeField] Transform targetBase;
-    [SerializeField] GameMode gameMode;
 
     private Animator anim;
     public EnemyState currentState;
@@ -67,7 +60,7 @@ public class Enemy : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, targetPlayer.position, speed * Time.deltaTime);
             }
             // Otherwise, move towards base (defense mode only)
-            else if (gameMode == GameMode.defense)
+            else if (InterScene.gameMode == GameMode.Defense)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetBase.position, speed * Time.deltaTime);
             }

@@ -18,11 +18,13 @@ public class ModeButtons : MonoBehaviour
 
   public void OnClickDefenseMode()
   {
-    SceneManager.LoadScene("DefenseMode");
+    InterScene.gameMode = GameMode.Defense;
+    SceneManager.LoadScene("PlantSelection");
   }
 
   public void OnClickAttackMode()
   {
-    SceneManager.LoadScene("AttackModeLevel1");
+    InterScene.gameMode = GameMode.Attack;
+    SceneManager.LoadScene("PlantSelection");
   }
 }
