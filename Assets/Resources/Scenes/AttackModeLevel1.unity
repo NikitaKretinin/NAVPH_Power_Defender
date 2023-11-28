@@ -264,11 +264,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3451643591543686597, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.67
+      value: -10.38
       objectReference: {fileID: 0}
     - target: {fileID: 3451643591543686597, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.74
+      value: -23.67
       objectReference: {fileID: 0}
     - target: {fileID: 3451643591543686597, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7157,7 +7157,14 @@ MonoBehaviour:
           m_StringArgument: chestCollisionTrigger
           m_BoolArgument: 0
         m_CallState: 2
-  listenToTag: Player
+  collisionListenToTag: Player
+  plant:
+    name: 
+    id: 
+    ripeTime: 0
+    imageIndex: 0
+    isUnlocked: 0
+    ability: 0
 --- !u!61 &1261487117
 BoxCollider2D:
   m_ObjectHideFlags: 0

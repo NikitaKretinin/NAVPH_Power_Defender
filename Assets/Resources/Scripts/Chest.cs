@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ChestTriggerCollision : MonoBehaviour
+public class Chest : MonoBehaviour
 {
     [Header("Custom Event")]
     public UnityEvent myEvents;
     
-    [SerializeField] public string listenToTag = "Player";
+    public string collisionListenToTag = "Player";
+    public GenericPlant plant;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,7 +17,7 @@ public class ChestTriggerCollision : MonoBehaviour
         {
             print("myEventTriggerOnEnter was triggered but myEvents was null");
         }
-        else if(collision.CompareTag(listenToTag))
+        else if(collision.CompareTag(collisionListenToTag))
         {
             print("myEventTriggerOnEnter Activated. Triggering" + myEvents);
             myEvents.Invoke();
