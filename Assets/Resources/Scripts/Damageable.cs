@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
+    private bool isBuffActive = false;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] int currentHealth;
     [SerializeField] private int damageAmount = 0; // Adjust the damage amount as needed.
@@ -62,11 +63,18 @@ public class Damageable : MonoBehaviour
         return damageAmount;
     }
 
+    public bool getIsBuffActive()
+    {
+        return isBuffActive;
+    }
+    
     public IEnumerator IncreaseDamageCo()
     {
         int prevDamage = damageAmount;
         damageAmount = (int)(prevDamage * 1.2f);
+        isBuffActive = true;
         yield return new WaitForSeconds(5.0f);
+        isBuffActive = false;
         damageAmount = prevDamage;
         yield return null;
     }

@@ -4,64 +4,67 @@ using UnityEngine;
 
 public static class FruitsEffects
 {
-  public static void ActivateFruitEffect(Effect effect, GameObject player = null, GameObject[] enemies = null)
+  public static bool ActivateFruitEffect(Effect effect, GameObject player = null, GameObject[] enemies = null)
   {
     switch (effect)
     {
       case Effect.Heal:
-        HealEffect(player);
-        break;
+        return HealEffect(player);
       case Effect.AttackUp:
-        AttackUpEffect(player);
-        break;
+        return AttackUpEffect(player);
       case Effect.SpeedUp:
-        SpeedUpEffect(player);
-        break;
+        return SpeedUpEffect(player);
       case Effect.AttackEnemiesDown:
-        AttackEnemiesDownEffect(enemies);
-        break;
+        return AttackEnemiesDownEffect(enemies);
       case Effect.SpeedEnemiesDown:
-        SpeedEnemiesDownEffect(enemies);
-        break;
+        return SpeedEnemiesDownEffect(enemies);
       default:
-        break;
+        return false;
     }
   }
 
-  private static void HealEffect(GameObject player)
+  private static bool HealEffect(GameObject player)
   {
-    if (player == null) return;
+    if (player == null) return false;
     var tmp = player.GetComponent<Damageable>();
     Debug.Log(tmp);
     Debug.Log("Heal effect applied");
     tmp.addHealth(10);
     player.GetComponent<Damageable>().addHealth(10);
+    return true;
   }
   
-  private static void AttackUpEffect(GameObject player)
+  private static bool AttackUpEffect(GameObject player)
   {
     Debug.Log(player);
-    if (player == null) return;
+    if (player == null) return false;
     Damageable component = player.GetComponent<Damageable>();
+    if (component.getIsBuffActive()) return false;
     component.StartCoroutine(component.IncreaseDamageCo());
+    return true;
   }
 
-  private static void SpeedUpEffect(GameObject player)
+  private static bool SpeedUpEffect(GameObject player)
   {
-    if (player == null) return;
-    Debug.Log("SpeedUp effect applied");
+    if (player == null) return false;
+    PlayerMovement component = player.GetComponent<PlayerMovement>();
+    if (component.getIsBuffActive()) return false;
+    component.StartCoroutine(component.IncreaseSpeedCo());
+    return true;
   }
 
-  private static void AttackEnemiesDownEffect(GameObject[] enemies)
+  private static bool AttackEnemiesDownEffect(GameObject[] enemies)
   {
-    if (enemies == null) return;
+    if (enemies == null) return false;
     Debug.Log("AttackEnemiesDown effect applied");
+    return true;
   }
 
-  private static void SpeedEnemiesDownEffect(GameObject[] enemies)
+  private static bool SpeedEnemiesDownEffect(GameObject[] enemies)
   {
-    if (enemies == null) return;
+    if (enemies == null) return false;
     Debug.Log("SpeedEnemiesDown effect applied");
+    return true;
   }
 
 }

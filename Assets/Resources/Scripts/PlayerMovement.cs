@@ -10,7 +10,7 @@ public enum PlayerState
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    private bool isBuffActive = false;
     [SerializeField] float speed = 10.0f;
     private Vector3 moveVelocity;
     private Animator anim;
@@ -73,5 +73,20 @@ public class PlayerMovement : MonoBehaviour
         //rb.MovePosition(transform.position + speed * Time.deltaTime * moveVelocity);
         // transform.position = transform.position + speed * Time.deltaTime * moveVelocity;
         rb.velocity = speed * Time.deltaTime * moveVelocity;
+    }
+
+    public bool getIsBuffActive()
+    {
+        return isBuffActive;
+    }
+    
+    public IEnumerator IncreaseSpeedCo()
+    {
+        float prevSpeed = speed;
+        speed = prevSpeed * 1.1f;
+        isBuffActive = true;
+        yield return new WaitForSeconds(5.0f);
+        isBuffActive = false;
+        speed = prevSpeed;
     }
 }
