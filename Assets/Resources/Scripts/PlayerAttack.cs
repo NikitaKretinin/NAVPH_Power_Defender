@@ -21,4 +21,18 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
+    
+    private static void HealEffect(GameObject player)
+    {
+        if (player == null) return;
+        player.GetComponent<Damageable>().addHealth(10);
+    }
+  
+    public IEnumerator IncreaseDamageCo()
+    {
+        int prevDamage = damageAmount;
+        damageAmount = (int)(prevDamage * 1.2f);
+        yield return new WaitForSeconds(5.0f);
+        damageAmount = prevDamage;
+    }
 }

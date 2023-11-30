@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
-    [SerializeField] int maxHealth = 100;
+    [SerializeField] private int maxHealth = 100;
     [SerializeField] int currentHealth;
 
     private void Start()
@@ -42,6 +43,14 @@ public class Damageable : MonoBehaviour
         return currentHealth;
     }
 
+    public void addHealth(int healthToAdd)
+    {
+        if (currentHealth + healthToAdd > maxHealth)
+            currentHealth = maxHealth;
+        else
+            currentHealth += healthToAdd;
+    }
+    
     public int getMaxHealth()
     {
         return maxHealth;
