@@ -362,6 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  damageAmount: 0
 --- !u!1 &608675223 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 486616135951656209, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
@@ -4885,6 +4886,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 442446635601388191, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
+      propertyPath: damageAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781844772736527700, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3451643591543686597, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -21737,6 +21746,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3669233748183096385, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
+      propertyPath: damageAmount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4620854624339088953, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
       propertyPath: chaseRadius
       value: 4
@@ -21754,6 +21767,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 510325642777177360, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: damageAmount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 734121838038895615, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

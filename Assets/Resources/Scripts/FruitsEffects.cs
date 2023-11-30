@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public static class FruitsEffects
@@ -30,17 +31,19 @@ public static class FruitsEffects
   private static void HealEffect(GameObject player)
   {
     if (player == null) return;
+    var tmp = player.GetComponent<Damageable>();
+    Debug.Log(tmp);
+    Debug.Log("Heal effect applied");
+    tmp.addHealth(10);
     player.GetComponent<Damageable>().addHealth(10);
   }
   
   private static void AttackUpEffect(GameObject player)
   {
+    Debug.Log(player);
     if (player == null) return;
-    var hitboxes = player.GetComponentsInChildren<PlayerAttack>();
-    foreach (var hitbox in hitboxes)
-    {
-      hitbox.StartCoroutine(hitbox.IncreaseDamageCo());
-    }
+    Damageable component = player.GetComponent<Damageable>();
+    component.StartCoroutine(component.IncreaseDamageCo());
   }
 
   private static void SpeedUpEffect(GameObject player)

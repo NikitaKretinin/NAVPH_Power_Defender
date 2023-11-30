@@ -7,6 +7,7 @@ public class Damageable : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] int currentHealth;
+    [SerializeField] private int damageAmount = 0; // Adjust the damage amount as needed.
 
     private void Start()
     {
@@ -54,5 +55,19 @@ public class Damageable : MonoBehaviour
     public int getMaxHealth()
     {
         return maxHealth;
+    }
+
+    public int getDamage()
+    {
+        return damageAmount;
+    }
+
+    public IEnumerator IncreaseDamageCo()
+    {
+        int prevDamage = damageAmount;
+        damageAmount = (int)(prevDamage * 1.2f);
+        yield return new WaitForSeconds(5.0f);
+        damageAmount = prevDamage;
+        yield return null;
     }
 }

@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] int damageAmount = 10; // Adjust the damage amount as needed.
+    private int damageAmount = 10; // Adjust the damage amount as needed.
+    [SerializeField] GameObject player; // related player
+
+    void Start()
+    {
+        player = GameObject.Find("Player");
+    }
+
+    void Update()
+    {
+        damageAmount = player.GetComponent<Damageable>().getDamage();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,19 +31,5 @@ public class PlayerAttack : MonoBehaviour
                 enemyDamageable.TakeDamage(damageAmount);
             }
         }
-    }
-    
-    private static void HealEffect(GameObject player)
-    {
-        if (player == null) return;
-        player.GetComponent<Damageable>().addHealth(10);
-    }
-  
-    public IEnumerator IncreaseDamageCo()
-    {
-        int prevDamage = damageAmount;
-        damageAmount = (int)(prevDamage * 1.2f);
-        yield return new WaitForSeconds(5.0f);
-        damageAmount = prevDamage;
     }
 }
