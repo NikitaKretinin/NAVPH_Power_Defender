@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -10,23 +8,12 @@ public class EnemySpawner : MonoBehaviour
         waveConfiguration = GetComponentInParent<WaveConfiguration>();
     }
 
-    public void SpawnEntity(GameObject entity)
+    public void SpawnEntity(GameObject entity, bool hasMap)
     {
         // Spawn a new enemy.
-        Instantiate(entity, transform.position, Quaternion.identity).SetActive(true);
+        var spawned = Instantiate(entity, transform.position, Quaternion.identity);
+        spawned.GetComponent<WaveEnemy>().hasMap = hasMap;
+        spawned.SetActive(true);
         waveConfiguration.IncreaseEnemyCount();
     }
-
-    // // Update is called once per frame
-    // void FixedUpdate()
-    // {
-    //     if (Time.time - lastSpawnTime >= spawnDelay)
-    //     {
-    //         // Spawn a new enemy.
-    //         Instantiate(enemySpawned, transform.position, Quaternion.identity).SetActive(true);
-
-    //         // Update the time of the last spawn.
-    //         lastSpawnTime = Time.time;
-    //     }
-    // }
 }

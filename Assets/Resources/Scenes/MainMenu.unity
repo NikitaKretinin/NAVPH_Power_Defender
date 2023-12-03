@@ -241,6 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8c37e42c7ba0a4a97829d9a0ecb647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defenseModeButton: {fileID: 1351984901}
+  attackModeButton: {fileID: 1411602423}
 --- !u!1 &300367860
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum EnemyState
@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRadius;
     [SerializeField] Transform targetPlayer;
     [SerializeField] Transform targetBase;
-
     private Animator anim;
     public EnemyState currentState;
 
@@ -38,7 +37,6 @@ public class Enemy : MonoBehaviour
     // Will be called from the attack script
     public IEnumerator AttackCo()
     {
-        Debug.Log("Attack");
         anim.SetBool("walking", false);
         anim.SetBool("attacking", true);
         currentState = EnemyState.attack;

@@ -3,19 +3,20 @@ using UnityEngine;
 public class WaveEnemy : MonoBehaviour
 {
   private WaveConfiguration waveConfiguration = null;
+  [SerializeField] GameObject waveConfigurator = null;
+  public bool hasMap = false;
 
   private void Start()
   {
-    waveConfiguration = GameObject.Find("WaveConfigurator").GetComponent<WaveConfiguration>();
+    waveConfiguration = waveConfigurator.GetComponent<WaveConfiguration>();
   }
 
   private void OnDestroy()
   {
-    Debug.Log("waveConfiguration: " + waveConfiguration);
     if (waveConfiguration != null)
     {
-      Debug.Log("enemy killed");
       waveConfiguration.DecreaseEnemyCount();
+      Debug.Log("Enemy map? " + hasMap);
     }
   }
 }

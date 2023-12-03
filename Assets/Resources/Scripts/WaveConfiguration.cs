@@ -5,25 +5,19 @@ public class WaveConfiguration : MonoBehaviour
 {
     [SerializeField] GameObject[] spawners;
     [SerializeField] GameObject firstWaveEnemy;
-
-    [SerializeField] int firstWaveEnemyCount = 0;
-
+    [SerializeField] int firstWaveEnemyCount;
     [SerializeField] GameObject secondWaveEnemy;
-
-    [SerializeField] int secondWaveEnemyCount = 0;
-
+    [SerializeField] int secondWaveEnemyCount;
     [SerializeField] GameObject thirdWaveEnemy;
-
-    [SerializeField] int thirdWaveEnemyCount = 0;
-
-    [SerializeField] float spawnDelay = 5f;
+    [SerializeField] int thirdWaveEnemyCount;
+    [SerializeField] float spawnDelay;
     private float lastSpawnTime = 0.0f; // The time since the last spawn.
-
     public int enemiesSpawned = 0;
     public int enemiesKilled = 0;
     private bool firstWavePassed = false;
     private bool secondWavePassed = false;
     private bool thirdWavePassed = false;
+    int randomWave;
 
     void Awake()
     {
@@ -31,38 +25,48 @@ public class WaveConfiguration : MonoBehaviour
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        randomWave = Random.Range(0, 3);
+    }
+
     void FixedUpdate()
     {
         if (!firstWavePassed)
         {
-            Debug.Log("First wave not passed!");
-            spawnAndControlEnemies(firstWaveEnemy, firstWaveEnemyCount, ref firstWavePassed);
+            SpawnAndControlEnemies(0, firstWaveEnemy, firstWaveEnemyCount, ref firstWavePassed);
         }
         else if (!secondWavePassed)
         {
-            Debug.Log("Second wave not passed!");
-            spawnAndControlEnemies(secondWaveEnemy, secondWaveEnemyCount, ref secondWavePassed);
+            SpawnAndControlEnemies(1, secondWaveEnemy, secondWaveEnemyCount, ref secondWavePassed);
         }
         else if (!thirdWavePassed)
         {
-            Debug.Log("Third wave not passed!");
-            spawnAndControlEnemies(thirdWaveEnemy, thirdWaveEnemyCount, ref thirdWavePassed);
+            SpawnAndControlEnemies(2, thirdWaveEnemy, thirdWaveEnemyCount, ref thirdWavePassed);
         }
         else
         {
-            Debug.Log("All waves passed!");
             SceneManager.LoadScene("VictoryScreen");
         }
     }
 
-    private void spawnAndControlEnemies(GameObject enemy, int count, ref bool wavePassed)
+    private void SpawnAndControlEnemies(int waveIndex, GameObject enemy, int count, ref bool wavePassed)
     {
+        int enemyNumThatHasMap = Random.Range(0, count);
+
         if (enemiesSpawned < count)
         {
             if (Time.time - lastSpawnTime >= spawnDelay)
             {
-                spawners[Random.Range(0, spawners.Length)].GetComponent<EnemySpawner>().SpawnEntity(enemy);
+                if (enemiesSpawned == enemyNumThatHasMap && waveIndex == randomWave)
+                {
+                    spawners[Random.Range(0, spawners.Length)].GetComponent<EnemySpawner>().SpawnEntity(enemy, true);
+                    Debug.Log("Enemy with map spawned!");
+                }
+                else
+                {
+                    spawners[Random.Range(0, spawners.Length)].GetComponent<EnemySpawner>().SpawnEntity(enemy, false);
+                }
                 lastSpawnTime = Time.time;
             }
         }

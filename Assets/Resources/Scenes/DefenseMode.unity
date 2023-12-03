@@ -4662,8 +4662,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296c23394ed98db47a6b09d541e49219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantType: 1
-  HUDObject: {fileID: 0}
+  relatedPlant:
+    name: 
+    id: 
+    ripeTime: 0
+    imageIndex: 0
+    isUnlocked: 0
+    ability: 0
 --- !u!95 &924120663
 Animator:
   serializedVersion: 5
@@ -4967,8 +4972,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296c23394ed98db47a6b09d541e49219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantType: 0
-  HUDObject: {fileID: 0}
+  relatedPlant:
+    name: 
+    id: 
+    ripeTime: 0
+    imageIndex: 0
+    isUnlocked: 0
+    ability: 0
 --- !u!1001 &1232763941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5207,11 +5217,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawners: []
   firstWaveEnemy: {fileID: 677936728}
-  firstWaveEnemyCount: 1
+  firstWaveEnemyCount: 3
   secondWaveEnemy: {fileID: 677936728}
-  secondWaveEnemyCount: 1
+  secondWaveEnemyCount: 4
   thirdWaveEnemy: {fileID: 608675223}
-  thirdWaveEnemyCount: 1
+  thirdWaveEnemyCount: 2
   spawnDelay: 5
   enemiesSpawned: 0
   enemiesKilled: 0
@@ -5261,8 +5271,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296c23394ed98db47a6b09d541e49219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantType: 3
-  HUDObject: {fileID: 0}
+  relatedPlant:
+    name: 
+    id: 
+    ripeTime: 0
+    imageIndex: 0
+    isUnlocked: 0
+    ability: 0
 --- !u!95 &1600805046
 Animator:
   serializedVersion: 5
@@ -5501,8 +5516,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296c23394ed98db47a6b09d541e49219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantType: 2
-  HUDObject: {fileID: 0}
+  relatedPlant:
+    name: 
+    id: 
+    ripeTime: 0
+    imageIndex: 0
+    isUnlocked: 0
+    ability: 0
 --- !u!95 &2014253679
 Animator:
   serializedVersion: 5
@@ -21917,6 +21937,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin
       objectReference: {fileID: 0}
+    - target: {fileID: 1292842294187764060, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
+      propertyPath: waveConfigurator
+      value: 
+      objectReference: {fileID: 1475035563}
     - target: {fileID: 2825204805310090938, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.43
@@ -22018,6 +22042,10 @@ PrefabInstance:
       propertyPath: chaseRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5071742235618815552, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: waveConfigurator
+      value: 
+      objectReference: {fileID: 1475035563}
     - target: {fileID: 5406795168850890076, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_Name
       value: Slime
