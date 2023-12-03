@@ -6618,6 +6618,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8175169758766222689, guid: 0a0e23ca37c50714e8112be4ec520b36, type: 3}
+      propertyPath: m_Name
+      value: PauseButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8160898900056635326, guid: 0a0e23ca37c50714e8112be4ec520b36, type: 3}
