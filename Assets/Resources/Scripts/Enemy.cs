@@ -23,7 +23,10 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetBase = GameObject.FindWithTag("Base").transform;
+        if (InterScene.gameMode == GameMode.Defense)
+        {
+            targetBase = GameObject.FindWithTag("Base").transform;
+        }
         targetPlayer = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>();
         currentState = EnemyState.walk;
@@ -44,7 +47,7 @@ public class Enemy : MonoBehaviour
         currentState = EnemyState.attack;
         yield return null;
         anim.SetBool("attacking", false);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2f);
         currentState = EnemyState.walk;
     }
 
@@ -66,7 +69,11 @@ public class Enemy : MonoBehaviour
             }
             // If enemy is not attacking -> set walking animation state
             anim.SetBool("walking", true);
-            anim.SetFloat("moveX", transform.position.x - currentPosition.x);
+            // If enemy hasn't moved, do not reset moveX value to 0, to prevent animation from resetting
+            if ((transform.position.x - currentPosition.x) != 0)
+            {
+                anim.SetFloat("moveX", transform.position.x - currentPosition.x);
+            }
         }
     }
 }
