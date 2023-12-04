@@ -18,14 +18,9 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        // Check if the collision is with an object tagged as "Player."
         if ((collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Base")) && Time.time - lastAttackTime >= attackSpeed)
         {
-            // Get the Damageable script component from the collided enemy.
-            Damageable enemyDamageable = collision.gameObject.GetComponent<Damageable>();
-
-            // If the enemy has a Damageable component, apply damage to it.
-            if (enemyDamageable != null)
+            if (collision.gameObject.TryGetComponent<Damageable>(out var enemyDamageable))
             {
                 StartCoroutine(thisEnemy.AttackCo());
                 enemyDamageable.TakeDamage(damageAmount);
