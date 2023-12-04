@@ -4,18 +4,26 @@ using UnityEngine.SceneManagement;
 
 public class LevelEndButtons : MonoBehaviour
 {
-  [SerializeField] GameObject nextLevelButton = null;
-  [SerializeField] GameObject mainMenuButton = null;
+  [SerializeField] GameObject levelButton;
+  [SerializeField] GameObject mainMenuButton;
+  [SerializeField] bool isVictory;
 
   void Start()
   {
-    nextLevelButton.GetComponent<Button>().onClick.AddListener(OnClickNextLevel);
+    levelButton.GetComponent<Button>().onClick.AddListener(OnClickLevel);
     mainMenuButton.GetComponent<Button>().onClick.AddListener(OnClickMainMenu);
   }
 
-  public void OnClickNextLevel()
+  public void OnClickLevel()
   {
-    Debug.Log("Next Level");
+    if (isVictory)
+    {
+      Debug.Log("Next Level");
+    }
+    else
+    {
+      Debug.Log("Retry Level");
+    }
   }
 
   public void OnClickMainMenu()

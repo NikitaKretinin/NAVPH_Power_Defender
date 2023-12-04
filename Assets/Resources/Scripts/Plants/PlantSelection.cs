@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlantSelection : MonoBehaviour
 {
   private GlobalInventory globalInventory = null;
-  [SerializeField] GameObject globalInventoryObject = null;
+  [SerializeField] GameObject globalInventoryObject;
   GameObject[] selectedPlantSlots = null;
 
   private void SelectPlant(int plantIndex, Sprite[] sprites)
