@@ -11,12 +11,13 @@ public class WaveConfiguration : MonoBehaviour
     [SerializeField] GameObject thirdWaveEnemy;
     [SerializeField] int thirdWaveEnemyCount;
     [SerializeField] float spawnDelay;
-    private float lastSpawnTime = 0.0f; // The time since the last spawn.
+    float lastSpawnTime = 0.0f; // The time since the last spawn.
     public int enemiesSpawned = 0;
     public int enemiesKilled = 0;
-    private bool firstWavePassed = false;
-    private bool secondWavePassed = false;
-    private bool thirdWavePassed = false;
+    bool firstWavePassed = false;
+    bool secondWavePassed = false;
+    bool thirdWavePassed = false;
+    public bool mapCollected = false;
     int randomWave;
 
     void Awake()
@@ -44,7 +45,7 @@ public class WaveConfiguration : MonoBehaviour
         {
             SpawnAndControlEnemies(2, thirdWaveEnemy, thirdWaveEnemyCount, ref thirdWavePassed);
         }
-        else
+        else if (mapCollected)
         {
             SceneManager.LoadScene("VictoryScreen");
         }

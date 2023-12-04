@@ -3,7 +3,8 @@ using UnityEngine;
 public class WaveEnemy : MonoBehaviour
 {
   private WaveConfiguration waveConfiguration = null;
-  [SerializeField] GameObject waveConfigurator = null;
+  [SerializeField] GameObject waveConfigurator;
+  [SerializeField] GameObject map;
   public bool hasMap = false;
 
   private void Start()
@@ -17,6 +18,13 @@ public class WaveEnemy : MonoBehaviour
     {
       waveConfiguration.DecreaseEnemyCount();
       Debug.Log("Enemy map? " + hasMap);
+
+      if (hasMap)
+      {
+        // Spawn a map.
+        var position = transform.position;
+        Instantiate(map, position, Quaternion.identity).SetActive(true);
+      }
     }
   }
 }
