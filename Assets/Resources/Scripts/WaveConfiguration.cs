@@ -4,21 +4,17 @@ using UnityEngine.SceneManagement;
 public class WaveConfiguration : MonoBehaviour
 {
     [SerializeField] GameObject[] spawners;
-    [SerializeField] GameObject firstWaveEnemy;
-    [SerializeField] int firstWaveEnemyCount;
-    [SerializeField] GameObject secondWaveEnemy;
-    [SerializeField] int secondWaveEnemyCount;
-    [SerializeField] GameObject thirdWaveEnemy;
-    [SerializeField] int thirdWaveEnemyCount;
     [SerializeField] float spawnDelay;
+    [SerializeField] GameObject[] waveEnemies;
+    [SerializeField] int[] waveEnemyCounts;
+    [SerializeField] bool[] wavePassed;
+    int currentWave = 0;
     float lastSpawnTime = 0.0f; // The time since the last spawn.
     public int enemiesSpawned = 0;
     public int enemiesKilled = 0;
-    bool firstWavePassed = false;
-    bool secondWavePassed = false;
-    bool thirdWavePassed = false;
     public bool mapCollected = false;
     int randomWave;
+    int randomEnemy;
 
     void Awake()
     {
@@ -29,21 +25,14 @@ public class WaveConfiguration : MonoBehaviour
     void Start()
     {
         randomWave = Random.Range(0, 3);
+        randomEnemy = Random.Range(0, waveEnemyCounts[randomWave]);
     }
 
     void FixedUpdate()
     {
-        if (!firstWavePassed)
+        if (currentWave < waveEnemies.Length && !wavePassed[currentWave])
         {
-            SpawnAndControlEnemies(0, firstWaveEnemy, firstWaveEnemyCount, ref firstWavePassed);
-        }
-        else if (!secondWavePassed)
-        {
-            SpawnAndControlEnemies(1, secondWaveEnemy, secondWaveEnemyCount, ref secondWavePassed);
-        }
-        else if (!thirdWavePassed)
-        {
-            SpawnAndControlEnemies(2, thirdWaveEnemy, thirdWaveEnemyCount, ref thirdWavePassed);
+            SpawnAndControlEnemies();
         }
         else if (mapCollected)
         {
@@ -51,31 +40,30 @@ public class WaveConfiguration : MonoBehaviour
         }
     }
 
-    private void SpawnAndControlEnemies(int waveIndex, GameObject enemy, int count, ref bool wavePassed)
+    private void SpawnAndControlEnemies()
     {
-        int enemyNumThatHasMap = Random.Range(0, count);
-
-        if (enemiesSpawned < count)
+        if (enemiesSpawned < waveEnemyCounts[currentWave])
         {
             if (Time.time - lastSpawnTime >= spawnDelay)
             {
-                if (enemiesSpawned == enemyNumThatHasMap && waveIndex == randomWave)
+                if (enemiesSpawned == randomEnemy && currentWave == randomWave)
                 {
-                    spawners[Random.Range(0, spawners.Length)].GetComponent<EnemySpawner>().SpawnEntity(enemy, true);
+                    spawners[Random.Range(0, spawners.Length)].GetComponent<EnemySpawner>().SpawnEntity(waveEnemies[currentWave], true);
                     Debug.Log("Enemy with map spawned!");
                 }
                 else
                 {
-                    spawners[Random.Range(0, spawners.Length)].GetComponent<EnemySpawner>().SpawnEntity(enemy, false);
+                    spawners[Random.Range(0, spawners.Length)].GetComponent<EnemySpawner>().SpawnEntity(waveEnemies[currentWave], false);
                 }
                 lastSpawnTime = Time.time;
             }
         }
-        else if (enemiesKilled >= count)
+        else if (enemiesKilled >= waveEnemyCounts[currentWave])
         {
-            wavePassed = true;
+            wavePassed[currentWave] = true;
             enemiesSpawned = 0;
             enemiesKilled = 0;
+            currentWave++;
         }
     }
 

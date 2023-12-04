@@ -5333,13 +5333,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawners: []
-  firstWaveEnemy: {fileID: 677936728}
-  firstWaveEnemyCount: 3
-  secondWaveEnemy: {fileID: 677936728}
-  secondWaveEnemyCount: 4
-  thirdWaveEnemy: {fileID: 608675223}
-  thirdWaveEnemyCount: 2
   spawnDelay: 5
+  waveEnemies:
+  - {fileID: 677936728}
+  - {fileID: 677936728}
+  - {fileID: 608675223}
+  waveEnemyCounts: 030000000400000002000000
+  wavePassed: 000000
   enemiesSpawned: 0
   enemiesKilled: 0
   mapCollected: 0
