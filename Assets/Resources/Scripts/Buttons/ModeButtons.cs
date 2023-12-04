@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class ModeButtons : MonoBehaviour
 {
-  [SerializeField] GameObject defenseModeButton = null;
-  [SerializeField] GameObject attackModeButton = null;
+  [SerializeField] GameObject defenseModeButton;
+  [SerializeField] GameObject attackModeButton;
 
   void Start()
   {
