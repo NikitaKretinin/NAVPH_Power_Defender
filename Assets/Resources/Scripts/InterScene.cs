@@ -12,4 +12,5 @@ public static class InterScene
   public static List<GenericPlant> selectedPlants = null;
   public static GameMode gameMode = GameMode.None;
   public static string ImagePath = "Farming Asset Pack/farming-tileset";
+  public static bool mapDropped = false;
 }
