@@ -2,7 +2,18 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] int damageAmount = 10; // Adjust the damage amount as needed.
+    private int damageAmount = 10; // Adjust the damage amount as needed.
+    [SerializeField] GameObject player; // related player
+
+    void Start()
+    {
+        player = GameObject.Find("Player");
+    }
+
+    void Update()
+    {
+        damageAmount = player.GetComponent<Damageable>().getDamage();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

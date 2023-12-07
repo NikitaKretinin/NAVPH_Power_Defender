@@ -10,15 +10,17 @@ public enum PlayerState
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    private bool isBuffActive = false;
     [SerializeField] float speed = 10.0f;
     private Vector3 moveVelocity;
     private Animator anim;
     public PlayerState currentState;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         currentState = PlayerState.walk;
     }
@@ -60,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            rb.velocity = Vector3.zero;
             anim.SetBool("walking", false);
         }
     }
@@ -68,6 +71,22 @@ public class PlayerMovement : MonoBehaviour
     {
         moveVelocity.Normalize();
         //rb.MovePosition(transform.position + speed * Time.deltaTime * moveVelocity);
-        transform.position = transform.position + speed * Time.deltaTime * moveVelocity;
+        // transform.position = transform.position + speed * Time.deltaTime * moveVelocity;
+        rb.velocity = speed * Time.deltaTime * moveVelocity;
+    }
+
+    public bool getIsBuffActive()
+    {
+        return isBuffActive;
+    }
+    
+    public IEnumerator IncreaseSpeedCo()
+    {
+        float prevSpeed = speed;
+        speed = prevSpeed * 1.1f;
+        isBuffActive = true;
+        yield return new WaitForSeconds(5.0f);
+        isBuffActive = false;
+        speed = prevSpeed;
     }
 }

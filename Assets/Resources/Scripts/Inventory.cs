@@ -49,10 +49,12 @@ public class Inventory : MonoBehaviour
 
     public void UsePlant(int index)
     {
+        GameObject player = GameObject.Find("Player");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (index < plants.Count() && plants[index] != null && plants[index].amount > 0)
         {
-            plants[index].amount--;
-            FruitsEffects.ActivateFruitEffect(plants[index].ability);
+            if (FruitsEffects.ActivateFruitEffect(plants[index].ability, player, enemies))
+                plants[index].amount--;
         }
     }
 

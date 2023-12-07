@@ -262,13 +262,17 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2781844772736527700, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3451643591543686597, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.38
+      value: -22.11
       objectReference: {fileID: 0}
     - target: {fileID: 3451643591543686597, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -23.67
+      value: -22.58
       objectReference: {fileID: 0}
     - target: {fileID: 3451643591543686597, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -308,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8190651253945170005, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
       propertyPath: speed
-      value: 6
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7132,7 +7136,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025217831, y: -0.020349145}
+  m_Offset: {x: 0.0012360811, y: -0.0203498}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7143,7 +7147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.579997, y: 1.55616}
+  m_Size: {x: 1.8198164, y: 1.7832061}
   m_EdgeRadius: 0
 --- !u!95 &1261487115
 Animator:
@@ -7194,13 +7198,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   collisionListenToTag: Player
-  plant:
-    name: 
-    id: 
-    ripeTime: 0
-    imageIndex: 0
-    isUnlocked: 0
-    ability: 0
 --- !u!61 &1261487117
 BoxCollider2D:
   m_ObjectHideFlags: 0

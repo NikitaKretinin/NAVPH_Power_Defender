@@ -26,7 +26,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
       {
         plants = new List<GenericPlant> {
           new() {
-            name = "Plant1",
+            name = "RadiantGlow",
             id = "plant1",
             ripeTime = 6,
             imageIndex = 67,
@@ -34,7 +34,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
             ability = Effect.Heal
           },
           new() {
-            name = "Plant2",
+            name = "Emberflare",
             id = "plant2",
             ripeTime = 5,
             imageIndex = 56,
@@ -42,15 +42,15 @@ public class GlobalInventoryBehaviour : MonoBehaviour
             ability = Effect.AttackUp
           },
           new() {
-            name = "Plant3",
+            name = "Whisperleaf",
             id = "plant3",
             ripeTime = 2,
-            imageIndex = 55,
+            imageIndex = 61,
             isUnlocked = false,
             ability = Effect.SpeedUp
           },
           new() {
-            name = "Plant4",
+            name = "Sparkbloom",
             id = "plant4",
             ripeTime = 3,
             imageIndex = 52,
@@ -58,10 +58,10 @@ public class GlobalInventoryBehaviour : MonoBehaviour
             ability = Effect.AttackEnemiesDown
           },
           new() {
-            name = "Plant5",
+            name = "Bloodwine",
             id = "plant5",
             ripeTime = 7,
-            imageIndex = 68,
+            imageIndex = 55,
             isUnlocked = false,
             ability = Effect.SpeedEnemiesDown
           }
@@ -80,14 +80,15 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     File.WriteAllText(Application.persistentDataPath + "/GlobalInventory.json", json);
   }
 
-  public void UnlockNextPlant()
+  public GenericPlant UnlockNextPlant()
   {
     var firstMatch = globalInventory.plants.FirstOrDefault(s => s.isUnlocked == false);
     if (firstMatch != null)
     {
       firstMatch.isUnlocked = true;
+      SaveGlobalInventory();
     }
-    SaveGlobalInventory();
+    return firstMatch;
   }
 
   public void AddMap()

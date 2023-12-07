@@ -8,7 +8,7 @@ public enum EnemyState
 }
 public class Enemy : MonoBehaviour
 {
-
+    private bool isBuffActive = false;
     [SerializeField] float speed;
     [SerializeField] string enemyName;
     [SerializeField] float chaseRadius;
@@ -72,5 +72,19 @@ public class Enemy : MonoBehaviour
                 anim.SetFloat("moveX", transform.position.x - currentPosition.x);
             }
         }
+    }
+    public bool getIsBuffActive()
+    {
+        return isBuffActive;
+    }
+    
+    public IEnumerator DecreaseSpeedCo()
+    {
+        float prevSpeed = speed;
+        speed = prevSpeed * 0.5f;
+        isBuffActive = true;
+        yield return new WaitForSeconds(5.0f);
+        isBuffActive = false;
+        speed = prevSpeed;
     }
 }
