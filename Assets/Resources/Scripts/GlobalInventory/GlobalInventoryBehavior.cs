@@ -67,7 +67,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
           }
         },
         availableMaps = 0,
-        currentAttackLevel = 0,
+        currentAttackLevel = 1,
         currentDefenseLevel = 1
       };
       SaveGlobalInventory();
