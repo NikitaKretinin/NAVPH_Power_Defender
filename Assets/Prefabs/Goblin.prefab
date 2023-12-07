@@ -145,7 +145,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486616135951656209}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -162,7 +162,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4620854624339088953
 MonoBehaviour:
@@ -182,7 +182,6 @@ MonoBehaviour:
   attackRadius: 1.5
   targetPlayer: {fileID: 0}
   targetBase: {fileID: 0}
-  gameMode: 0
   currentState: 0
 --- !u!114 &3669233748183096385
 MonoBehaviour:
@@ -198,6 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 40
   currentHealth: 0
+  damageAmount: 5
 --- !u!114 &731361829440232662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b2ec1d1e71d9a4a92983c97ca47248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveConfigurator: {fileID: 0}
+  map: {fileID: 0}
+  hasMap: 0
 --- !u!95 &5168712787781105384
 Animator:
   serializedVersion: 5

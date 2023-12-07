@@ -11,7 +11,7 @@ public class EnemyAttack : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         // Get the Enemy script component from this object.
         thisEnemy = gameObject.GetComponent<Enemy>();
         damageAmount = thisEnemy.GetComponent<Damageable>().getDamage();
@@ -26,8 +26,10 @@ public class EnemyAttack : MonoBehaviour
     {
         if ((collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Base")) && Time.time - lastAttackTime >= attackSpeed)
         {
+            Debug.Log("Enemy attacking");
             if (collision.gameObject.TryGetComponent<Damageable>(out var enemyDamageable))
             {
+                Debug.Log("Enemy attacking2");
                 StartCoroutine(thisEnemy.AttackCo());
                 enemyDamageable.TakeDamage(damageAmount);
 

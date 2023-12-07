@@ -258,6 +258,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 442446635601388191, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
+      propertyPath: damageAmount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1280880697471581413, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
       propertyPath: m_Mass
       value: 50
@@ -312,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8190651253945170005, guid: cefa8f0304af2b0418f221dc7da4ec9f, type: 3}
       propertyPath: speed
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

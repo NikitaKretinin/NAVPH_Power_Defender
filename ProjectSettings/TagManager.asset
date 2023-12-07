@@ -12,6 +12,7 @@ TagManager:
   - AvailablePlantSlot
   - SelectedPlantSlot
   - FarmSlot
+  - CollisionObject
   layers:
   - Default
   - TransparentFX

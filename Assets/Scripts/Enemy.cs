@@ -17,23 +17,26 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform targetBase;
     private Animator anim;
     public EnemyState currentState;
+    private Rigidbody2D rb;
+    private Vector3 deltaVector;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (InterScene.gameMode == GameMode.Defense)
         {
             targetBase = GameObject.FindWithTag("Base").transform;
         }
+        rb = GetComponent<Rigidbody2D>();
         targetPlayer = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>();
         currentState = EnemyState.walk;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        CheckDistance2();
+        CheckDistance();
     }
 
     // Will be called from the attack script
@@ -48,7 +51,16 @@ public class Enemy : MonoBehaviour
         currentState = EnemyState.walk;
     }
 
-    void CheckDistance2()
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collided object is a wall collider
+        if (collision.gameObject.CompareTag("CollisionObject"))
+        {
+            transform.position -= 2 * deltaVector;
+        }
+    }
+
+    void CheckDistance()
     {
         if (currentState == EnemyState.walk)
         {
@@ -57,12 +69,16 @@ public class Enemy : MonoBehaviour
             // If player is in chase radius -> move towards player
             if (Vector3.Distance(targetPlayer.position, transform.position) <= chaseRadius && Vector3.Distance(targetPlayer.position, transform.position) >= attackRadius)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetPlayer.position, speed * Time.deltaTime);
+                var moveVector = Vector2.MoveTowards(transform.position, targetPlayer.position, speed * Time.fixedDeltaTime);
+                deltaVector = moveVector - rb.position;
+                rb.MovePosition(moveVector);
             }
             // Otherwise, move towards base (defense mode only)
             else if (InterScene.gameMode == GameMode.Defense)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetBase.position, speed * Time.deltaTime);
+                var moveVector = Vector2.MoveTowards(transform.position, targetBase.position, speed * Time.fixedDeltaTime);
+                deltaVector = moveVector - rb.position;
+                rb.MovePosition(moveVector);
             }
             // If enemy is not attacking -> set walking animation state
             anim.SetBool("walking", true);

@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2374758d667751043a6518a1f4bbbb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  player: {fileID: 3940298650166939739}
 --- !u!1 &3829677826563610043
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2374758d667751043a6518a1f4bbbb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  player: {fileID: 3940298650166939739}
 --- !u!68 &7460048576983442427
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -444,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  damageAmount: 10
 --- !u!1 &5540255256456541942
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2374758d667751043a6518a1f4bbbb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  player: {fileID: 3940298650166939739}
 --- !u!68 &6639599329800205933
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -581,7 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2374758d667751043a6518a1f4bbbb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  player: {fileID: 3940298650166939739}
 --- !u!68 &2277597942781712521
 EdgeCollider2D:
   m_ObjectHideFlags: 0
