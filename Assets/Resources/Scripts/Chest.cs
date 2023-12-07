@@ -9,7 +9,14 @@ public class Chest : MonoBehaviour
     public string collisionListenToTag = "Player";
     public GenericPlant plant;
     private bool _wasTriggered = false;
-    
+    [SerializeField] GameObject globalInventoryObject;
+    private GlobalInventoryBehaviour globalInventory = null;
+
+    private void Start()
+    {
+        globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (myEvents == null)
@@ -21,13 +28,13 @@ public class Chest : MonoBehaviour
             print("myEventTriggerOnEnter Activated. Triggering" + myEvents);
             _wasTriggered = true;
             myEvents.Invoke();
-                       
-            GlobalInventoryBehaviour globalInventory = new GlobalInventoryBehaviour();
+
             GenericPlant unlockedPlant = globalInventory.UnlockNextPlant();
             if (unlockedPlant != null)
             {
                 // TODO: Show a dialog box with the plant's name and ability.
                 // TODO: Use SwitchToNextAttackLevel() from GlobalInventoryBehaviour.
+                Debug.Log("Unlocked plant: " + unlockedPlant.name);
             }
         }
     }
