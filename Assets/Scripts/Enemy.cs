@@ -51,15 +51,6 @@ public class Enemy : MonoBehaviour
         currentState = EnemyState.walk;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Check if the collided object is a wall collider
-        if (collision.gameObject.CompareTag("CollisionObject"))
-        {
-            transform.position -= 2 * deltaVector;
-        }
-    }
-
     void CheckDistance()
     {
         if (currentState == EnemyState.walk)
@@ -70,14 +61,12 @@ public class Enemy : MonoBehaviour
             if (Vector3.Distance(targetPlayer.position, transform.position) <= chaseRadius && Vector3.Distance(targetPlayer.position, transform.position) >= attackRadius)
             {
                 var moveVector = Vector2.MoveTowards(transform.position, targetPlayer.position, speed * Time.fixedDeltaTime);
-                deltaVector = moveVector - rb.position;
                 rb.MovePosition(moveVector);
             }
             // Otherwise, move towards base (defense mode only)
             else if (InterScene.gameMode == GameMode.Defense)
             {
                 var moveVector = Vector2.MoveTowards(transform.position, targetBase.position, speed * Time.fixedDeltaTime);
-                deltaVector = moveVector - rb.position;
                 rb.MovePosition(moveVector);
             }
             // If enemy is not attacking -> set walking animation state

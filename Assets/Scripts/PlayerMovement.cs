@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private bool isBuffActive = false;
     [SerializeField] float speed;
-    private Vector2 moveVelocity;
+    private Vector3 moveVelocity;
     private Animator anim;
     public PlayerState currentState;
     private Rigidbody2D rb;
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveVelocity = Vector2.zero;
+        moveVelocity = Vector3.zero;
         moveVelocity.x = Input.GetAxisRaw("Horizontal");
         moveVelocity.y = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateAnimationAndMove()
     {
-        if (moveVelocity != Vector2.zero)
+        if (moveVelocity != Vector3.zero)
         {
             MoveCharacter();
             anim.SetFloat("moveX", moveVelocity.x);
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.velocity = Vector3.zero;
             anim.SetBool("walking", false);
         }
     }
@@ -71,9 +71,8 @@ public class PlayerMovement : MonoBehaviour
     {
         moveVelocity.Normalize();
         //rb.MovePosition(transform.position + speed * Time.deltaTime * moveVelocity);
-        // transform.position = transform.position + speed * Time.deltaTime * moveVelocity;
-        rb.velocity = speed * Time.deltaTime * moveVelocity;
-        // transform.Translate(speed * Time.deltaTime * moveVelocity);
+        transform.position = transform.position + speed * Time.deltaTime * moveVelocity;
+        // rb.velocity = speed * Time.deltaTime * moveVelocity;
     }
 
     public bool getIsBuffActive()
