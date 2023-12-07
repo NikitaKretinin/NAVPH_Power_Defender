@@ -19,6 +19,9 @@ public class Chest : MonoBehaviour
         {
             print("myEventTriggerOnEnter Activated. Triggering" + myEvents);
             myEvents.Invoke();
+            // TODO: Show a dialog box with the plant's name and ability.
+            // TODO: Unlock the plant in the global inventory.
+            // TODO: Use SwitchToNextAttackLevel() from GlobalInventoryBehaviour.
         }
     }
 }

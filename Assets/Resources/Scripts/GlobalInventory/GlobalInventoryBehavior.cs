@@ -67,7 +67,8 @@ public class GlobalInventoryBehaviour : MonoBehaviour
           }
         },
         availableMaps = 0,
-        prevAttackLevel = 0
+        currentAttackLevel = 0,
+        currentDefenseLevel = 1
       };
       SaveGlobalInventory();
     }
@@ -81,9 +82,6 @@ public class GlobalInventoryBehaviour : MonoBehaviour
 
   public void UnlockNextPlant()
   {
-    globalInventory = JsonUtility.FromJson<GlobalInventory>(
-        File.ReadAllText(Application.persistentDataPath + "/GlobalInventory.json")
-      );
     var firstMatch = globalInventory.plants.FirstOrDefault(s => s.isUnlocked == false);
     if (firstMatch != null)
     {
@@ -94,11 +92,25 @@ public class GlobalInventoryBehaviour : MonoBehaviour
 
   public void AddMap()
   {
-    globalInventory = JsonUtility.FromJson<GlobalInventory>(
-        File.ReadAllText(Application.persistentDataPath + "/GlobalInventory.json")
-      );
     globalInventory.availableMaps++;
     SaveGlobalInventory();
+  }
+
+  public void SwitchToNextAttackLevel()
+  {
+    globalInventory.currentAttackLevel++;
+    SaveGlobalInventory();
+  }
+
+  public void SwitchToNextDefenseLevel()
+  {
+    globalInventory.currentDefenseLevel++;
+    SaveGlobalInventory();
+  }
+
+  public int GetAvailableMapCount()
+  {
+    return globalInventory.availableMaps;
   }
 
   private void Awake()

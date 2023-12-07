@@ -6,6 +6,13 @@ public class ModeButtons : MonoBehaviour
 {
   [SerializeField] GameObject defenseModeButton;
   [SerializeField] GameObject attackModeButton;
+  [SerializeField] GameObject globalInventoryObject;
+  private GlobalInventoryBehaviour globalInventory = null;
+
+  private void Awake()
+  {
+    globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
+  }
 
   void Start()
   {
@@ -22,6 +29,10 @@ public class ModeButtons : MonoBehaviour
   public void OnClickAttackMode()
   {
     InterScene.gameMode = GameMode.Attack;
-    SceneManager.LoadScene("PlantSelection");
+
+    if (globalInventory.GetAvailableMapCount() > 0)
+    {
+      SceneManager.LoadScene("PlantSelection");
+    }
   }
 }

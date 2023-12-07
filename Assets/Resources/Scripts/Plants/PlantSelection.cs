@@ -52,7 +52,7 @@ public class PlantSelection : MonoBehaviour
     }
     else if (InterScene.gameMode == GameMode.Attack)
     {
-      SceneManager.LoadScene("AttackModeLevel" + (globalInventory.prevAttackLevel + 1));
+      SceneManager.LoadScene("AttackModeLevel" + globalInventory.currentAttackLevel);
     }
   }
 

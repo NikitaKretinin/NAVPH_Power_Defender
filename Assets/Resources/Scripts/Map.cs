@@ -27,8 +27,6 @@ public class Map : MonoBehaviour
       Debug.Log("Map collected!");
       Destroy(gameObject);
       waveConfiguration.mapCollected = true;
-
-      // TODO: Save to global inventory after levels have been implemented.
     }
   }
 }
