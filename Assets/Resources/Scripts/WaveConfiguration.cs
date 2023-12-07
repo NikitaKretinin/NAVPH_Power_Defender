@@ -8,6 +8,8 @@ public class WaveConfiguration : MonoBehaviour
     [SerializeField] GameObject[] waveEnemies;
     [SerializeField] int[] waveEnemyCounts;
     [SerializeField] bool[] wavePassed;
+    [SerializeField] GameObject globalInventoryObject;
+    private GlobalInventoryBehaviour globalInventory = null;
     int currentWave = 0;
     float lastSpawnTime = 0.0f; // The time since the last spawn.
     public int enemiesSpawned = 0;
@@ -26,6 +28,7 @@ public class WaveConfiguration : MonoBehaviour
     {
         randomWave = Random.Range(0, 3);
         randomEnemy = Random.Range(0, waveEnemyCounts[randomWave]);
+        globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
     }
 
     void FixedUpdate()
@@ -36,6 +39,8 @@ public class WaveConfiguration : MonoBehaviour
         }
         else if (mapCollected)
         {
+            globalInventory.AddMap();
+            globalInventory.SwitchToNextDefenseLevel();
             SceneManager.LoadScene("VictoryScreen");
         }
     }
@@ -46,15 +51,8 @@ public class WaveConfiguration : MonoBehaviour
         {
             if (Time.time - lastSpawnTime >= spawnDelay)
             {
-                if (enemiesSpawned == randomEnemy && currentWave == randomWave)
-                {
-                    spawners[Random.Range(0, spawners.Length)].GetComponent<EnemySpawner>().SpawnEntity(waveEnemies[currentWave], true);
-                    Debug.Log("Enemy with map spawned!");
-                }
-                else
-                {
-                    spawners[Random.Range(0, spawners.Length)].GetComponent<EnemySpawner>().SpawnEntity(waveEnemies[currentWave], false);
-                }
+                var spawnWithMap = enemiesSpawned == randomEnemy && currentWave == randomWave;
+                spawners[Random.Range(0, spawners.Length)].GetComponent<EnemySpawner>().SpawnEntity(waveEnemies[currentWave], spawnWithMap);
                 lastSpawnTime = Time.time;
             }
         }
