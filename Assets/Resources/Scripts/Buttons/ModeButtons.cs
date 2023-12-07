@@ -4,16 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class ModeButtons : MonoBehaviour
 {
-  private Button defenseModeButton = null;
-  private Button attackModeButton = null;
+  [SerializeField] GameObject defenseModeButton;
+  [SerializeField] GameObject attackModeButton;
+  [SerializeField] GameObject globalInventoryObject;
+  private GlobalInventoryBehaviour globalInventory = null;
+
+  private void Awake()
+  {
+    globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
+  }
 
   void Start()
   {
-    defenseModeButton = GameObject.Find("DefenseModeButton").GetComponent<Button>();
-    attackModeButton = GameObject.Find("AttackModeButton").GetComponent<Button>();
-
-    defenseModeButton.onClick.AddListener(OnClickDefenseMode);
-    attackModeButton.onClick.AddListener(OnClickAttackMode);
+    defenseModeButton.GetComponent<Button>().onClick.AddListener(OnClickDefenseMode);
+    attackModeButton.GetComponent<Button>().onClick.AddListener(OnClickAttackMode);
   }
 
   public void OnClickDefenseMode()
@@ -25,6 +29,10 @@ public class ModeButtons : MonoBehaviour
   public void OnClickAttackMode()
   {
     InterScene.gameMode = GameMode.Attack;
-    SceneManager.LoadScene("PlantSelection");
+
+    if (globalInventory.GetAvailableMapCount() > 0)
+    {
+      SceneManager.LoadScene("PlantSelection");
+    }
   }
 }

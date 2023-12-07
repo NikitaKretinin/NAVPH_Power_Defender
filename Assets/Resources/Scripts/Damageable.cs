@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Damageable : MonoBehaviour
 {
@@ -30,8 +29,8 @@ public class Damageable : MonoBehaviour
     {
         if (gameObject.CompareTag("Player") || gameObject.CompareTag("Base"))
         {
-            // If the GameObject is the player, end the game.
             Debug.Log("Game Over!");
+            SceneManager.LoadScene("DefeatScreen");
         }
         else
         {

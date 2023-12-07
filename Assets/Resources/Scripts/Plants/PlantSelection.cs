@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlantSelection : MonoBehaviour
 {
   private GlobalInventory globalInventory = null;
+  [SerializeField] GameObject globalInventoryObject;
   GameObject[] selectedPlantSlots = null;
 
   private void SelectPlant(int plantIndex, Sprite[] sprites)
@@ -51,13 +52,13 @@ public class PlantSelection : MonoBehaviour
     }
     else if (InterScene.gameMode == GameMode.Attack)
     {
-      SceneManager.LoadScene("AttackModeLevel" + (globalInventory.prevAttackLevel + 1));
+      SceneManager.LoadScene("AttackModeLevel" + globalInventory.currentAttackLevel);
     }
   }
 
   private void Start()
   {
-    globalInventory = GameObject.Find("GlobalInventory").GetComponent<GlobalInventoryBehaviour>().GetGlobalInventory();
+    globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>().GetGlobalInventory();
     var sprites = Resources.LoadAll<Sprite>(InterScene.ImagePath);
 
     GameObject[] availablePlantSlots = GameObject.FindGameObjectsWithTag("AvailablePlantSlot");

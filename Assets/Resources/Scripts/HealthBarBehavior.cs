@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,12 +16,14 @@ public class HealthbarBehavior : MonoBehaviour
         slider.value = parentEntity.getHealth() / (float)parentEntity.getMaxHealth();
     }
 
-    public void setMaxHealth(int health){
+    public void setMaxHealth(int health)
+    {
         slider.maxValue = health;
         slider.value = health;
     }
 
-    public void setHealth(int health){
+    public void setHealth(int health)
+    {
         slider.value = health;
     }
 }

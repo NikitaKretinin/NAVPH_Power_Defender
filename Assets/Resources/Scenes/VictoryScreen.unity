@@ -362,6 +362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183de804f43e6fa409dffa4861877fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelButton: {fileID: 888168442}
+  mainMenuButton: {fileID: 25106014}
+  isVictory: 1
 --- !u!1001 &524314368
 PrefabInstance:
   m_ObjectHideFlags: 0
