@@ -63,6 +63,11 @@ public class Damageable : MonoBehaviour
         return damageAmount;
     }
 
+    public void setDamage(int newDamage)
+    {
+        damageAmount = newDamage;
+    }
+    
     public bool getIsBuffActive()
     {
         return isBuffActive;
