@@ -383,6 +383,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 2826034581429980184, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6493,6 +6497,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 4620854624339088953, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 6643367099432366314, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6712,6 +6720,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 2826034581429980184, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6797,6 +6809,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 2826034581429980184, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6882,6 +6898,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 2826034581429980184, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6983,6 +7003,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 4620854624339088953, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 6643367099432366314, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7212,7 +7236,7 @@ MonoBehaviour:
     ripeTime: 0
     imageIndex: 0
     isUnlocked: 0
-    ability: 0
+    effect: 0
   unlockedPlantInfoUI: {fileID: 830406790}
   globalInventoryObject: {fileID: 1877944039}
   GuiElements: {fileID: 830406791}
@@ -7323,6 +7347,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 2826034581429980184, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7408,6 +7436,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 2826034581429980184, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7509,6 +7541,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 4620854624339088953, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 6643367099432366314, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7598,6 +7634,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 4620854624339088953, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 6643367099432366314, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7687,6 +7727,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 4620854624339088953, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 6643367099432366314, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7844,6 +7888,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 4620854624339088953, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 6643367099432366314, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7979,6 +8027,10 @@ PrefabInstance:
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 1877944039}
     - target: {fileID: 2826034581429980184, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
