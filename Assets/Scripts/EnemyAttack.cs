@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyAttack : MonoBehaviour
 {
     private bool isBuffActive = false;
-    public int damageAmount = 10; // Adjust the damage amount as needed.
+    private int damageAmount = 10; // Adjust the damage amount as needed.
     [SerializeField] float attackSpeed = 1.0f; // The time between consecutive attacks in seconds.
     [SerializeField] Enemy thisEnemy; // Reference to the Enemy script component on this object.
     private float lastAttackTime = 0.0f; // The time of the last attack.
