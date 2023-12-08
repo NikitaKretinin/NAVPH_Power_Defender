@@ -22000,6 +22000,14 @@ PrefabInstance:
       propertyPath: chaseRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2826034581429980184, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826034581429980184, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5071742235618815552, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: map
       value: 
@@ -22012,9 +22020,29 @@ PrefabInstance:
       propertyPath: waveConfigurator
       value: 
       objectReference: {fileID: 1475035563}
+    - target: {fileID: 5137821422898144475, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0310358
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137821422898144475, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8120718
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137821422898144475, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00482744
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137821422898144475, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.11500025
+      objectReference: {fileID: 0}
     - target: {fileID: 5406795168850890076, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406795168850890076, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
