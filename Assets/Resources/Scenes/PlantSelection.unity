@@ -3970,6 +3970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalInventoryObject: {fileID: 399138012}
+  confirmButton: {fileID: 335951881}
 --- !u!1 &2093017184
 GameObject:
   m_ObjectHideFlags: 0
