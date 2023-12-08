@@ -7,12 +7,6 @@ public class BarrierScript : MonoBehaviour
 {
     [SerializeField] List<GameObject> relatedEnemies;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {

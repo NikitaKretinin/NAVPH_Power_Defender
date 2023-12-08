@@ -19,17 +19,7 @@ public class LevelEndButtons : MonoBehaviour
 
   public void OnClickLevel()
   {
-    if (InterScene.gameMode == GameMode.Defense)
-    {
-      // If the player won the level, the current defense level has already been incremented
-      // and the level is altered by scaling
-      SceneManager.LoadScene("DefenseMode");
-    }
-    else if (InterScene.gameMode == GameMode.Attack)
-    {
-      // If the player won the level, the current attack level has already been incremented
-      SceneManager.LoadScene("AttackModeLevel" + globalInventory.GetCurrentAttackLevel());
-    }
+     SceneManager.LoadScene("PlantSelection");
   }
 
   public void OnClickMainMenu()
