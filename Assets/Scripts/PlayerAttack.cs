@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private int damageAmount = 10; // Adjust the damage amount as needed.
+    private int damageAmount; // Adjust the damage amount as needed.
     [SerializeField] GameObject player; // related player
+
+    void Start()
+    {
+        damageAmount = player.GetComponent<Damageable>().getDamage();
+    }
 
     void Update()
     {
