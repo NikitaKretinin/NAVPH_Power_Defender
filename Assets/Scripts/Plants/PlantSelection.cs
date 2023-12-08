@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlantSelection : MonoBehaviour
 {
+  readonly string PLANT_INFO = "PlantInfoNoImage";
   private GlobalInventory globalInventory = null;
   [SerializeField] GameObject globalInventoryObject;
   [SerializeField] GameObject confirmButton;
@@ -77,6 +78,11 @@ public class PlantSelection : MonoBehaviour
         availablePlantSlots[i].GetComponent<Button>().interactable = true;
         var i_copy = i;
         availablePlantSlots[i].GetComponent<Button>().onClick.AddListener(() => SelectPlant(i_copy, sprites));
+
+        var plantInfo = availablePlantSlots[i].transform.Find(PLANT_INFO);
+        plantInfo.Find("Name").GetComponent<TextMeshProUGUI>().text += globalInventory.plants[i].name;
+        plantInfo.Find("Effect").GetComponent<TextMeshProUGUI>().text += FruitsEffects.GetEffectDescription(globalInventory.plants[i].effect);
+        plantInfo.Find("RipeTime").GetComponent<TextMeshProUGUI>().text += globalInventory.plants[i].ripeTime + " seconds";
       }
       else
       {
