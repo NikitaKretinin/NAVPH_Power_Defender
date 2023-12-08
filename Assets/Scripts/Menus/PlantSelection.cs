@@ -11,6 +11,7 @@ public class PlantSelection : MonoBehaviour
   private GlobalInventory globalInventory = null;
   [SerializeField] GameObject globalInventoryObject;
   [SerializeField] GameObject confirmButton;
+  [SerializeField] GameObject backButton;
   GameObject[] selectedPlantSlots = null;
 
   private void SelectPlant(int plantIndex, Sprite[] sprites)
@@ -101,5 +102,6 @@ public class PlantSelection : MonoBehaviour
     }
 
     confirmButton.GetComponent<Button>().onClick.AddListener(OnConfirmButtonClicked);
+    backButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene("MainMenu"));
   }
 }
