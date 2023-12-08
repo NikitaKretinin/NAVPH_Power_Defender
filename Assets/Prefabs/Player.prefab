@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7102411904140853672}
   - component: {fileID: 2358800936861686331}
   - component: {fileID: 2625217177111850809}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DownHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 654312753669036871}
   - component: {fileID: 7480263212297551135}
   - component: {fileID: 7460048576983442427}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 8190651253945170005}
   - component: {fileID: 4986079984862777993}
   - component: {fileID: 442446635601388191}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -224,6 +224,7 @@ Transform:
   - {fileID: 654312753669036871}
   - {fileID: 7064252078498498701}
   - {fileID: 1951184071026890131}
+  - {fileID: 993919290778061896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6150963732989487637
@@ -383,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833429d30e379a74193ee75011be603b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 500
   currentState: 0
 --- !u!61 &4986079984862777993
 BoxCollider2D:
@@ -456,7 +457,7 @@ GameObject:
   - component: {fileID: 1951184071026890131}
   - component: {fileID: 897376542586542822}
   - component: {fileID: 6639599329800205933}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UpHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,6 +538,83 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!1 &6688072679135348807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993919290778061896}
+  - component: {fileID: 314627987708801032}
+  m_Layer: 8
+  m_Name: AttackCollider
+  m_TagString: PlayerAttackCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &993919290778061896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688072679135348807}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3451643591543686597}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &314627987708801032
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688072679135348807}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 1.3}
+  m_EdgeRadius: 0
 --- !u!1 &8717330208912733887
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +626,7 @@ GameObject:
   - component: {fileID: 7064252078498498701}
   - component: {fileID: 1209974230710083602}
   - component: {fileID: 2277597942781712521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

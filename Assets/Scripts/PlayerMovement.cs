@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     public PlayerState currentState;
     private Rigidbody2D rb;
+    bool isWalking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +32,19 @@ public class PlayerMovement : MonoBehaviour
         moveVelocity = Vector3.zero;
         moveVelocity.x = Input.GetAxisRaw("Horizontal");
         moveVelocity.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)
+
+        bool startAttack = Input.GetButtonDown("attack") && currentState != PlayerState.attack;
+        isWalking = currentState == PlayerState.walk;
+
+        if (startAttack)
         {
             StartCoroutine(AttackCo());
         }
-        else if (currentState == PlayerState.walk)
+    }
+
+    void FixedUpdate()
+    {
+        if (isWalking)
         {
             UpdateAnimationAndMove();
         }
@@ -71,15 +80,15 @@ public class PlayerMovement : MonoBehaviour
     {
         moveVelocity.Normalize();
         //rb.MovePosition(transform.position + speed * Time.deltaTime * moveVelocity);
-        transform.position = transform.position + speed * Time.deltaTime * moveVelocity;
-        // rb.velocity = speed * Time.deltaTime * moveVelocity;
+        // transform.position = transform.position + speed * Time.deltaTime * moveVelocity;
+        rb.velocity = speed * Time.deltaTime * moveVelocity;
     }
 
     public bool getIsBuffActive()
     {
         return isBuffActive;
     }
-    
+
     public IEnumerator IncreaseSpeedCo()
     {
         float prevSpeed = speed;

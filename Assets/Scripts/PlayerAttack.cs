@@ -10,13 +10,13 @@ public class PlayerAttack : MonoBehaviour
         damageAmount = player.GetComponent<Damageable>().getDamage();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the collision is with an object tagged as "Enemy."
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("EnemyAttackCollider"))
         {
             // Get the Damageable script component from the collided enemy.
-            Damageable enemyDamageable = collision.gameObject.GetComponent<Damageable>();
+            Damageable enemyDamageable = collision.gameObject.transform.parent.GetComponent<Damageable>();
             Debug.Log(enemyDamageable);
             // If the enemy has a Damageable component, apply damage to it.
             if (enemyDamageable != null)
