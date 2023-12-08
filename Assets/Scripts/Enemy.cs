@@ -18,7 +18,6 @@ public class Enemy : MonoBehaviour
     private Animator anim;
     public EnemyState currentState;
     private Rigidbody2D rb;
-    private Vector3 deltaVector;
 
     // Start is called before the first frame update
     void Awake()
@@ -82,7 +81,7 @@ public class Enemy : MonoBehaviour
     {
         return isBuffActive;
     }
-    
+
     public IEnumerator DecreaseSpeedCo()
     {
         float prevSpeed = speed;

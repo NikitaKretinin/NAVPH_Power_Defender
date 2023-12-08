@@ -13,16 +13,18 @@ TagManager:
   - SelectedPlantSlot
   - FarmSlot
   - CollisionObject
+  - PlayerAttackCollider
+  - EnemyAttackCollider
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemies
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - EnemiesAttack
+  - PlayerAttack
   - 
   - 
   - 
