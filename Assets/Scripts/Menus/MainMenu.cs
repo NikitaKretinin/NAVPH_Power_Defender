@@ -7,6 +7,7 @@ public class ModeButtons : MonoBehaviour
 {
   [SerializeField] GameObject defenseModeButton;
   [SerializeField] GameObject attackModeButton;
+  [SerializeField] GameObject exitButton;
   [SerializeField] GameObject globalInventoryObject;
   [SerializeField] GameObject mapInfoObject;
   private GlobalInventoryBehaviour globalInventory = null;
@@ -33,21 +34,34 @@ public class ModeButtons : MonoBehaviour
 
     defenseModeButton.GetComponent<Button>().onClick.AddListener(OnClickDefenseMode);
     attackModeButton.GetComponent<Button>().onClick.AddListener(OnClickAttackMode);
+    exitButton.GetComponent<Button>().onClick.AddListener(OnClickExit);
   }
 
-  public void OnClickDefenseMode()
+  void OnClickDefenseMode()
   {
     InterScene.gameMode = GameMode.Defense;
     SceneManager.LoadScene("PlantSelection");
   }
 
-  public void OnClickAttackMode()
+  void OnClickAttackMode()
   {
     InterScene.gameMode = GameMode.Attack;
 
     if (globalInventory.GetAvailableMapCount() > 0)
     {
       SceneManager.LoadScene("PlantSelection");
+    }
+  }
+
+  void OnClickExit()
+  {
+    if (Application.isEditor)
+    {
+      UnityEditor.EditorApplication.isPlaying = false;
+    }
+    else
+    {
+      Application.Quit();
     }
   }
 }
