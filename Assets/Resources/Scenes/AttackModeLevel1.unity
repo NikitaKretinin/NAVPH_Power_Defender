@@ -6632,6 +6632,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0e23ca37c50714e8112be4ec520b36, type: 3}
+--- !u!1 &830406790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2051727551978900586, guid: 0a0e23ca37c50714e8112be4ec520b36, type: 3}
+  m_PrefabInstance: {fileID: 830406789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &830406791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 150393707811923160, guid: 0a0e23ca37c50714e8112be4ec520b36, type: 3}
+  m_PrefabInstance: {fileID: 830406789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &830406792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6254638161619926451, guid: 0a0e23ca37c50714e8112be4ec520b36, type: 3}
+  m_PrefabInstance: {fileID: 830406789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &830406793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6376561773282041748, guid: 0a0e23ca37c50714e8112be4ec520b36, type: 3}
+  m_PrefabInstance: {fileID: 830406789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &835219722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7193,7 +7213,11 @@ MonoBehaviour:
     imageIndex: 0
     isUnlocked: 0
     ability: 0
+  unlockedPlantInfoUI: {fileID: 830406790}
   globalInventoryObject: {fileID: 1877944039}
+  GuiElements: {fileID: 830406791}
+  thanksButton: {fileID: 830406793}
+  plantInfoText: {fileID: 830406792}
 --- !u!61 &1261487117
 BoxCollider2D:
   m_ObjectHideFlags: 0

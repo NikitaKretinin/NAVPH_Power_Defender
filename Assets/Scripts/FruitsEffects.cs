@@ -6,21 +6,28 @@ public static class FruitsEffects
 {
   public static bool ActivateFruitEffect(Effect effect, GameObject player = null, GameObject[] enemies = null)
   {
-    switch (effect)
+    return effect switch
     {
-      case Effect.Heal:
-        return HealEffect(player);
-      case Effect.AttackUp:
-        return AttackUpEffect(player);
-      case Effect.SpeedUp:
-        return SpeedUpEffect(player);
-      case Effect.AttackEnemiesDown:
-        return AttackEnemiesDownEffect(enemies);
-      case Effect.SpeedEnemiesDown:
-        return SpeedEnemiesDownEffect(enemies);
-      default:
-        return false;
-    }
+      Effect.Heal => HealEffect(player),
+      Effect.AttackUp => AttackUpEffect(player),
+      Effect.SpeedUp => SpeedUpEffect(player),
+      Effect.AttackEnemiesDown => AttackEnemiesDownEffect(enemies),
+      Effect.SpeedEnemiesDown => SpeedEnemiesDownEffect(enemies),
+      _ => false,
+    };
+  }
+
+  public static string GetEffectDescription(Effect effect)
+  {
+    return effect switch
+    {
+      Effect.Heal => "Add 10 health to the player",
+      Effect.AttackUp => "Increase the player's attack by 20% for 5 seconds",
+      Effect.SpeedUp => "Increase the player's speed by 10% for 5 seconds",
+      Effect.AttackEnemiesDown => "Decrease the attack of all enemies by 50% for 5 seconds",
+      Effect.SpeedEnemiesDown => "Decrease the speed of all enemies by 50% for 5 seconds",
+      _ => "",
+    };
   }
 
   private static bool HealEffect(GameObject player)
@@ -34,7 +41,7 @@ public static class FruitsEffects
     Debug.Log("HealEffect effect applied");
     return true;
   }
-  
+
   private static bool AttackUpEffect(GameObject player)
   {
     Debug.Log(player);

@@ -17,7 +17,7 @@ public class GenericPlant
     public int ripeTime;
     public int imageIndex;
     public bool isUnlocked;
-    public Effect ability;
+    public Effect effect;
 
     [NonSerialized]
     public int amount = 0;
@@ -31,6 +31,6 @@ public class GenericPlant
         ripeTime = plant.ripeTime;
         imageIndex = plant.imageIndex;
         isUnlocked = plant.isUnlocked;
-        ability = plant.ability;
+        effect = plant.effect;
     }
 }

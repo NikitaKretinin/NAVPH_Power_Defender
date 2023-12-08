@@ -9,6 +9,7 @@ public class PlantSelection : MonoBehaviour
 {
   private GlobalInventory globalInventory = null;
   [SerializeField] GameObject globalInventoryObject;
+  [SerializeField] GameObject confirmButton;
   GameObject[] selectedPlantSlots = null;
 
   private void SelectPlant(int plantIndex, Sprite[] sprites)
@@ -93,6 +94,6 @@ public class PlantSelection : MonoBehaviour
       selectedPlantSlots[i].GetComponent<Button>().onClick.AddListener(() => DeselectPlant(i_copy));
     }
 
-    GameObject.Find("ConfirmButton").GetComponent<Button>().onClick.AddListener(OnConfirmButtonClicked);
+    confirmButton.GetComponent<Button>().onClick.AddListener(OnConfirmButtonClicked);
   }
 }

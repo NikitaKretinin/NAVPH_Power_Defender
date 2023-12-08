@@ -31,7 +31,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
             ripeTime = 6,
             imageIndex = 67,
             isUnlocked = true,
-            ability = Effect.Heal
+            effect = Effect.Heal
           },
           new() {
             name = "Emberflare",
@@ -39,7 +39,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
             ripeTime = 5,
             imageIndex = 56,
             isUnlocked = false,
-            ability = Effect.AttackUp
+            effect = Effect.AttackUp
           },
           new() {
             name = "Whisperleaf",
@@ -47,7 +47,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
             ripeTime = 2,
             imageIndex = 61,
             isUnlocked = false,
-            ability = Effect.SpeedUp
+            effect = Effect.SpeedUp
           },
           new() {
             name = "Sparkbloom",
@@ -55,7 +55,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
             ripeTime = 3,
             imageIndex = 52,
             isUnlocked = false,
-            ability = Effect.AttackEnemiesDown
+            effect = Effect.AttackEnemiesDown
           },
           new() {
             name = "Bloodwine",
@@ -63,7 +63,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
             ripeTime = 7,
             imageIndex = 55,
             isUnlocked = false,
-            ability = Effect.SpeedEnemiesDown
+            effect = Effect.SpeedEnemiesDown
           }
         },
         availableMaps = 0,
@@ -97,6 +97,12 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     SaveGlobalInventory();
   }
 
+  public void RemoveMap()
+  {
+    globalInventory.availableMaps--;
+    SaveGlobalInventory();
+  }
+
   public void SwitchToNextAttackLevel()
   {
     globalInventory.currentAttackLevel++;
@@ -112,6 +118,16 @@ public class GlobalInventoryBehaviour : MonoBehaviour
   public int GetAvailableMapCount()
   {
     return globalInventory.availableMaps;
+  }
+
+  public int GetCurrentAttackLevel()
+  {
+    return globalInventory.currentAttackLevel;
+  }
+
+  public int GetCurrentDefenseLevel()
+  {
+    return globalInventory.currentDefenseLevel;
   }
 
   private void Awake()
