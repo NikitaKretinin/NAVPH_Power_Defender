@@ -385,6 +385,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 300
   currentState: 0
+  leftHitbox: {fileID: 8717330208912733887}
+  rightHitbox: {fileID: 3829677826563610043}
+  upHitbox: {fileID: 5540255256456541942}
+  downHitbox: {fileID: 2781844772736527700}
 --- !u!114 &442446635601388191
 MonoBehaviour:
   m_ObjectHideFlags: 0
