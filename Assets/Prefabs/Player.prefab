@@ -92,7 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3940298650166939739}
-  attackSpeed: 0.3
 --- !u!1 &3829677826563610043
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3940298650166939739}
-  attackSpeed: 0.3
 --- !u!68 &7460048576983442427
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -385,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833429d30e379a74193ee75011be603b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
+  speed: 300
   currentState: 0
 --- !u!114 &442446635601388191
 MonoBehaviour:
@@ -448,7 +446,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3940298650166939739}
-  attackSpeed: 0.3
 --- !u!68 &6639599329800205933
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -618,7 +615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3940298650166939739}
-  attackSpeed: 0.3
 --- !u!68 &2277597942781712521
 EdgeCollider2D:
   m_ObjectHideFlags: 0
