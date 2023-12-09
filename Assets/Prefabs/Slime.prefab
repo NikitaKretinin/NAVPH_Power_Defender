@@ -486,6 +486,7 @@ MonoBehaviour:
   attackRadius: 1
   targetPlayer: {fileID: 0}
   targetBase: {fileID: 0}
+  globalInventoryObject: {fileID: 2187901631091723162, guid: c8bb071c8f3b8864397a7784940e4281, type: 3}
   currentState: 0
 --- !u!114 &510325642777177360
 MonoBehaviour:
@@ -514,7 +515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e107f8cf8093f4b8f5b48eb34e2c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 5
   attackSpeed: 2
   thisEnemy: {fileID: 0}
 --- !u!114 &5071742235618815552

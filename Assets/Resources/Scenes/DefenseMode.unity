@@ -4684,7 +4684,7 @@ MonoBehaviour:
     ripeTime: 0
     imageIndex: 0
     isUnlocked: 0
-    ability: 0
+    effect: 0
 --- !u!95 &924120663
 Animator:
   serializedVersion: 5
@@ -4943,7 +4943,7 @@ MonoBehaviour:
     ripeTime: 0
     imageIndex: 0
     isUnlocked: 0
-    ability: 0
+    effect: 0
 --- !u!1001 &1232763941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5274,7 +5274,7 @@ MonoBehaviour:
     ripeTime: 0
     imageIndex: 0
     isUnlocked: 0
-    ability: 0
+    effect: 0
 --- !u!95 &1600805046
 Animator:
   serializedVersion: 5
@@ -5468,7 +5468,7 @@ MonoBehaviour:
     ripeTime: 0
     imageIndex: 0
     isUnlocked: 0
-    ability: 0
+    effect: 0
 --- !u!95 &2014253679
 Animator:
   serializedVersion: 5
@@ -21943,6 +21943,10 @@ PrefabInstance:
       propertyPath: chaseRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4620854624339088953, guid: 5af0537961905fc42b013bda5c589e9e, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 83962858}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22000,6 +22004,10 @@ PrefabInstance:
       propertyPath: chaseRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: globalInventoryObject
+      value: 
+      objectReference: {fileID: 83962858}
     - target: {fileID: 2826034581429980184, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -22115,6 +22123,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 5815493158820485129}
+  - {fileID: 83962857}
   - {fileID: 1232763941}
   - {fileID: 237958466}
   - {fileID: 492966561}
@@ -22124,4 +22133,3 @@ SceneRoots:
   - {fileID: 1773542967446099799}
   - {fileID: 2523209423784701511}
   - {fileID: 1447760507}
-  - {fileID: 83962857}

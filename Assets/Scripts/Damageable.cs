@@ -9,9 +9,19 @@ public class Damageable : MonoBehaviour
     [SerializeField] int currentHealth;
     [SerializeField] private int damageAmount = 0; // Adjust the damage amount as needed.
 
+    private float statsCoef = 1.0f; // Adjust the stats coefficient for enemies.
+
     private void Start()
     {
+        // Adjust the stats using coefficient for enemies.
+        maxHealth = (int)(maxHealth * statsCoef);
+        damageAmount = (int)(damageAmount * statsCoef); 
         currentHealth = maxHealth;
+    }
+
+    public void setCoefficient(float coef)
+    {
+        statsCoef = coef;
     }
 
     public void TakeDamage(int damageAmount)
