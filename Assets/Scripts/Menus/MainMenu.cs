@@ -8,8 +8,11 @@ public class ModeButtons : MonoBehaviour
   [SerializeField] GameObject defenseModeButton;
   [SerializeField] GameObject attackModeButton;
   [SerializeField] GameObject exitButton;
+  [SerializeField] GameObject controlsButton;
   [SerializeField] GameObject globalInventoryObject;
   [SerializeField] GameObject mapInfoObject;
+  [SerializeField] GameObject mainMenuGUI;
+  [SerializeField] GameObject controlsGUI;
   private GlobalInventoryBehaviour globalInventory = null;
   int mapCount;
   bool resetGame = false;
@@ -43,6 +46,8 @@ public class ModeButtons : MonoBehaviour
     defenseModeButton.GetComponent<Button>().onClick.AddListener(OnClickDefenseMode);
     attackModeButton.GetComponent<Button>().onClick.AddListener(OnClickAttackMode);
     exitButton.GetComponent<Button>().onClick.AddListener(OnClickExit);
+    controlsButton.GetComponent<Button>().onClick.AddListener(OnClickControls);
+    controlsGUI.GetComponent<Button>().onClick.AddListener(OnClickBackFromControls);
   }
 
   void OnClickDefenseMode()
@@ -79,5 +84,17 @@ public class ModeButtons : MonoBehaviour
     {
       Application.Quit();
     }
+  }
+
+  void OnClickControls()
+  {
+    mainMenuGUI.SetActive(false);
+    controlsGUI.SetActive(true);
+  }
+
+  void OnClickBackFromControls()
+  {
+    mainMenuGUI.SetActive(true);
+    controlsGUI.SetActive(false);
   }
 }
