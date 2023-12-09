@@ -17,7 +17,6 @@ public class WaveEnemy : MonoBehaviour
     if (waveConfiguration != null)
     {
       waveConfiguration.DecreaseEnemyCount();
-      Debug.Log("Enemy map? " + hasMap);
 
       if (hasMap)
       {

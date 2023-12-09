@@ -16,7 +16,6 @@ public class PlantSelectHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
   {
     if (button.interactable)
     {
-      Debug.Log("Hovering over " + gameObject.name);
       transform.Find(PLANT_INFO).gameObject.SetActive(true);
     }
   }
@@ -25,7 +24,6 @@ public class PlantSelectHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
   {
     if (button.interactable)
     {
-      Debug.Log("No longer hovering over " + gameObject.name);
       transform.Find(PLANT_INFO).gameObject.SetActive(false);
     }
   }

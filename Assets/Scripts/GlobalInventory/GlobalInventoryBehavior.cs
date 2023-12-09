@@ -12,6 +12,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     return globalInventory;
   }
 
+  // function resets the global inventory to the default values
   public void ResetGameJson()
   {
     globalInventory = new GlobalInventory
@@ -65,6 +66,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
       SaveGlobalInventory();
   }
 
+  // function loads the game progress from the json file
   private void LoadGlobalInventory()
   {
     if (File.Exists(Application.persistentDataPath + "/GlobalInventory.json"))
@@ -85,6 +87,7 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     File.WriteAllText(Application.persistentDataPath + "/GlobalInventory.json", json);
   }
 
+  // function unlocks the next locked plant in the global inventory
   public GenericPlant UnlockNextPlant()
   {
     var firstMatch = globalInventory.plants.FirstOrDefault(s => s.isUnlocked == false);

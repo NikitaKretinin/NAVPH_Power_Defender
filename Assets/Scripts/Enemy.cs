@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
 {
     private bool isBuffActive = false;
     [SerializeField] float speed;
-    [SerializeField] string enemyName;
     [SerializeField] float chaseRadius;
     [SerializeField] float attackRadius;
     [SerializeField] Transform targetPlayer;
@@ -45,7 +44,7 @@ public class Enemy : MonoBehaviour
             {
                 coef += 0.2f * globalInventory.GetCurrentAttackLevel();
             }
-            GetComponent<Damageable>().setCoefficient(coef);
+            GetComponent<Damageable>().SetCoefficient(coef);
         }
     }
 
@@ -67,6 +66,7 @@ public class Enemy : MonoBehaviour
         currentState = EnemyState.walk;
     }
 
+    // function manages enemy movement
     void CheckDistance()
     {
         if (currentState == EnemyState.walk)
@@ -94,11 +94,12 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    public bool getIsBuffActive()
+    public bool GetIsBuffActive()
     {
         return isBuffActive;
     }
 
+    // Coroutine to decrease speed for 5 seconds
     public IEnumerator DecreaseSpeedCo()
     {
         float prevSpeed = speed;

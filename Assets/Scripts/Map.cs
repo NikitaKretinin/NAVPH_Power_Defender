@@ -24,7 +24,6 @@ public class Map : MonoBehaviour
   {
     if (Vector2.Distance(transform.position, player.transform.position) < 1.5f)
     {
-      Debug.Log("Map collected!");
       Destroy(gameObject);
       waveConfiguration.mapCollected = true;
     }

@@ -9,12 +9,12 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        damageAmount = player.GetComponent<Damageable>().getDamage();
+        damageAmount = player.GetComponent<Damageable>().GetDamage();
     }
 
     void Update()
     {
-        damageAmount = player.GetComponent<Damageable>().getDamage();
+        damageAmount = player.GetComponent<Damageable>().GetDamage();
 
         var attackPressed = Input.GetButtonDown("attack");
 

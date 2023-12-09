@@ -62,7 +62,7 @@ public class PlantSelection : MonoBehaviour
   private void Start()
   {
     globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>().GetGlobalInventory();
-    var sprites = Resources.LoadAll<Sprite>(InterScene.ImagePath);
+    var sprites = Resources.LoadAll<Sprite>(InterScene.imagePath);
 
     GameObject[] availablePlantSlots = GameObject.FindGameObjectsWithTag("AvailablePlantSlot");
     selectedPlantSlots = GameObject.FindGameObjectsWithTag("SelectedPlantSlot");
@@ -77,8 +77,8 @@ public class PlantSelection : MonoBehaviour
       {
         availablePlantSlots[i].transform.Find("PlantText").GetComponent<TextMeshProUGUI>().text = globalInventory.plants[i].name;
         availablePlantSlots[i].GetComponent<Button>().interactable = true;
-        var i_copy = i;
-        availablePlantSlots[i].GetComponent<Button>().onClick.AddListener(() => SelectPlant(i_copy, sprites));
+        var iCopy = i;
+        availablePlantSlots[i].GetComponent<Button>().onClick.AddListener(() => SelectPlant(iCopy, sprites));
 
         var plantInfo = availablePlantSlots[i].transform.Find(PLANT_INFO);
         plantInfo.Find("Name").GetComponent<TextMeshProUGUI>().text += globalInventory.plants[i].name;
@@ -97,8 +97,8 @@ public class PlantSelection : MonoBehaviour
     for (int i = 0; i < selectedPlantSlots.Length; i++)
     {
       selectedPlantSlots[i].transform.Find("PlantSprite").GetComponent<Image>().gameObject.SetActive(false);
-      var i_copy = i;
-      selectedPlantSlots[i].GetComponent<Button>().onClick.AddListener(() => DeselectPlant(i_copy));
+      var iCopy = i;
+      selectedPlantSlots[i].GetComponent<Button>().onClick.AddListener(() => DeselectPlant(iCopy));
     }
 
     confirmButton.GetComponent<Button>().onClick.AddListener(OnConfirmButtonClicked);

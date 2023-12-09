@@ -14,22 +14,20 @@ public class EnemyAttack : MonoBehaviour
     {
         // Get the Enemy script component from this object.
         thisEnemy = gameObject.GetComponent<Enemy>();
-        damageAmount = thisEnemy.GetComponent<Damageable>().getDamage();
+        damageAmount = thisEnemy.GetComponent<Damageable>().GetDamage();
     }
 
     void Update()
     {
-        damageAmount = thisEnemy.GetComponent<Damageable>().getDamage();
+        damageAmount = thisEnemy.GetComponent<Damageable>().GetDamage();
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("PlayerAttackCollider") && Time.time - lastAttackTime >= attackSpeed)
         {
-            Debug.Log("Enemy attacking player");
             if (other.gameObject.transform.parent.TryGetComponent<Damageable>(out var enemyDamageable))
             {
-                Debug.Log("Enemy attacking player2");
                 StartCoroutine(thisEnemy.AttackCo());
                 enemyDamageable.TakeDamage(damageAmount);
 
@@ -43,10 +41,8 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Base") && Time.time - lastAttackTime >= attackSpeed)
         {
-            Debug.Log("Enemy attacking base");
             if (other.gameObject.TryGetComponent<Damageable>(out var enemyDamageable))
             {
-                Debug.Log("Enemy attacking base2");
                 StartCoroutine(thisEnemy.AttackCo());
                 enemyDamageable.TakeDamage(damageAmount);
 
@@ -56,19 +52,20 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    public bool getIsBuffActive()
+    public bool GetIsBuffActive()
     {
         return isBuffActive;
     }
 
+    // coroutine to decrease attack damage for 5 seconds
     public IEnumerator DecreaseAttackCo()
     {
         Damageable component = thisEnemy.GetComponent<Damageable>();
-        int prevDamageAmount = component.getDamage();
-        component.setDamage((int)System.Math.Floor(prevDamageAmount * 0.5));
+        int prevDamageAmount = component.GetDamage();
+        component.SetDamage((int)System.Math.Floor(prevDamageAmount * 0.5));
         isBuffActive = true;
         yield return new WaitForSeconds(5.0f);
         isBuffActive = false;
-        component.setDamage(prevDamageAmount);
+        component.SetDamage(prevDamageAmount);
     }
 }
