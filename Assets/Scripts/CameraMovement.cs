@@ -8,12 +8,6 @@ public class CameraMovement : MonoBehaviour
     public Vector2 maxPos;
     public Vector2 minPos;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // camera is moved with the player and does not exceed the boundaries of the map
     void LateUpdate()
     {

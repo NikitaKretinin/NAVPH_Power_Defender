@@ -19,7 +19,7 @@ public class Damageable : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void setCoefficient(float coef)
+    public void SetCoefficient(float coef)
     {
         statsCoef = coef;
     }
@@ -48,12 +48,12 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    public int getHealth()
+    public int GetHealth()
     {
         return currentHealth;
     }
 
-    public void addHealth(int healthToAdd)
+    public void AddHealth(int healthToAdd)
     {
         if (currentHealth + healthToAdd > maxHealth)
             currentHealth = maxHealth;
@@ -61,22 +61,22 @@ public class Damageable : MonoBehaviour
             currentHealth += healthToAdd;
     }
     
-    public int getMaxHealth()
+    public int GetMaxHealth()
     {
         return maxHealth;
     }
 
-    public int getDamage()
+    public int GetDamage()
     {
         return damageAmount;
     }
 
-    public void setDamage(int newDamage)
+    public void SetDamage(int newDamage)
     {
         damageAmount = newDamage;
     }
     
-    public bool getIsBuffActive()
+    public bool GetIsBuffActive()
     {
         return isBuffActive;
     }

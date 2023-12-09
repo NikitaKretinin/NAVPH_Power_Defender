@@ -14,12 +14,12 @@ public class EnemyAttack : MonoBehaviour
     {
         // Get the Enemy script component from this object.
         thisEnemy = gameObject.GetComponent<Enemy>();
-        damageAmount = thisEnemy.GetComponent<Damageable>().getDamage();
+        damageAmount = thisEnemy.GetComponent<Damageable>().GetDamage();
     }
 
     void Update()
     {
-        damageAmount = thisEnemy.GetComponent<Damageable>().getDamage();
+        damageAmount = thisEnemy.GetComponent<Damageable>().GetDamage();
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -52,7 +52,7 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    public bool getIsBuffActive()
+    public bool GetIsBuffActive()
     {
         return isBuffActive;
     }
@@ -61,11 +61,11 @@ public class EnemyAttack : MonoBehaviour
     public IEnumerator DecreaseAttackCo()
     {
         Damageable component = thisEnemy.GetComponent<Damageable>();
-        int prevDamageAmount = component.getDamage();
-        component.setDamage((int)System.Math.Floor(prevDamageAmount * 0.5));
+        int prevDamageAmount = component.GetDamage();
+        component.SetDamage((int)System.Math.Floor(prevDamageAmount * 0.5));
         isBuffActive = true;
         yield return new WaitForSeconds(5.0f);
         isBuffActive = false;
-        component.setDamage(prevDamageAmount);
+        component.SetDamage(prevDamageAmount);
     }
 }

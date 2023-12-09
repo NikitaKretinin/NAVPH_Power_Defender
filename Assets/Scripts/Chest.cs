@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -12,7 +11,7 @@ public class Chest : MonoBehaviour
 
     public string collisionListenToTag = "Player";
     public GenericPlant plant;
-    private bool _wasTriggered = false;
+    private bool wasTriggered = false;
     [SerializeField] GameObject unlockedPlantInfoUI;
     [SerializeField] GameObject globalInventoryObject;
     [SerializeField] GameObject GuiElements;
@@ -29,9 +28,9 @@ public class Chest : MonoBehaviour
     // the chest is opened and the player is rewarded with a new plant
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (myEvents != null && !_wasTriggered && collision.CompareTag(collisionListenToTag))
+        if (myEvents != null && !wasTriggered && collision.CompareTag(collisionListenToTag))
         {
-            _wasTriggered = true;
+            wasTriggered = true;
             myEvents.Invoke();
 
             GenericPlant unlockedPlant = globalInventory.UnlockNextPlant();
@@ -50,7 +49,7 @@ public class Chest : MonoBehaviour
                 plantInfoText.transform.Find("Effect").GetComponent<TextMeshProUGUI>().text += FruitsEffects.GetEffectDescription(unlockedPlant.effect);
                 plantInfoText.transform.Find("RipeTime").GetComponent<TextMeshProUGUI>().text += unlockedPlant.ripeTime + " seconds";
 
-                var sprites = Resources.LoadAll<Sprite>(InterScene.ImagePath);
+                var sprites = Resources.LoadAll<Sprite>(InterScene.imagePath);
                 var slot = plantInfoText.transform.Find("PlantSlot");
                 slot.Find("PlantSprite").GetComponent<Image>().sprite = sprites[unlockedPlant.imageIndex];
 

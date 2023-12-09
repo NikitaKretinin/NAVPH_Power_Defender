@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = speed * Time.deltaTime * moveVelocity;
     }
 
-    public bool getIsBuffActive()
+    public bool GetIsBuffActive()
     {
         return isBuffActive;
     }
