@@ -25,6 +25,8 @@ public class Chest : MonoBehaviour
         globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
     }
 
+    // function called when the player enters the trigger zone around the chest
+    // the chest is opened and the player is rewarded with a new plant
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (myEvents != null && !_wasTriggered && collision.CompareTag(collisionListenToTag))

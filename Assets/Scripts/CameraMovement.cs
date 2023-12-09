@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // camera is moved with the player and does not exceed the boundaries of the map
     void LateUpdate()
     {
         if (transform.position != target.position)

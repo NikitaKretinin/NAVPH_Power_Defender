@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour
         currentState = EnemyState.walk;
     }
 
+    // function manages enemy movement
     void CheckDistance()
     {
         if (currentState == EnemyState.walk)
@@ -99,6 +100,7 @@ public class Enemy : MonoBehaviour
         return isBuffActive;
     }
 
+    // Coroutine to decrease speed for 5 seconds
     public IEnumerator DecreaseSpeedCo()
     {
         float prevSpeed = speed;

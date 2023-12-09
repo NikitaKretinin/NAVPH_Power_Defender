@@ -11,6 +11,7 @@ public class LevelEndButtons : MonoBehaviour
   [SerializeField] GameObject globalInventoryObject;
   private GlobalInventoryBehaviour globalInventory = null;
 
+  // load the screen after victory or defeat
   void Start()
   {
     levelButton.GetComponent<Button>().onClick.AddListener(OnClickLevel);

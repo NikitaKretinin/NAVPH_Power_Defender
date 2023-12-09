@@ -20,6 +20,8 @@ public class Inventory : MonoBehaviour
         }
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         inventorySlots = inventorySlots.OrderBy(slot => slot.name).ToArray();
+        
+        // Set the inventory slots to the plants in the inventory
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (i < plants.Count() && plants[i] != null)
@@ -53,6 +55,7 @@ public class Inventory : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (index < plants.Count() && plants[index] != null && plants[index].amount > 0)
         {
+            // If the plant is used successfully, decrease the amount of the plant in the inventory
             if (FruitsEffects.ActivateFruitEffect(plants[index].effect, player, enemies))
                 plants[index].amount--;
         }

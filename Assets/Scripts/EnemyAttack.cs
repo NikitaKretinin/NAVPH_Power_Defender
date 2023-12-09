@@ -57,6 +57,7 @@ public class EnemyAttack : MonoBehaviour
         return isBuffActive;
     }
 
+    // coroutine to decrease attack damage for 5 seconds
     public IEnumerator DecreaseAttackCo()
     {
         Damageable component = thisEnemy.GetComponent<Damageable>();

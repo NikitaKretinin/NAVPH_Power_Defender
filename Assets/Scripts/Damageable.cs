@@ -81,10 +81,11 @@ public class Damageable : MonoBehaviour
         return isBuffActive;
     }
     
+    // Coroutine to increase damage for 5 seconds
     public IEnumerator IncreaseDamageCo()
     {
         int prevDamage = damageAmount;
-        damageAmount = (int)(prevDamage * 1.2f);
+        damageAmount = (int)(prevDamage * 1.5f);
         isBuffActive = true;
         yield return new WaitForSeconds(5.0f);
         isBuffActive = false;

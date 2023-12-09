@@ -19,6 +19,7 @@ public class ModeButtons : MonoBehaviour
     globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
   }
 
+  // load main menu screen
   void Start()
   {
     mapCount = globalInventory.GetAvailableMapCount();
