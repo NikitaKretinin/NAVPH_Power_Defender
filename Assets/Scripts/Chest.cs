@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -12,7 +11,7 @@ public class Chest : MonoBehaviour
 
     public string collisionListenToTag = "Player";
     public GenericPlant plant;
-    private bool _wasTriggered = false;
+    private bool wasTriggered = false;
     [SerializeField] GameObject unlockedPlantInfoUI;
     [SerializeField] GameObject globalInventoryObject;
     [SerializeField] GameObject GuiElements;
@@ -25,22 +24,18 @@ public class Chest : MonoBehaviour
         globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
     }
 
+    // function called when the player enters the trigger zone around the chest
+    // the chest is opened and the player is rewarded with a new plant
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (myEvents == null)
+        if (myEvents != null && !wasTriggered && collision.CompareTag(collisionListenToTag))
         {
-            print("myEventTriggerOnEnter was triggered but myEvents was null");
-        }
-        else if (!_wasTriggered && collision.CompareTag(collisionListenToTag))
-        {
-            print("myEventTriggerOnEnter Activated. Triggering" + myEvents);
-            _wasTriggered = true;
+            wasTriggered = true;
             myEvents.Invoke();
 
             GenericPlant unlockedPlant = globalInventory.UnlockNextPlant();
             if (unlockedPlant != null)
             {
-                Debug.Log("Unlocked plant: " + unlockedPlant.name);
                 GuiElements.SetActive(false);
                 Time.timeScale = 0;
                 thanksButton.GetComponent<Button>().onClick.AddListener(() =>
@@ -54,7 +49,7 @@ public class Chest : MonoBehaviour
                 plantInfoText.transform.Find("Effect").GetComponent<TextMeshProUGUI>().text += FruitsEffects.GetEffectDescription(unlockedPlant.effect);
                 plantInfoText.transform.Find("RipeTime").GetComponent<TextMeshProUGUI>().text += unlockedPlant.ripeTime + " seconds";
 
-                var sprites = Resources.LoadAll<Sprite>(InterScene.ImagePath);
+                var sprites = Resources.LoadAll<Sprite>(InterScene.imagePath);
                 var slot = plantInfoText.transform.Find("PlantSlot");
                 slot.Find("PlantSprite").GetComponent<Image>().sprite = sprites[unlockedPlant.imageIndex];
 

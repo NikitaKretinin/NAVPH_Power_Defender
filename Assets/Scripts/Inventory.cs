@@ -20,12 +20,14 @@ public class Inventory : MonoBehaviour
         }
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         inventorySlots = inventorySlots.OrderBy(slot => slot.name).ToArray();
+        
+        // Set the inventory slots to the plants in the inventory
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (i < plants.Count() && plants[i] != null)
             {
                 inventorySlots[i].transform.Find("AmountText").GetComponent<Text>().text = plants[i].amount.ToString();
-                inventorySlots[i].transform.Find("PlantSprite").GetComponent<Image>().sprite = Resources.LoadAll<Sprite>(InterScene.ImagePath)[plants[i].imageIndex];
+                inventorySlots[i].transform.Find("PlantSprite").GetComponent<Image>().sprite = Resources.LoadAll<Sprite>(InterScene.imagePath)[plants[i].imageIndex];
                 if (farmSlots != null && farmSlots[i] != null)
                 {
                     farmSlots[i].GetComponent<PlantFarmConfig>().relatedPlant = plants[i];
@@ -53,6 +55,7 @@ public class Inventory : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (index < plants.Count() && plants[index] != null && plants[index].amount > 0)
         {
+            // If the plant is used successfully, decrease the amount of the plant in the inventory
             if (FruitsEffects.ActivateFruitEffect(plants[index].effect, player, enemies))
                 plants[index].amount--;
         }

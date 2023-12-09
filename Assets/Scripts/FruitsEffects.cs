@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Linq;
 using UnityEngine;
 
 public static class FruitsEffects
@@ -22,8 +20,8 @@ public static class FruitsEffects
     return effect switch
     {
       Effect.Heal => "Add 10 health to the player",
-      Effect.AttackUp => "Increase the player's attack by 20% for 5 seconds",
-      Effect.SpeedUp => "Increase the player's speed by 10% for 5 seconds",
+      Effect.AttackUp => "Increase the player's attack by 50% for 5 seconds",
+      Effect.SpeedUp => "Increase the player's speed by 30% for 5 seconds",
       Effect.AttackEnemiesDown => "Decrease the attack of all enemies by 50% for 5 seconds",
       Effect.SpeedEnemiesDown => "Decrease the speed of all enemies by 50% for 5 seconds",
       _ => "",
@@ -34,22 +32,17 @@ public static class FruitsEffects
   {
     if (player == null) return false;
     var tmp = player.GetComponent<Damageable>();
-    Debug.Log(tmp);
-    Debug.Log("Heal effect applied");
-    tmp.addHealth(10);
-    player.GetComponent<Damageable>().addHealth(10);
-    Debug.Log("HealEffect effect applied");
+    tmp.AddHealth(10);
+    player.GetComponent<Damageable>().AddHealth(10);
     return true;
   }
 
   private static bool AttackUpEffect(GameObject player)
   {
-    Debug.Log(player);
     if (player == null) return false;
     Damageable component = player.GetComponent<Damageable>();
-    if (component.getIsBuffActive()) return false;
+    if (component.GetIsBuffActive()) return false;
     component.StartCoroutine(component.IncreaseDamageCo());
-    Debug.Log("AttackUpEffect effect applied");
     return true;
   }
 
@@ -57,9 +50,8 @@ public static class FruitsEffects
   {
     if (player == null) return false;
     PlayerMovement component = player.GetComponent<PlayerMovement>();
-    if (component.getIsBuffActive()) return false;
+    if (component.GetIsBuffActive()) return false;
     component.StartCoroutine(component.IncreaseSpeedCo());
-    Debug.Log("SpeedUpEffect effect applied");
     return true;
   }
 
@@ -69,12 +61,11 @@ public static class FruitsEffects
     foreach (var enemy in enemies)
     {
       EnemyAttack component = enemy.GetComponent<EnemyAttack>();
-      if (!component.getIsBuffActive())
+      if (!component.GetIsBuffActive())
       {
         component.StartCoroutine(component.DecreaseAttackCo());
       }
     }
-    Debug.Log("AttackEnemiesDown effect applied");
     return true;
   }
 
@@ -84,12 +75,11 @@ public static class FruitsEffects
     foreach (var enemy in enemies)
     {
       Enemy component = enemy.GetComponent<Enemy>();
-      if (!component.getIsBuffActive())
+      if (!component.GetIsBuffActive())
       {
         component.StartCoroutine(component.DecreaseSpeedCo());
       }
     }
-    Debug.Log("SpeedEnemiesDown effect applied");
     return true;
   }
 

@@ -13,17 +13,6 @@ public class HealthbarBehavior : MonoBehaviour
 
     void Update()
     {
-        slider.value = parentEntity.getHealth() / (float)parentEntity.getMaxHealth();
-    }
-
-    public void setMaxHealth(int health)
-    {
-        slider.maxValue = health;
-        slider.value = health;
-    }
-
-    public void setHealth(int health)
-    {
-        slider.value = health;
+        slider.value = parentEntity.GetHealth() / (float)parentEntity.GetMaxHealth();
     }
 }

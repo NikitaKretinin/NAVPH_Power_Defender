@@ -84,15 +84,16 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = speed * Time.deltaTime * moveVelocity;
     }
 
-    public bool getIsBuffActive()
+    public bool GetIsBuffActive()
     {
         return isBuffActive;
     }
 
+    // coroutine to increase speed for 5 seconds
     public IEnumerator IncreaseSpeedCo()
     {
         float prevSpeed = speed;
-        speed = prevSpeed * 1.1f;
+        speed = prevSpeed * 1.3f;
         isBuffActive = true;
         yield return new WaitForSeconds(5.0f);
         isBuffActive = false;

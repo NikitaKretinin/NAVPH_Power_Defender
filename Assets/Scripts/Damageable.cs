@@ -19,7 +19,7 @@ public class Damageable : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void setCoefficient(float coef)
+    public void SetCoefficient(float coef)
     {
         statsCoef = coef;
     }
@@ -39,7 +39,6 @@ public class Damageable : MonoBehaviour
     {
         if (gameObject.CompareTag("Player") || gameObject.CompareTag("Base"))
         {
-            Debug.Log("Game Over!");
             SceneManager.LoadScene("DefeatScreen");
         }
         else
@@ -49,12 +48,12 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    public int getHealth()
+    public int GetHealth()
     {
         return currentHealth;
     }
 
-    public void addHealth(int healthToAdd)
+    public void AddHealth(int healthToAdd)
     {
         if (currentHealth + healthToAdd > maxHealth)
             currentHealth = maxHealth;
@@ -62,30 +61,31 @@ public class Damageable : MonoBehaviour
             currentHealth += healthToAdd;
     }
     
-    public int getMaxHealth()
+    public int GetMaxHealth()
     {
         return maxHealth;
     }
 
-    public int getDamage()
+    public int GetDamage()
     {
         return damageAmount;
     }
 
-    public void setDamage(int newDamage)
+    public void SetDamage(int newDamage)
     {
         damageAmount = newDamage;
     }
     
-    public bool getIsBuffActive()
+    public bool GetIsBuffActive()
     {
         return isBuffActive;
     }
     
+    // Coroutine to increase damage for 5 seconds
     public IEnumerator IncreaseDamageCo()
     {
         int prevDamage = damageAmount;
-        damageAmount = (int)(prevDamage * 1.2f);
+        damageAmount = (int)(prevDamage * 1.5f);
         isBuffActive = true;
         yield return new WaitForSeconds(5.0f);
         isBuffActive = false;
