@@ -22,7 +22,6 @@ public class PlayerAttack : MonoBehaviour
         {
             // Get the Damageable script component from the collided enemy.
             Damageable enemyDamageable = collision.gameObject.transform.parent.GetComponent<Damageable>();
-            Debug.Log(enemyDamageable);
             // If the enemy has a Damageable component, apply damage to it.
             if (enemyDamageable != null)
             {

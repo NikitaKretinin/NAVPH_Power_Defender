@@ -27,20 +27,14 @@ public class Chest : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (myEvents == null)
+        if (myEvents != null && !_wasTriggered && collision.CompareTag(collisionListenToTag))
         {
-            print("myEventTriggerOnEnter was triggered but myEvents was null");
-        }
-        else if (!_wasTriggered && collision.CompareTag(collisionListenToTag))
-        {
-            print("myEventTriggerOnEnter Activated. Triggering" + myEvents);
             _wasTriggered = true;
             myEvents.Invoke();
 
             GenericPlant unlockedPlant = globalInventory.UnlockNextPlant();
             if (unlockedPlant != null)
             {
-                Debug.Log("Unlocked plant: " + unlockedPlant.name);
                 GuiElements.SetActive(false);
                 Time.timeScale = 0;
                 thanksButton.GetComponent<Button>().onClick.AddListener(() =>

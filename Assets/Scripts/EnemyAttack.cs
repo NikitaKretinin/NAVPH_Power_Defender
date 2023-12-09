@@ -26,10 +26,8 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerAttackCollider") && Time.time - lastAttackTime >= attackSpeed)
         {
-            Debug.Log("Enemy attacking player");
             if (other.gameObject.transform.parent.TryGetComponent<Damageable>(out var enemyDamageable))
             {
-                Debug.Log("Enemy attacking player2");
                 StartCoroutine(thisEnemy.AttackCo());
                 enemyDamageable.TakeDamage(damageAmount);
 
@@ -43,10 +41,8 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Base") && Time.time - lastAttackTime >= attackSpeed)
         {
-            Debug.Log("Enemy attacking base");
             if (other.gameObject.TryGetComponent<Damageable>(out var enemyDamageable))
             {
-                Debug.Log("Enemy attacking base2");
                 StartCoroutine(thisEnemy.AttackCo());
                 enemyDamageable.TakeDamage(damageAmount);
 

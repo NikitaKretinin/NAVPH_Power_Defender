@@ -34,22 +34,17 @@ public static class FruitsEffects
   {
     if (player == null) return false;
     var tmp = player.GetComponent<Damageable>();
-    Debug.Log(tmp);
-    Debug.Log("Heal effect applied");
     tmp.addHealth(10);
     player.GetComponent<Damageable>().addHealth(10);
-    Debug.Log("HealEffect effect applied");
     return true;
   }
 
   private static bool AttackUpEffect(GameObject player)
   {
-    Debug.Log(player);
     if (player == null) return false;
     Damageable component = player.GetComponent<Damageable>();
     if (component.getIsBuffActive()) return false;
     component.StartCoroutine(component.IncreaseDamageCo());
-    Debug.Log("AttackUpEffect effect applied");
     return true;
   }
 
@@ -59,7 +54,6 @@ public static class FruitsEffects
     PlayerMovement component = player.GetComponent<PlayerMovement>();
     if (component.getIsBuffActive()) return false;
     component.StartCoroutine(component.IncreaseSpeedCo());
-    Debug.Log("SpeedUpEffect effect applied");
     return true;
   }
 
@@ -74,7 +68,6 @@ public static class FruitsEffects
         component.StartCoroutine(component.DecreaseAttackCo());
       }
     }
-    Debug.Log("AttackEnemiesDown effect applied");
     return true;
   }
 
@@ -89,7 +82,6 @@ public static class FruitsEffects
         component.StartCoroutine(component.DecreaseSpeedCo());
       }
     }
-    Debug.Log("SpeedEnemiesDown effect applied");
     return true;
   }
 

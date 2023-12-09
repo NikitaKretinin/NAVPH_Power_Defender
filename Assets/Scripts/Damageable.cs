@@ -39,7 +39,6 @@ public class Damageable : MonoBehaviour
     {
         if (gameObject.CompareTag("Player") || gameObject.CompareTag("Base"))
         {
-            Debug.Log("Game Over!");
             SceneManager.LoadScene("DefeatScreen");
         }
         else
