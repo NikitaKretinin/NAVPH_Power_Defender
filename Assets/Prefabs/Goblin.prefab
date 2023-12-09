@@ -178,7 +178,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  enemyName: Gorduk the Goblin
   chaseRadius: 8
   attackRadius: 1.5
   targetPlayer: {fileID: 0}
@@ -199,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 40
   currentHealth: 0
-  damageAmount: 5
+  damageAmount: 10
 --- !u!114 &731361829440232662
 MonoBehaviour:
   m_ObjectHideFlags: 0

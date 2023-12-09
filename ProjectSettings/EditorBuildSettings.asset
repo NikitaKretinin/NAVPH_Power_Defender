@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Resources/Scenes/DefenseMode.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Resources/Scenes/MainMenu.unity
     guid: 25120d30d2bdf9b4681b11f6a2dea100
+  - enabled: 1
+    path: Assets/Resources/Scenes/DefenseMode.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Resources/Scenes/PlantSelection.unity
     guid: bd5639039dbc58b47841c98a81301a88
@@ -22,7 +22,7 @@ EditorBuildSettings:
     guid: a4e8535d4f9b18f449582c0c5f0b9307
   - enabled: 1
     path: Assets/Resources/Scenes/AttackModeLevel2.unity
-    guid: 2f97e88c747eff04b8d74122030cee93
+    guid: e25b42a0996e2a24a977ad0a1ba3e52d
   - enabled: 1
     path: Assets/Resources/Scenes/AttackModeLevel3.unity
     guid: b373e15a0164c9348a9da397ed778fa9

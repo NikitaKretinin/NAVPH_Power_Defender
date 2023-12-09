@@ -481,7 +481,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  enemyName: Ergo the Slime
   chaseRadius: 8
   attackRadius: 1
   targetPlayer: {fileID: 0}
@@ -502,7 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
-  damageAmount: 2
+  damageAmount: 5
 --- !u!114 &3648015362501090133
 MonoBehaviour:
   m_ObjectHideFlags: 0

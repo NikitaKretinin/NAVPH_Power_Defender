@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class LevelEndButtons : MonoBehaviour
+public class LevelEndMenu : MonoBehaviour
 {
   [SerializeField] GameObject levelButton;
   [SerializeField] GameObject mainMenuButton;

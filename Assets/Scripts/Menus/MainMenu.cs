@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class ModeButtons : MonoBehaviour
 {
@@ -79,7 +82,9 @@ public class ModeButtons : MonoBehaviour
   {
     if (Application.isEditor)
     {
-      UnityEditor.EditorApplication.isPlaying = false;
+      #if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+      #endif
     }
     else
     {

@@ -20,7 +20,6 @@ public class PlayerAttack : MonoBehaviour
 
         if (attackPressed && triggered)
         {
-            Debug.Log(enemyDamageable);
             // If the enemy has a Damageable component, apply damage to it.
             if (enemyDamageable != null)
             {
