@@ -12,6 +12,7 @@ public class ModeButtons : MonoBehaviour
   [SerializeField] GameObject mapInfoObject;
   private GlobalInventoryBehaviour globalInventory = null;
   int mapCount;
+  bool resetGame = false;
 
   private void Awake()
   {
@@ -21,8 +22,15 @@ public class ModeButtons : MonoBehaviour
   void Start()
   {
     mapCount = globalInventory.GetAvailableMapCount();
-
-    if (mapCount > 0)
+    if (SceneUtility.GetBuildIndexByScenePath("AttackModeLevel" + globalInventory.GetCurrentAttackLevel()) == -1)
+    {
+      // If the player has cleared all attack levels, reset the game
+      resetGame = true;
+      attackModeButton.GetComponent<Button>().interactable = true;
+      attackModeButton.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Reset Game";
+      mapInfoObject.GetComponent<TextMeshProUGUI>().text = "You have cleared all attack levels.";
+    }
+    else if (mapCount > 0)
     {
       attackModeButton.GetComponent<Button>().interactable = true;
       mapInfoObject.GetComponent<TextMeshProUGUI>().text = "You have " + mapCount + " map(s) available.";
@@ -45,11 +53,19 @@ public class ModeButtons : MonoBehaviour
 
   void OnClickAttackMode()
   {
-    InterScene.gameMode = GameMode.Attack;
-
-    if (globalInventory.GetAvailableMapCount() > 0)
+    if (resetGame)
     {
-      SceneManager.LoadScene("PlantSelection");
+      globalInventory.GetComponent<GlobalInventoryBehaviour>().ResetGameJson();
+      SceneManager.LoadScene("MainMenu");
+    }
+    else
+    {
+      InterScene.gameMode = GameMode.Attack;
+
+      if (globalInventory.GetAvailableMapCount() > 0)
+      {
+        SceneManager.LoadScene("PlantSelection");
+      }
     }
   }
 

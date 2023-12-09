@@ -12,17 +12,9 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     return globalInventory;
   }
 
-  private void LoadGlobalInventory()
+  public void ResetGameJson()
   {
-    if (File.Exists(Application.persistentDataPath + "/GlobalInventory.json"))
-    {
-      globalInventory = JsonUtility.FromJson<GlobalInventory>(
-        File.ReadAllText(Application.persistentDataPath + "/GlobalInventory.json")
-      );
-    }
-    else
-    {
-      globalInventory = new GlobalInventory
+    globalInventory = new GlobalInventory
       {
         plants = new List<GenericPlant> {
           new() {
@@ -71,6 +63,19 @@ public class GlobalInventoryBehaviour : MonoBehaviour
         currentDefenseLevel = 1
       };
       SaveGlobalInventory();
+  }
+
+  private void LoadGlobalInventory()
+  {
+    if (File.Exists(Application.persistentDataPath + "/GlobalInventory.json"))
+    {
+      globalInventory = JsonUtility.FromJson<GlobalInventory>(
+        File.ReadAllText(Application.persistentDataPath + "/GlobalInventory.json")
+      );
+    }
+    else
+    {
+      ResetGameJson();
     }
   }
 
