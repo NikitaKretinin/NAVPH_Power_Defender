@@ -4,18 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class Damageable : MonoBehaviour
 {
-    private bool isBuffActive = false;
-    [SerializeField] private int maxHealth = 100;
+    bool isBuffActive = false;
+    [SerializeField] int maxHealth;
     [SerializeField] int currentHealth;
-    [SerializeField] private int damageAmount = 0; // Adjust the damage amount as needed.
+    [SerializeField] int damageAmount; // Adjust the damage amount as needed.
 
-    private float statsCoef = 1.0f; // Adjust the stats coefficient for enemies.
+    float statsCoef = 1.0f; // Adjust the stats coefficient for enemies.
 
-    private void Start()
+    void Start()
     {
         // Adjust the stats using coefficient for enemies.
         maxHealth = (int)(maxHealth * statsCoef);
-        damageAmount = (int)(damageAmount * statsCoef); 
+        damageAmount = (int)(damageAmount * statsCoef);
         currentHealth = maxHealth;
     }
 
@@ -35,7 +35,7 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    private void Die()
+    void Die()
     {
         if (gameObject.CompareTag("Player") || gameObject.CompareTag("Base"))
         {
@@ -60,7 +60,7 @@ public class Damageable : MonoBehaviour
         else
             currentHealth += healthToAdd;
     }
-    
+
     public int GetMaxHealth()
     {
         return maxHealth;
@@ -75,12 +75,12 @@ public class Damageable : MonoBehaviour
     {
         damageAmount = newDamage;
     }
-    
+
     public bool GetIsBuffActive()
     {
         return isBuffActive;
     }
-    
+
     // Coroutine to increase damage for 5 seconds
     public IEnumerator IncreaseDamageCo()
     {
