@@ -24,7 +24,7 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("PlayerAttackCollider") && Time.time - lastAttackTime >= attackSpeed)
+        if (other.gameObject.CompareTag("PlayerDamageableCollider") && Time.time - lastAttackTime >= attackSpeed)
         {
             if (other.gameObject.transform.parent.TryGetComponent<Damageable>(out var enemyDamageable))
             {

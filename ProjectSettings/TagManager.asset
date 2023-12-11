@@ -13,8 +13,8 @@ TagManager:
   - SelectedPlantSlot
   - FarmSlot
   - CollisionObject
-  - PlayerAttackCollider
-  - EnemyAttackCollider
+  - PlayerDamageableCollider
+  - EnemyDamageableCollider
   layers:
   - Default
   - TransparentFX
@@ -23,10 +23,10 @@ TagManager:
   - Water
   - UI
   - Player
-  - EnemiesAttack
-  - PlayerAttack
-  - 
-  - 
+  - EnemiesDamageable
+  - PlayerDamageable
+  - PlayerHitboxes
+  - IgnoreHitboxes
   - 
   - 
   - 

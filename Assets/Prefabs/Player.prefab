@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7102411904140853672}
   - component: {fileID: 2358800936861686331}
   - component: {fileID: 2625217177111850809}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: DownHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 654312753669036871}
   - component: {fileID: 7480263212297551135}
   - component: {fileID: 7460048576983442427}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: RightHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 1951184071026890131}
   - component: {fileID: 897376542586542822}
   - component: {fileID: 6639599329800205933}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: UpHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,8 +507,8 @@ GameObject:
   - component: {fileID: 993919290778061896}
   - component: {fileID: 314627987708801032}
   m_Layer: 8
-  m_Name: AttackCollider
-  m_TagString: PlayerAttackCollider
+  m_Name: DamageableCollider
+  m_TagString: PlayerDamageableCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 7064252078498498701}
   - component: {fileID: 1209974230710083602}
   - component: {fileID: 2277597942781712521}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: LeftHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

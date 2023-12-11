@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 492966560}
   - component: {fileID: 492966562}
   - component: {fileID: 492966565}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FarmBase
   m_TagString: Base
   m_Icon: {fileID: 0}
@@ -4644,7 +4644,7 @@ GameObject:
   - component: {fileID: 924120664}
   - component: {fileID: 924120663}
   - component: {fileID: 924120662}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plant2
   m_TagString: FarmSlot
   m_Icon: {fileID: 0}
@@ -4830,7 +4830,7 @@ GameObject:
   - component: {fileID: 1160673747}
   - component: {fileID: 1160673749}
   - component: {fileID: 1160673750}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plant1
   m_TagString: FarmSlot
   m_Icon: {fileID: 0}
@@ -5234,7 +5234,7 @@ GameObject:
   - component: {fileID: 1600805047}
   - component: {fileID: 1600805046}
   - component: {fileID: 1600805045}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plant4
   m_TagString: FarmSlot
   m_Icon: {fileID: 0}
@@ -5428,7 +5428,7 @@ GameObject:
   - component: {fileID: 2014253680}
   - component: {fileID: 2014253679}
   - component: {fileID: 2014253678}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plant3
   m_TagString: FarmSlot
   m_Icon: {fileID: 0}

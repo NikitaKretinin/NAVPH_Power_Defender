@@ -30,8 +30,7 @@ public class PlayerAttack : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        // Check if the collision is with an object tagged as "Enemy."
-        triggered = collision.gameObject.CompareTag("EnemyAttackCollider");
+        triggered = collision.gameObject.CompareTag("EnemyDamageableCollider");
         if (triggered)
         {
             // Get the Damageable script component from the collided enemy.

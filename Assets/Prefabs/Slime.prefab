@@ -216,8 +216,8 @@ GameObject:
   - component: {fileID: 4186225559788242112}
   - component: {fileID: 5137821422898144475}
   m_Layer: 7
-  m_Name: AttackCollider
-  m_TagString: EnemyAttackCollider
+  m_Name: DamageableCollider
+  m_TagString: EnemyDamageableCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
