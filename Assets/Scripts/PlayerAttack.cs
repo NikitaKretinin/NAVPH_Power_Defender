@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         triggered = collision.gameObject.CompareTag("EnemyDamageableCollider");
         if (triggered)
