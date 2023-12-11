@@ -15,6 +15,7 @@ TagManager:
   - CollisionObject
   - PlayerDamageableCollider
   - EnemyDamageableCollider
+  - Map
   layers:
   - Default
   - TransparentFX

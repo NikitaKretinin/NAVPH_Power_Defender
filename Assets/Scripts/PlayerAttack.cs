@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -35,6 +36,15 @@ public class PlayerAttack : MonoBehaviour
         {
             // Get the Damageable script component from the collided enemy.
             enemyDamageable = collision.gameObject.transform.parent.GetComponent<Damageable>();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        var damageable = other.gameObject.transform.parent.GetComponent<Damageable>();
+        if (enemyDamageable.Equals(damageable))
+        {
+            triggered = false;
         }
     }
 }

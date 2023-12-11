@@ -37,8 +37,19 @@ public class Damageable : MonoBehaviour
 
     void Die()
     {
+        GameObject map = null;
+
+        if (InterScene.gameMode == GameMode.Defense)
+        {
+            map = GameObject.FindWithTag("Map");
+        }
+
         if (gameObject.CompareTag("Player") || gameObject.CompareTag("Base"))
         {
+            if (map != null)
+            {
+                Destroy(map);
+            }
             SceneManager.LoadScene("DefeatScreen");
         }
         else
