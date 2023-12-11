@@ -12,24 +12,22 @@ public class ModeButtons : MonoBehaviour
   [SerializeField] GameObject attackModeButton;
   [SerializeField] GameObject exitButton;
   [SerializeField] GameObject controlsButton;
-  [SerializeField] GameObject globalInventoryObject;
   [SerializeField] GameObject mapInfoObject;
   [SerializeField] GameObject mainMenuGUI;
   [SerializeField] GameObject controlsGUI;
-  private GlobalInventoryBehaviour globalInventory = null;
   int mapCount;
   bool resetGame = false;
 
-  private void Awake()
+  void Awake()
   {
-    globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
+    GlobalInventoryManager.LoadGlobalInventory();
   }
 
   // load main menu screen
   void Start()
   {
-    mapCount = globalInventory.GetAvailableMapCount();
-    if (SceneUtility.GetBuildIndexByScenePath("AttackModeLevel" + globalInventory.GetCurrentAttackLevel()) == -1)
+    mapCount = GlobalInventoryManager.GetAvailableMapCount();
+    if (SceneUtility.GetBuildIndexByScenePath("AttackModeLevel" + GlobalInventoryManager.GetCurrentAttackLevel()) == -1)
     {
       // If the player has cleared all attack levels, reset the game
       resetGame = true;
@@ -64,14 +62,14 @@ public class ModeButtons : MonoBehaviour
   {
     if (resetGame)
     {
-      globalInventory.GetComponent<GlobalInventoryBehaviour>().ResetGameJson();
+      GlobalInventoryManager.ResetGameJson();
       SceneManager.LoadScene("MainMenu");
     }
     else
     {
       InterScene.gameMode = GameMode.Attack;
 
-      if (globalInventory.GetAvailableMapCount() > 0)
+      if (GlobalInventoryManager.GetAvailableMapCount() > 0)
       {
         SceneManager.LoadScene("PlantSelection");
       }
@@ -82,9 +80,9 @@ public class ModeButtons : MonoBehaviour
   {
     if (Application.isEditor)
     {
-      #if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
-      #endif
+#if UNITY_EDITOR
+      EditorApplication.isPlaying = false;
+#endif
     }
     else
     {

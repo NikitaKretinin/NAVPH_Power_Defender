@@ -3,21 +3,21 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
-public class GlobalInventoryBehaviour : MonoBehaviour
+public static class GlobalInventoryManager
 {
-  private GlobalInventory globalInventory = null;
+  static GlobalInventory globalInventory = null;
 
-  public GlobalInventory GetGlobalInventory()
+  public static GlobalInventory GetGlobalInventory()
   {
     return globalInventory;
   }
 
   // function resets the global inventory to the default values
-  public void ResetGameJson()
+  public static void ResetGameJson()
   {
     globalInventory = new GlobalInventory
-      {
-        plants = new List<GenericPlant> {
+    {
+      plants = new List<GenericPlant> {
           new() {
             name = "RadiantGlow",
             id = "plant1",
@@ -59,15 +59,15 @@ public class GlobalInventoryBehaviour : MonoBehaviour
             effect = Effect.SpeedEnemiesDown
           }
         },
-        availableMaps = 0,
-        currentAttackLevel = 1,
-        currentDefenseLevel = 1
-      };
-      SaveGlobalInventory();
+      availableMaps = 0,
+      currentAttackLevel = 1,
+      currentDefenseLevel = 1
+    };
+    SaveGlobalInventory();
   }
 
   // function loads the game progress from the json file
-  private void LoadGlobalInventory()
+  public static void LoadGlobalInventory()
   {
     if (File.Exists(Application.persistentDataPath + "/GlobalInventory.json"))
     {
@@ -81,14 +81,14 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     }
   }
 
-  public void SaveGlobalInventory()
+  public static void SaveGlobalInventory()
   {
     string json = JsonUtility.ToJson(globalInventory);
     File.WriteAllText(Application.persistentDataPath + "/GlobalInventory.json", json);
   }
 
   // function unlocks the next locked plant in the global inventory
-  public GenericPlant UnlockNextPlant()
+  public static GenericPlant UnlockNextPlant()
   {
     var firstMatch = globalInventory.plants.FirstOrDefault(s => s.isUnlocked == false);
     if (firstMatch != null)
@@ -99,47 +99,42 @@ public class GlobalInventoryBehaviour : MonoBehaviour
     return firstMatch;
   }
 
-  public void AddMap()
+  public static void AddMap()
   {
     globalInventory.availableMaps++;
     SaveGlobalInventory();
   }
 
-  public void RemoveMap()
+  public static void RemoveMap()
   {
     globalInventory.availableMaps--;
     SaveGlobalInventory();
   }
 
-  public void SwitchToNextAttackLevel()
+  public static void SwitchToNextAttackLevel()
   {
     globalInventory.currentAttackLevel++;
     SaveGlobalInventory();
   }
 
-  public void SwitchToNextDefenseLevel()
+  public static void SwitchToNextDefenseLevel()
   {
     globalInventory.currentDefenseLevel++;
     SaveGlobalInventory();
   }
 
-  public int GetAvailableMapCount()
+  public static int GetAvailableMapCount()
   {
     return globalInventory.availableMaps;
   }
 
-  public int GetCurrentAttackLevel()
+  public static int GetCurrentAttackLevel()
   {
     return globalInventory.currentAttackLevel;
   }
 
-  public int GetCurrentDefenseLevel()
+  public static int GetCurrentDefenseLevel()
   {
     return globalInventory.currentDefenseLevel;
-  }
-
-  private void Awake()
-  {
-    LoadGlobalInventory();
   }
 }

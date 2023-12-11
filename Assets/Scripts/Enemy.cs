@@ -14,11 +14,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRadius;
     [SerializeField] Transform targetPlayer;
     [SerializeField] Transform targetBase;
-    [SerializeField] GameObject globalInventoryObject = null;
     private Animator anim;
     public EnemyState currentState;
     private Rigidbody2D rb;
-    private GlobalInventoryBehaviour globalInventory = null;
 
     // Start is called before the first frame update
     void Start()
@@ -32,17 +30,16 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         currentState = EnemyState.walk;
         // Adjust the stats using coefficient for enemies.
-        if (GetComponent<Damageable>() != null && globalInventoryObject != null)
+        if (GetComponent<Damageable>() != null)
         {
-            globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
             float coef = 1.0f;
             if (InterScene.gameMode == GameMode.Defense)
             {
-                coef += 0.2f * globalInventory.GetCurrentDefenseLevel();
-            } 
+                coef += 0.2f * GlobalInventoryManager.GetCurrentDefenseLevel();
+            }
             else
             {
-                coef += 0.2f * globalInventory.GetCurrentAttackLevel();
+                coef += 0.2f * GlobalInventoryManager.GetCurrentAttackLevel();
             }
             GetComponent<Damageable>().SetCoefficient(coef);
         }

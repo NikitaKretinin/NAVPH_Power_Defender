@@ -9,7 +9,6 @@ public class PlantSelection : MonoBehaviour
 {
   readonly string PLANT_INFO = "PlantInfoNoImage";
   private GlobalInventory globalInventory = null;
-  [SerializeField] GameObject globalInventoryObject;
   [SerializeField] GameObject confirmButton;
   [SerializeField] GameObject backButton;
   GameObject[] selectedPlantSlots = null;
@@ -61,7 +60,7 @@ public class PlantSelection : MonoBehaviour
 
   private void Start()
   {
-    globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>().GetGlobalInventory();
+    globalInventory = GlobalInventoryManager.GetGlobalInventory();
     var sprites = Resources.LoadAll<Sprite>(InterScene.imagePath);
 
     GameObject[] availablePlantSlots = GameObject.FindGameObjectsWithTag("AvailablePlantSlot");

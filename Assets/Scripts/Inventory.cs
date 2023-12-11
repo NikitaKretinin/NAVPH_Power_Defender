@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<GenericPlant> plants = null;
-
     private GameObject[] inventorySlots;
 
     void Awake()
@@ -20,7 +19,7 @@ public class Inventory : MonoBehaviour
         }
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         inventorySlots = inventorySlots.OrderBy(slot => slot.name).ToArray();
-        
+
         // Set the inventory slots to the plants in the inventory
         for (int i = 0; i < inventorySlots.Length; i++)
         {

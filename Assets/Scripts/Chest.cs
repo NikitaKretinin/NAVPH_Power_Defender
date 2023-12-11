@@ -8,21 +8,13 @@ public class Chest : MonoBehaviour
 {
     [Header("Custom Event")]
     public UnityEvent myEvents;
-
     public string collisionListenToTag = "Player";
     public GenericPlant plant;
     private bool wasTriggered = false;
     [SerializeField] GameObject unlockedPlantInfoUI;
-    [SerializeField] GameObject globalInventoryObject;
     [SerializeField] GameObject GuiElements;
     [SerializeField] GameObject thanksButton;
     [SerializeField] GameObject plantInfoText;
-    private GlobalInventoryBehaviour globalInventory = null;
-
-    private void Start()
-    {
-        globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
-    }
 
     // function called when the player enters the trigger zone around the chest
     // the chest is opened and the player is rewarded with a new plant
@@ -33,15 +25,15 @@ public class Chest : MonoBehaviour
             wasTriggered = true;
             myEvents.Invoke();
 
-            GenericPlant unlockedPlant = globalInventory.UnlockNextPlant();
+            GenericPlant unlockedPlant = GlobalInventoryManager.UnlockNextPlant();
             if (unlockedPlant != null)
             {
                 GuiElements.SetActive(false);
                 Time.timeScale = 0;
                 thanksButton.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    globalInventory.SwitchToNextAttackLevel();
-                    globalInventory.RemoveMap();
+                    GlobalInventoryManager.SwitchToNextAttackLevel();
+                    GlobalInventoryManager.RemoveMap();
                     Time.timeScale = 1;
                     SceneManager.LoadScene("VictoryScreen");
                 });

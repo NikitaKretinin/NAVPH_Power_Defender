@@ -8,8 +8,6 @@ public class WaveConfiguration : MonoBehaviour
     [SerializeField] GameObject[] waveEnemies;
     [SerializeField] int[] waveEnemyCounts;
     [SerializeField] bool[] wavePassed;
-    [SerializeField] GameObject globalInventoryObject;
-    private GlobalInventoryBehaviour globalInventory = null;
     int currentWave = 0;
     float lastSpawnTime = 0.0f; // The time since the last spawn.
     public int enemiesSpawned = 0;
@@ -28,7 +26,6 @@ public class WaveConfiguration : MonoBehaviour
     {
         randomWave = Random.Range(0, 3);
         randomEnemy = Random.Range(0, waveEnemyCounts[randomWave]);
-        globalInventory = globalInventoryObject.GetComponent<GlobalInventoryBehaviour>();
     }
 
     void FixedUpdate()
@@ -39,8 +36,8 @@ public class WaveConfiguration : MonoBehaviour
         }
         else if (mapCollected)
         {
-            globalInventory.AddMap();
-            globalInventory.SwitchToNextDefenseLevel();
+            GlobalInventoryManager.AddMap();
+            GlobalInventoryManager.SwitchToNextDefenseLevel();
             SceneManager.LoadScene("VictoryScreen");
         }
     }
