@@ -22,7 +22,10 @@ public class WaveEnemy : MonoBehaviour
       {
         // Spawn a map.
         var position = transform.position;
-        Instantiate(map, position, Quaternion.identity).SetActive(true);
+        if (map != null)
+        {
+          Instantiate(map, position, Quaternion.identity).SetActive(true);
+        }
       }
     }
   }
