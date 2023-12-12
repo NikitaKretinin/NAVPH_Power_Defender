@@ -1,9 +1,8 @@
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private int damageAmount; // Adjust the damage amount as needed.
+    int damageAmount; // Adjust the damage amount as needed.
     [SerializeField] GameObject player; // related player
     bool triggered = false;
     Damageable enemyDamageable = null;
@@ -29,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         triggered = collision.gameObject.CompareTag("EnemyDamageableCollider");
         if (triggered)
@@ -41,8 +40,15 @@ public class PlayerAttack : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        var damageable = other.gameObject.transform.parent.GetComponent<Damageable>();
-        if (enemyDamageable.Equals(damageable))
+        var parent = other.transform.parent;
+
+        if (parent == null)
+        {
+            return;
+        }
+
+        var damageable = parent.GetComponent<Damageable>();
+        if (enemyDamageable != null && enemyDamageable.Equals(damageable))
         {
             triggered = false;
         }

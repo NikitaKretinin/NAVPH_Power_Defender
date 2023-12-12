@@ -8,15 +8,15 @@ public enum EnemyState
 }
 public class Enemy : MonoBehaviour
 {
-    private bool isBuffActive = false;
+    bool isBuffActive = false;
     [SerializeField] float speed;
     [SerializeField] float chaseRadius;
     [SerializeField] float attackRadius;
     [SerializeField] Transform targetPlayer;
     [SerializeField] Transform targetBase;
-    private Animator anim;
+    Animator anim;
     public EnemyState currentState;
-    private Rigidbody2D rb;
+    Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()

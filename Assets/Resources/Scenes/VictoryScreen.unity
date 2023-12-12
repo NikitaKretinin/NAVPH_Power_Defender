@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 1161758677}
   - component: {fileID: 1161758676}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: LevelButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 2111853330}
   - component: {fileID: 2111853329}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: VictoryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

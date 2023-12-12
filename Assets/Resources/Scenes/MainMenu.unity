@@ -573,7 +573,6 @@ MonoBehaviour:
   attackModeButton: {fileID: 1411602423}
   exitButton: {fileID: 789743153}
   controlsButton: {fileID: 247762462}
-  globalInventoryObject: {fileID: 0}
   mapInfoObject: {fileID: 1759439159}
   mainMenuGUI: {fileID: 825041318}
   controlsGUI: {fileID: 1835870330}
@@ -2990,7 +2989,7 @@ GameObject:
   - component: {fileID: 2003995713}
   - component: {fileID: 2003995712}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: AttackModeButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

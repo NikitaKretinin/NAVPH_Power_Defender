@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class HealthbarBehavior : MonoBehaviour
 {
     [SerializeField] Damageable parentEntity;
-
     Slider slider;
+
     void Awake()
     {
         slider = GetComponent<Slider>();

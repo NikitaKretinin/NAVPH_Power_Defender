@@ -17,28 +17,33 @@ public class LevelEndMenu : MonoBehaviour
     // If the player has won, change the text of the level button depending on the game mode
     if (isVictory)
     {
+      var levelButtonText = levelButton.transform.Find("LevelButtonText").GetComponent<TextMeshProUGUI>();
       if (InterScene.gameMode == GameMode.Attack)
       {
-        levelButton.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Next Attack Level";
-        if (SceneUtility.GetBuildIndexByScenePath("AttackModeLevel" + GlobalInventoryManager.GetCurrentAttackLevel()) == -1)
+        levelButtonText.text = "Next Attack Level";
+        if (
+          SceneUtility.GetBuildIndexByScenePath(
+            InterScene.ATTACK_MODE_LEVEL_BASE + GlobalInventoryManager.GetCurrentAttackLevel()
+          ) == -1
+        )
         {
           levelButton.GetComponent<Button>().interactable = false;
         }
       }
       else
       {
-        levelButton.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Next Defense Level";
+        levelButtonText.text = "Next Defense Level";
       }
     }
   }
 
   public void OnClickLevel()
   {
-    SceneManager.LoadScene("PlantSelection");
+    SceneManager.LoadScene(InterScene.PLANT_SELECTION);
   }
 
   public void OnClickMainMenu()
   {
-    SceneManager.LoadScene("MainMenu");
+    SceneManager.LoadScene(InterScene.MAIN_MENU);
   }
 }

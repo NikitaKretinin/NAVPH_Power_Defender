@@ -5,20 +5,20 @@ using TMPro;
 
 public class PauseBehavior : MonoBehaviour
 {
-  [SerializeField] private GameObject pauseScreen;
-  [SerializeField] private GameObject resumeButton;
-  [SerializeField] private GameObject exitLevelButton;
-  [SerializeField] private GameObject GUIElements;
-  private bool confirmedExit = false;
+  [SerializeField] GameObject pauseScreen;
+  [SerializeField] GameObject resumeButton;
+  [SerializeField] GameObject exitLevelButton;
+  [SerializeField] GameObject GUIElements;
+  bool confirmedExit = false;
 
-  private void Pause()
+  void Pause()
   {
     Time.timeScale = 0;
     pauseScreen.SetActive(true);
     GUIElements.SetActive(false);
   }
 
-  private void Resume()
+  void Resume()
   {
     Time.timeScale = 1;
     pauseScreen.SetActive(false);
@@ -28,12 +28,12 @@ public class PauseBehavior : MonoBehaviour
     confirmedExit = false;
   }
 
-  private void ExitLevel()
+  void ExitLevel()
   {
     if (confirmedExit)
     {
       Time.timeScale = 1;
-      SceneManager.LoadScene("MainMenu");
+      SceneManager.LoadScene(InterScene.MAIN_MENU);
     }
     else
     {

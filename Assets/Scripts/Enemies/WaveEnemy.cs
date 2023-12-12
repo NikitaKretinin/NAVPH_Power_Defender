@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class WaveEnemy : MonoBehaviour
 {
-  private WaveConfiguration waveConfiguration = null;
+  WaveConfiguration waveConfiguration = null;
   [SerializeField] GameObject waveConfigurator;
   [SerializeField] GameObject map;
   public bool hasMap = false;
 
-  private void Start()
+  void Start()
   {
     waveConfiguration = waveConfigurator.GetComponent<WaveConfiguration>();
   }
 
-  private void OnDestroy()
+  void OnDestroy()
   {
     if (waveConfiguration != null)
     {

@@ -69,10 +69,10 @@ public static class GlobalInventoryManager
   // function loads the game progress from the json file
   public static void LoadGlobalInventory()
   {
-    if (File.Exists(Application.persistentDataPath + "/GlobalInventory.json"))
+    if (File.Exists(Application.persistentDataPath + "/" + InterScene.GLOBAL_INVENTORY_JSON))
     {
       globalInventory = JsonUtility.FromJson<GlobalInventory>(
-        File.ReadAllText(Application.persistentDataPath + "/GlobalInventory.json")
+        File.ReadAllText(Application.persistentDataPath + "/" + InterScene.GLOBAL_INVENTORY_JSON)
       );
     }
     else
@@ -84,7 +84,7 @@ public static class GlobalInventoryManager
   public static void SaveGlobalInventory()
   {
     string json = JsonUtility.ToJson(globalInventory);
-    File.WriteAllText(Application.persistentDataPath + "/GlobalInventory.json", json);
+    File.WriteAllText(Application.persistentDataPath + "/" + InterScene.GLOBAL_INVENTORY_JSON, json);
   }
 
   // function unlocks the next locked plant in the global inventory

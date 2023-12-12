@@ -8,9 +8,9 @@ public class Chest : MonoBehaviour
 {
     [Header("Custom Event")]
     public UnityEvent myEvents;
-    public string collisionListenToTag = "Player";
+    readonly string COLLISION_LISTEN_TO_TAG = "Player";
     public GenericPlant plant;
-    private bool wasTriggered = false;
+    bool wasTriggered = false;
     [SerializeField] GameObject unlockedPlantInfoUI;
     [SerializeField] GameObject GuiElements;
     [SerializeField] GameObject thanksButton;
@@ -18,9 +18,9 @@ public class Chest : MonoBehaviour
 
     // function called when the player enters the trigger zone around the chest
     // the chest is opened and the player is rewarded with a new plant
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (myEvents != null && !wasTriggered && collision.CompareTag(collisionListenToTag))
+        if (myEvents != null && !wasTriggered && collision.CompareTag(COLLISION_LISTEN_TO_TAG))
         {
             wasTriggered = true;
             myEvents.Invoke();
@@ -35,13 +35,18 @@ public class Chest : MonoBehaviour
                     GlobalInventoryManager.SwitchToNextAttackLevel();
                     GlobalInventoryManager.RemoveMap();
                     Time.timeScale = 1;
-                    SceneManager.LoadScene("VictoryScreen");
+                    SceneManager.LoadScene(InterScene.VICTORY_SCREEN);
                 });
-                plantInfoText.transform.Find("Name").GetComponent<TextMeshProUGUI>().text += unlockedPlant.name;
-                plantInfoText.transform.Find("Effect").GetComponent<TextMeshProUGUI>().text += FruitsEffects.GetEffectDescription(unlockedPlant.effect);
-                plantInfoText.transform.Find("RipeTime").GetComponent<TextMeshProUGUI>().text += unlockedPlant.ripeTime + " seconds";
 
-                var sprites = Resources.LoadAll<Sprite>(InterScene.imagePath);
+                var name = plantInfoText.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+                var effect = plantInfoText.transform.Find("Effect").GetComponent<TextMeshProUGUI>();
+                var ripeTime = plantInfoText.transform.Find("RipeTime").GetComponent<TextMeshProUGUI>();
+
+                name.text += unlockedPlant.name;
+                effect.text += FruitsEffects.GetEffectDescription(unlockedPlant.effect);
+                ripeTime.text += unlockedPlant.ripeTime + " seconds";
+
+                var sprites = Resources.LoadAll<Sprite>(InterScene.IMAGE_PATH);
                 var slot = plantInfoText.transform.Find("PlantSlot");
                 slot.Find("PlantSprite").GetComponent<Image>().sprite = sprites[unlockedPlant.imageIndex];
 

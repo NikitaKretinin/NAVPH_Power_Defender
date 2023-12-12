@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class PlantSelectHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
   Button button;
-  readonly string PLANT_INFO = "PlantInfoNoImage";
 
   void Start()
   {
@@ -16,7 +15,7 @@ public class PlantSelectHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
   {
     if (button.interactable)
     {
-      transform.Find(PLANT_INFO).gameObject.SetActive(true);
+      transform.Find(InterScene.PLANT_INFO_NO_IMG_OBJECT).gameObject.SetActive(true);
     }
   }
 
@@ -24,7 +23,7 @@ public class PlantSelectHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
   {
     if (button.interactable)
     {
-      transform.Find(PLANT_INFO).gameObject.SetActive(false);
+      transform.Find(InterScene.PLANT_INFO_NO_IMG_OBJECT).gameObject.SetActive(false);
     }
   }
 }

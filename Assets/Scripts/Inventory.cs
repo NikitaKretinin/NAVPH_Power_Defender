@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private List<GenericPlant> plants = null;
-    private GameObject[] inventorySlots;
+    [SerializeField] List<GenericPlant> plants;
+    GameObject[] inventorySlots;
 
     void Awake()
     {
@@ -20,13 +20,18 @@ public class Inventory : MonoBehaviour
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         inventorySlots = inventorySlots.OrderBy(slot => slot.name).ToArray();
 
+        var sprites = Resources.LoadAll<Sprite>(InterScene.IMAGE_PATH);
+
         // Set the inventory slots to the plants in the inventory
         for (int i = 0; i < inventorySlots.Length; i++)
         {
+            var amountText = inventorySlots[i].transform.Find("AmountText").GetComponent<Text>();
+            var plantSprite = inventorySlots[i].transform.Find("PlantSprite").GetComponent<Image>();
+
             if (i < plants.Count() && plants[i] != null)
             {
-                inventorySlots[i].transform.Find("AmountText").GetComponent<Text>().text = plants[i].amount.ToString();
-                inventorySlots[i].transform.Find("PlantSprite").GetComponent<Image>().sprite = Resources.LoadAll<Sprite>(InterScene.imagePath)[plants[i].imageIndex];
+                amountText.text = plants[i].amount.ToString();
+                plantSprite.sprite = sprites[plants[i].imageIndex];
                 if (farmSlots != null && farmSlots[i] != null)
                 {
                     farmSlots[i].GetComponent<PlantFarmConfig>().relatedPlant = plants[i];
@@ -38,8 +43,8 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                inventorySlots[i].transform.Find("AmountText").GetComponent<Text>().gameObject.SetActive(false);
-                inventorySlots[i].transform.Find("PlantSprite").GetComponent<Image>().gameObject.SetActive(false);
+                amountText.gameObject.SetActive(false);
+                plantSprite.gameObject.SetActive(false);
                 if (farmSlots != null && farmSlots[i] != null)
                 {
                     farmSlots[i].GetComponent<SpriteRenderer>().gameObject.SetActive(false);

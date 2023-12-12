@@ -8,7 +8,6 @@ public class Damageable : MonoBehaviour
     [SerializeField] int maxHealth;
     [SerializeField] int currentHealth;
     [SerializeField] int damageAmount; // Adjust the damage amount as needed.
-
     float statsCoef = 1.0f; // Adjust the stats coefficient for enemies.
 
     void Start()
@@ -50,7 +49,7 @@ public class Damageable : MonoBehaviour
             {
                 Destroy(map);
             }
-            SceneManager.LoadScene("DefeatScreen");
+            SceneManager.LoadScene(InterScene.DEFEAT_SCREEN);
         }
         else
         {

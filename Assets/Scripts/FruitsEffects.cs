@@ -28,36 +28,48 @@ public static class FruitsEffects
     };
   }
 
-  private static bool HealEffect(GameObject player)
+  static bool HealEffect(GameObject player)
   {
-    if (player == null) return false;
+    if (player == null)
+    {
+      return false;
+    }
     var tmp = player.GetComponent<Damageable>();
     tmp.AddHealth(10);
     player.GetComponent<Damageable>().AddHealth(10);
     return true;
   }
 
-  private static bool AttackUpEffect(GameObject player)
+  static bool AttackUpEffect(GameObject player)
   {
-    if (player == null) return false;
+    if (player == null)
+    {
+      return false;
+    }
     Damageable component = player.GetComponent<Damageable>();
     if (component.GetIsBuffActive()) return false;
     component.StartCoroutine(component.IncreaseDamageCo());
     return true;
   }
 
-  private static bool SpeedUpEffect(GameObject player)
+  static bool SpeedUpEffect(GameObject player)
   {
-    if (player == null) return false;
+    if (player == null)
+    {
+      return false;
+    }
     PlayerMovement component = player.GetComponent<PlayerMovement>();
     if (component.GetIsBuffActive()) return false;
     component.StartCoroutine(component.IncreaseSpeedCo());
     return true;
   }
 
-  private static bool AttackEnemiesDownEffect(GameObject[] enemies)
+  static bool AttackEnemiesDownEffect(GameObject[] enemies)
   {
-    if (enemies == null) return false;
+    if (enemies == null)
+    {
+      return false;
+    }
     foreach (var enemy in enemies)
     {
       EnemyAttack component = enemy.GetComponent<EnemyAttack>();
@@ -69,9 +81,12 @@ public static class FruitsEffects
     return true;
   }
 
-  private static bool SpeedEnemiesDownEffect(GameObject[] enemies)
+  static bool SpeedEnemiesDownEffect(GameObject[] enemies)
   {
-    if (enemies == null) return false;
+    if (enemies == null)
+    {
+      return false;
+    }
     foreach (var enemy in enemies)
     {
       Enemy component = enemy.GetComponent<Enemy>();

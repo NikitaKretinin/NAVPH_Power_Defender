@@ -18,12 +18,12 @@ public enum PlayerDirection
 
 public class PlayerMovement : MonoBehaviour
 {
-    private bool isBuffActive = false;
+    bool isBuffActive = false;
     [SerializeField] float speed;
-    private Vector3 moveVelocity;
-    private Animator anim;
-    public PlayerState currentState;
-    private Rigidbody2D rb;
+    Vector3 moveVelocity;
+    Animator anim;
+    PlayerState currentState;
+    Rigidbody2D rb;
     bool isWalking = false;
     [SerializeField] GameObject leftHitbox;
     [SerializeField] GameObject rightHitbox;
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator AttackCo()
+    IEnumerator AttackCo()
     {
         anim.SetBool("attacking", true);
         currentState = PlayerState.attack;

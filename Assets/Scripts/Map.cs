@@ -4,9 +4,9 @@ public class Map : MonoBehaviour
 {
   [SerializeField] GameObject player;
   [SerializeField] GameObject waveConfigurator;
-  private WaveConfiguration waveConfiguration = null;
+  WaveConfiguration waveConfiguration = null;
 
-  private void Start()
+  void Start()
   {
     waveConfiguration = waveConfigurator.GetComponent<WaveConfiguration>();
   }
