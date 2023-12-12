@@ -19,7 +19,7 @@ public class LevelEndMenu : MonoBehaviour
     {
       if (InterScene.gameMode == GameMode.Attack)
       {
-        levelButton.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Next Attack Level";
+        levelButton.transform.Find("LevelButtonText").GetComponent<TextMeshProUGUI>().text = "Next Attack Level";
         if (SceneUtility.GetBuildIndexByScenePath(InterScene.ATTACK_MODE_LEVEL_BASE + GlobalInventoryManager.GetCurrentAttackLevel()) == -1)
         {
           levelButton.GetComponent<Button>().interactable = false;
@@ -27,7 +27,7 @@ public class LevelEndMenu : MonoBehaviour
       }
       else
       {
-        levelButton.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Next Defense Level";
+        levelButton.transform.Find("LevelButtonText").GetComponent<TextMeshProUGUI>().text = "Next Defense Level";
       }
     }
   }

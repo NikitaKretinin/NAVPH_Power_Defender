@@ -41,7 +41,7 @@ public class PlayerAttack : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         var damageable = other.gameObject.transform.parent.GetComponent<Damageable>();
-        if (enemyDamageable.Equals(damageable))
+        if (enemyDamageable != null && enemyDamageable.Equals(damageable))
         {
             triggered = false;
         }
