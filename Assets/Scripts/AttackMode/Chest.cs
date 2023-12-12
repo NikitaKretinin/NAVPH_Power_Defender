@@ -10,7 +10,7 @@ public class Chest : MonoBehaviour
     public UnityEvent myEvents;
     readonly string COLLISION_LISTEN_TO_TAG = "Player";
     public GenericPlant plant;
-    private bool wasTriggered = false;
+    bool wasTriggered = false;
     [SerializeField] GameObject unlockedPlantInfoUI;
     [SerializeField] GameObject GuiElements;
     [SerializeField] GameObject thanksButton;
@@ -18,7 +18,7 @@ public class Chest : MonoBehaviour
 
     // function called when the player enters the trigger zone around the chest
     // the chest is opened and the player is rewarded with a new plant
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (myEvents != null && !wasTriggered && collision.CompareTag(COLLISION_LISTEN_TO_TAG))
         {

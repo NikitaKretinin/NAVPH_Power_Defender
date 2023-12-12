@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private List<GenericPlant> plants = null;
-    private GameObject[] inventorySlots;
+    [SerializeField] List<GenericPlant> plants;
+    GameObject[] inventorySlots;
 
     void Awake()
     {

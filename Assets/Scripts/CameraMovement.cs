@@ -3,10 +3,10 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
 
-    public Transform target;
-    public float smoothSpeed;
-    public Vector2 maxPos;
-    public Vector2 minPos;
+    [SerializeField] Transform target;
+    [SerializeField] float smoothSpeed;
+    [SerializeField] Vector2 maxPos;
+    [SerializeField] Vector2 minPos;
 
     // camera is moved with the player and does not exceed the boundaries of the map
     void LateUpdate()

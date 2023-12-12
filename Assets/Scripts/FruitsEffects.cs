@@ -28,7 +28,7 @@ public static class FruitsEffects
     };
   }
 
-  private static bool HealEffect(GameObject player)
+  static bool HealEffect(GameObject player)
   {
     if (player == null)
     {
@@ -40,7 +40,7 @@ public static class FruitsEffects
     return true;
   }
 
-  private static bool AttackUpEffect(GameObject player)
+  static bool AttackUpEffect(GameObject player)
   {
     if (player == null)
     {
@@ -52,7 +52,7 @@ public static class FruitsEffects
     return true;
   }
 
-  private static bool SpeedUpEffect(GameObject player)
+  static bool SpeedUpEffect(GameObject player)
   {
     if (player == null)
     {
@@ -64,7 +64,7 @@ public static class FruitsEffects
     return true;
   }
 
-  private static bool AttackEnemiesDownEffect(GameObject[] enemies)
+  static bool AttackEnemiesDownEffect(GameObject[] enemies)
   {
     if (enemies == null)
     {
@@ -81,7 +81,7 @@ public static class FruitsEffects
     return true;
   }
 
-  private static bool SpeedEnemiesDownEffect(GameObject[] enemies)
+  static bool SpeedEnemiesDownEffect(GameObject[] enemies)
   {
     if (enemies == null)
     {

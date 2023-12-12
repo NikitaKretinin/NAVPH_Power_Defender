@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private int damageAmount; // Adjust the damage amount as needed.
+    int damageAmount; // Adjust the damage amount as needed.
     [SerializeField] GameObject player; // related player
     bool triggered = false;
     Damageable enemyDamageable = null;

@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class PlantSelection : MonoBehaviour
 {
-  private GlobalInventory globalInventory = null;
+  GlobalInventory globalInventory = null;
   [SerializeField] GameObject confirmButton;
   [SerializeField] GameObject backButton;
   GameObject[] selectedPlantSlots = null;
 
-  private void SelectPlant(int plantIndex, Sprite[] sprites)
+  void SelectPlant(int plantIndex, Sprite[] sprites)
   {
     var selectedPlantSlot = selectedPlantSlots.FirstOrDefault(slot => !slot.transform.Find("PlantSprite").GetComponent<Image>().gameObject.activeSelf);
     if (selectedPlantSlot != null)
@@ -24,14 +24,14 @@ public class PlantSelection : MonoBehaviour
     }
   }
 
-  private void DeselectPlant(int plantIndex)
+  void DeselectPlant(int plantIndex)
   {
     selectedPlantSlots[plantIndex].transform.Find("PlantSprite").GetComponent<Image>().gameObject.SetActive(false);
     selectedPlantSlots[plantIndex].transform.Find("PlantText").GetComponent<TextMeshProUGUI>().text = "";
     selectedPlantSlots[plantIndex].GetComponent<Button>().interactable = false;
   }
 
-  private void OnConfirmButtonClicked()
+  void OnConfirmButtonClicked()
   {
     InterScene.selectedPlants = new List<GenericPlant>();
 
@@ -57,7 +57,7 @@ public class PlantSelection : MonoBehaviour
     }
   }
 
-  private void Start()
+  void Start()
   {
     globalInventory = GlobalInventoryManager.GetGlobalInventory();
     var sprites = Resources.LoadAll<Sprite>(InterScene.IMAGE_PATH);

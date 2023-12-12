@@ -10,8 +10,8 @@ public class WaveConfiguration : MonoBehaviour
     [SerializeField] bool[] wavePassed;
     int currentWave = 0;
     float lastSpawnTime = 0.0f; // The time since the last spawn.
-    public int enemiesSpawned = 0;
-    public int enemiesKilled = 0;
+    int enemiesSpawned = 0;
+    int enemiesKilled = 0;
     public bool mapCollected = false;
     int randomWave;
     int randomEnemy;

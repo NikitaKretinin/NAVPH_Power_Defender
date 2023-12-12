@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlantFarmConfig : MonoBehaviour
 {
-    private Animator anim;
+    Animator anim;
     public GenericPlant relatedPlant = null;
 
     // Start is called before the first frame update
