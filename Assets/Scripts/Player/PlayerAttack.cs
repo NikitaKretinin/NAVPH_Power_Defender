@@ -2,20 +2,12 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    int damageAmount; // Adjust the damage amount as needed.
     [SerializeField] GameObject player; // related player
     bool triggered = false;
     Damageable enemyDamageable = null;
 
-    void Start()
-    {
-        damageAmount = player.GetComponent<Damageable>().GetDamage();
-    }
-
     void Update()
     {
-        damageAmount = player.GetComponent<Damageable>().GetDamage();
-
         var attackPressed = Input.GetButtonDown("attack");
 
         if (attackPressed && triggered)
@@ -23,7 +15,8 @@ public class PlayerAttack : MonoBehaviour
             // If the enemy has a Damageable component, apply damage to it.
             if (enemyDamageable != null)
             {
-                enemyDamageable.TakeDamage(damageAmount);
+                var damage = player.GetComponent<Damageable>().GetDamage();
+                enemyDamageable.TakeDamage(damage);
             }
         }
     }

@@ -4,7 +4,6 @@ using System.Collections;
 public class EnemyAttack : MonoBehaviour
 {
     bool isBuffActive = false;
-    int damageAmount; // Adjust the damage amount as needed.
     [SerializeField] float attackSpeed = 1.0f; // The time between consecutive attacks in seconds.
     [SerializeField] Enemy thisEnemy; // Reference to the Enemy script component on this object.
     float lastAttackTime = 0.0f; // The time of the last attack.
@@ -14,12 +13,6 @@ public class EnemyAttack : MonoBehaviour
     {
         // Get the Enemy script component from this object.
         thisEnemy = gameObject.GetComponent<Enemy>();
-        damageAmount = thisEnemy.GetComponent<Damageable>().GetDamage();
-    }
-
-    void Update()
-    {
-        damageAmount = thisEnemy.GetComponent<Damageable>().GetDamage();
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -29,7 +22,8 @@ public class EnemyAttack : MonoBehaviour
             if (other.gameObject.transform.parent.TryGetComponent<Damageable>(out var enemyDamageable))
             {
                 StartCoroutine(thisEnemy.AttackCo());
-                enemyDamageable.TakeDamage(damageAmount);
+                var damage = thisEnemy.GetComponent<Damageable>().GetDamage();
+                enemyDamageable.TakeDamage(damage);
 
                 // Update the time of the last attack.
                 lastAttackTime = Time.time;
@@ -44,7 +38,8 @@ public class EnemyAttack : MonoBehaviour
             if (other.gameObject.TryGetComponent<Damageable>(out var enemyDamageable))
             {
                 StartCoroutine(thisEnemy.AttackCo());
-                enemyDamageable.TakeDamage(damageAmount);
+                var damage = thisEnemy.GetComponent<Damageable>().GetDamage();
+                enemyDamageable.TakeDamage(damage);
 
                 // Update the time of the last attack.
                 lastAttackTime = Time.time;
