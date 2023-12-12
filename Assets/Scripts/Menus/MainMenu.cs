@@ -30,7 +30,7 @@ public class ModeButtons : MonoBehaviour
     var mapInfoText = mapInfoObject.GetComponent<TextMeshProUGUI>();
     if (SceneUtility.GetBuildIndexByScenePath(InterScene.ATTACK_MODE_LEVEL_BASE + GlobalInventoryManager.GetCurrentAttackLevel()) == -1)
     {
-      // If the player has cleared all attack levels, reset the game
+      // If the player has cleared all attack levels, change attack mode button to reset game
       resetGame = true;
       attackModeButton.GetComponent<Button>().interactable = true;
       attackModeButton.transform.Find("AttackModeButtonText").GetComponent<TextMeshProUGUI>().text = "Reset Game";

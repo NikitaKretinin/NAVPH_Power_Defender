@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject downHitbox;
     PlayerDirection lastDirection = PlayerDirection.down;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -39,9 +38,9 @@ public class PlayerMovement : MonoBehaviour
         currentState = PlayerState.walk;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Set the hitbox based on the player's direction
         switch (GetPlayerDirection())
         {
             case PlayerDirection.up:
@@ -120,8 +119,6 @@ public class PlayerMovement : MonoBehaviour
     void MoveCharacter()
     {
         moveVelocity.Normalize();
-        //rb.MovePosition(transform.position + speed * Time.deltaTime * moveVelocity);
-        // transform.position = transform.position + speed * Time.deltaTime * moveVelocity;
         rb.velocity = speed * Time.deltaTime * moveVelocity;
     }
 

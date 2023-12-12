@@ -12,6 +12,7 @@ public class PlantSelection : MonoBehaviour
   [SerializeField] GameObject backButton;
   GameObject[] selectedPlantSlots = null;
 
+  // add plant to selected plant slot
   void SelectPlant(int plantIndex, Sprite[] sprites)
   {
     var selectedPlantSlot = selectedPlantSlots.FirstOrDefault(
@@ -30,6 +31,7 @@ public class PlantSelection : MonoBehaviour
     }
   }
 
+  // remove plant from selected plant slot
   void DeselectPlant(int plantIndex)
   {
     var plantSprite = selectedPlantSlots[plantIndex].transform.Find("PlantSprite").GetComponent<Image>();
@@ -41,6 +43,7 @@ public class PlantSelection : MonoBehaviour
     selectedPlantSlots[plantIndex].GetComponent<Button>().interactable = false;
   }
 
+  // load the game scene with the selected plants stored in InterScene
   void OnConfirmButtonClicked()
   {
     InterScene.selectedPlants = new List<GenericPlant>();
@@ -67,6 +70,7 @@ public class PlantSelection : MonoBehaviour
     }
   }
 
+  // load the plant selection screen, only plants that are unlocked are selectable
   void Start()
   {
     globalInventory = GlobalInventoryManager.GetGlobalInventory();
@@ -78,6 +82,7 @@ public class PlantSelection : MonoBehaviour
     availablePlantSlots = availablePlantSlots.OrderBy(go => go.name).ToArray();
     selectedPlantSlots = selectedPlantSlots.OrderBy(go => go.name).ToArray();
 
+    // set up available plant slots
     for (int i = 0; i < availablePlantSlots.Length; i++)
     {
       var plantSprite = availablePlantSlots[i].transform.Find("PlantSprite").GetComponent<Image>();
@@ -112,6 +117,7 @@ public class PlantSelection : MonoBehaviour
       }
     }
 
+    // set up selected plant slots
     for (int i = 0; i < selectedPlantSlots.Length; i++)
     {
       var iCopy = i;

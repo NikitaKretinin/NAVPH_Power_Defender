@@ -6,7 +6,6 @@ public class BarrierScript : MonoBehaviour
 {
     [SerializeField] List<GameObject> relatedEnemies;
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         // Check if all related enemies are dead

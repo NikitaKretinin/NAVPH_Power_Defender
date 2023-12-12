@@ -5,7 +5,6 @@ public class PlantFarmConfig : MonoBehaviour
     Animator anim;
     public GenericPlant relatedPlant = null;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (relatedPlant != null)

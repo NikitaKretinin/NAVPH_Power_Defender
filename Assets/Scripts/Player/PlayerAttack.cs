@@ -21,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    // Check if the player is in range to attack the enemy. The enemy has a trigger collider on its sub-object.
     void OnTriggerStay2D(Collider2D collision)
     {
         triggered = collision.gameObject.CompareTag("EnemyDamageableCollider");
@@ -31,6 +32,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    // Check if the player is no longer in range to attack the enemy.
     void OnTriggerExit2D(Collider2D other)
     {
         var parent = other.transform.parent;

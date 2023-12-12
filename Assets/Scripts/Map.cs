@@ -13,9 +13,9 @@ public class Map : MonoBehaviour
 
   void Update()
   {
-    // If the player is close enough to the map, destroy it.
     if (Input.GetButtonDown("collect"))
     {
+      // If the player is close enough to the map, destroy it.
       CollectMap();
     }
   }

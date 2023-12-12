@@ -18,7 +18,6 @@ public class Enemy : MonoBehaviour
     public EnemyState currentState;
     Rigidbody2D rb;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (InterScene.gameMode == GameMode.Defense)

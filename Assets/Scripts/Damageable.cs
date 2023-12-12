@@ -7,8 +7,8 @@ public class Damageable : MonoBehaviour
     bool isBuffActive = false;
     [SerializeField] int maxHealth;
     [SerializeField] int currentHealth;
-    [SerializeField] int damageAmount; // Adjust the damage amount as needed.
-    float statsCoef = 1.0f; // Adjust the stats coefficient for enemies.
+    [SerializeField] int damageAmount;
+    float statsCoef = 1.0f;
 
     void Start()
     {

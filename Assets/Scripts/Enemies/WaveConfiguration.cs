@@ -24,6 +24,7 @@ public class WaveConfiguration : MonoBehaviour
 
     void Start()
     {
+        // choose a random enemy to spawn with a map
         randomWave = Random.Range(0, 3);
         randomEnemy = Random.Range(0, waveEnemyCounts[randomWave]);
     }
