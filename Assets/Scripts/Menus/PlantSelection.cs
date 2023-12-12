@@ -14,20 +14,30 @@ public class PlantSelection : MonoBehaviour
 
   void SelectPlant(int plantIndex, Sprite[] sprites)
   {
-    var selectedPlantSlot = selectedPlantSlots.FirstOrDefault(slot => !slot.transform.Find("PlantSprite").GetComponent<Image>().gameObject.activeSelf);
+    var selectedPlantSlot = selectedPlantSlots.FirstOrDefault(
+      slot => !slot.transform.Find("PlantSprite").GetComponent<Image>().gameObject.activeSelf
+    );
     if (selectedPlantSlot != null)
     {
-      selectedPlantSlot.transform.Find("PlantSprite").GetComponent<Image>().gameObject.SetActive(true);
-      selectedPlantSlot.transform.Find("PlantSprite").GetComponent<Image>().sprite = sprites[globalInventory.plants[plantIndex].imageIndex];
-      selectedPlantSlot.transform.Find("PlantText").GetComponent<TextMeshProUGUI>().text = globalInventory.plants[plantIndex].name;
+      var plantSprite = selectedPlantSlot.transform.Find("PlantSprite").GetComponent<Image>();
+      var plantText = selectedPlantSlot.transform.Find("PlantText").GetComponent<TextMeshProUGUI>();
+
+      plantSprite.gameObject.SetActive(true);
+      plantSprite.sprite = sprites[globalInventory.plants[plantIndex].imageIndex];
+      plantText.text = globalInventory.plants[plantIndex].name;
+
       selectedPlantSlot.GetComponent<Button>().interactable = true;
     }
   }
 
   void DeselectPlant(int plantIndex)
   {
-    selectedPlantSlots[plantIndex].transform.Find("PlantSprite").GetComponent<Image>().gameObject.SetActive(false);
-    selectedPlantSlots[plantIndex].transform.Find("PlantText").GetComponent<TextMeshProUGUI>().text = "";
+    var plantSprite = selectedPlantSlots[plantIndex].transform.Find("PlantSprite").GetComponent<Image>();
+    var plantText = selectedPlantSlots[plantIndex].transform.Find("PlantText").GetComponent<TextMeshProUGUI>();
+
+    plantSprite.gameObject.SetActive(false);
+    plantText.text = "";
+
     selectedPlantSlots[plantIndex].GetComponent<Button>().interactable = false;
   }
 
@@ -70,36 +80,51 @@ public class PlantSelection : MonoBehaviour
 
     for (int i = 0; i < availablePlantSlots.Length; i++)
     {
-      availablePlantSlots[i].transform.Find("PlantSprite").GetComponent<Image>().sprite = sprites[globalInventory.plants[i].imageIndex];
+      var plantSprite = availablePlantSlots[i].transform.Find("PlantSprite").GetComponent<Image>();
+      var plantText = availablePlantSlots[i].transform.Find("PlantText").GetComponent<TextMeshProUGUI>();
+      plantSprite.sprite = sprites[globalInventory.plants[i].imageIndex];
+
       if (globalInventory.plants[i].isUnlocked)
       {
-        availablePlantSlots[i].transform.Find("PlantText").GetComponent<TextMeshProUGUI>().text = globalInventory.plants[i].name;
-        availablePlantSlots[i].GetComponent<Button>().interactable = true;
         var iCopy = i;
-        availablePlantSlots[i].GetComponent<Button>().onClick.AddListener(() => SelectPlant(iCopy, sprites));
 
         var plantInfo = availablePlantSlots[i].transform.Find(InterScene.PLANT_INFO_NO_IMG_OBJECT);
-        plantInfo.Find("Name").GetComponent<TextMeshProUGUI>().text += globalInventory.plants[i].name;
-        plantInfo.Find("Effect").GetComponent<TextMeshProUGUI>().text += FruitsEffects.GetEffectDescription(globalInventory.plants[i].effect);
-        plantInfo.Find("RipeTime").GetComponent<TextMeshProUGUI>().text += globalInventory.plants[i].ripeTime + " seconds";
+        var plantButton = availablePlantSlots[i].GetComponent<Button>();
+
+        var plantName = plantInfo.Find("Name").GetComponent<TextMeshProUGUI>();
+        var plantEffect = plantInfo.Find("Effect").GetComponent<TextMeshProUGUI>();
+        var plantRipeTime = plantInfo.Find("RipeTime").GetComponent<TextMeshProUGUI>();
+
+        plantText.text = globalInventory.plants[i].name;
+        plantButton.interactable = true;
+        plantButton.onClick.AddListener(() => SelectPlant(iCopy, sprites));
+
+        plantName.text += globalInventory.plants[i].name;
+        plantEffect.text += FruitsEffects.GetEffectDescription(globalInventory.plants[i].effect);
+        plantRipeTime.text += globalInventory.plants[i].ripeTime + " seconds";
       }
       else
       {
-        availablePlantSlots[i].transform.Find("PlantText").GetComponent<TextMeshProUGUI>().text = "???";
-        var color = availablePlantSlots[i].transform.Find("PlantSprite").GetComponent<Image>().color;
+        plantText.text = "???";
+        var color = plantSprite.color;
         color.a = 0.25f;
-        availablePlantSlots[i].transform.Find("PlantSprite").GetComponent<Image>().color = color;
+        plantSprite.color = color;
       }
     }
 
     for (int i = 0; i < selectedPlantSlots.Length; i++)
     {
-      selectedPlantSlots[i].transform.Find("PlantSprite").GetComponent<Image>().gameObject.SetActive(false);
       var iCopy = i;
-      selectedPlantSlots[i].GetComponent<Button>().onClick.AddListener(() => DeselectPlant(iCopy));
+      var plantSprite = selectedPlantSlots[i].transform.Find("PlantSprite").GetComponent<Image>();
+      plantSprite.gameObject.SetActive(false);
+      selectedPlantSlots[i].GetComponent<Button>().onClick.AddListener(
+        () => DeselectPlant(iCopy)
+      );
     }
 
     confirmButton.GetComponent<Button>().onClick.AddListener(OnConfirmButtonClicked);
-    backButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene(InterScene.MAIN_MENU));
+    backButton.GetComponent<Button>().onClick.AddListener(
+      () => SceneManager.LoadScene(InterScene.MAIN_MENU)
+    );
   }
 }

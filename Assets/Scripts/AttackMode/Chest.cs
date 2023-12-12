@@ -37,9 +37,14 @@ public class Chest : MonoBehaviour
                     Time.timeScale = 1;
                     SceneManager.LoadScene(InterScene.VICTORY_SCREEN);
                 });
-                plantInfoText.transform.Find("Name").GetComponent<TextMeshProUGUI>().text += unlockedPlant.name;
-                plantInfoText.transform.Find("Effect").GetComponent<TextMeshProUGUI>().text += FruitsEffects.GetEffectDescription(unlockedPlant.effect);
-                plantInfoText.transform.Find("RipeTime").GetComponent<TextMeshProUGUI>().text += unlockedPlant.ripeTime + " seconds";
+
+                var name = plantInfoText.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+                var effect = plantInfoText.transform.Find("Effect").GetComponent<TextMeshProUGUI>();
+                var ripeTime = plantInfoText.transform.Find("RipeTime").GetComponent<TextMeshProUGUI>();
+
+                name.text += unlockedPlant.name;
+                effect.text += FruitsEffects.GetEffectDescription(unlockedPlant.effect);
+                ripeTime.text += unlockedPlant.ripeTime + " seconds";
 
                 var sprites = Resources.LoadAll<Sprite>(InterScene.IMAGE_PATH);
                 var slot = plantInfoText.transform.Find("PlantSlot");

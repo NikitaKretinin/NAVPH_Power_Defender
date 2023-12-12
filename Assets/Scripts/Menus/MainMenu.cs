@@ -27,22 +27,23 @@ public class ModeButtons : MonoBehaviour
   void Start()
   {
     mapCount = GlobalInventoryManager.GetAvailableMapCount();
+    var mapInfoText = mapInfoObject.GetComponent<TextMeshProUGUI>();
     if (SceneUtility.GetBuildIndexByScenePath(InterScene.ATTACK_MODE_LEVEL_BASE + GlobalInventoryManager.GetCurrentAttackLevel()) == -1)
     {
       // If the player has cleared all attack levels, reset the game
       resetGame = true;
       attackModeButton.GetComponent<Button>().interactable = true;
       attackModeButton.transform.Find("AttackModeButtonText").GetComponent<TextMeshProUGUI>().text = "Reset Game";
-      mapInfoObject.GetComponent<TextMeshProUGUI>().text = "You have cleared all attack levels.";
+      mapInfoText.text = "You have cleared all attack levels.";
     }
     else if (mapCount > 0)
     {
       attackModeButton.GetComponent<Button>().interactable = true;
-      mapInfoObject.GetComponent<TextMeshProUGUI>().text = "You have " + mapCount + " map(s) available.";
+      mapInfoText.text = "You have " + mapCount + " map(s) available.";
     }
     else
     {
-      mapInfoObject.GetComponent<TextMeshProUGUI>().text = "You have no maps available. Collect maps in defense mode to play attack mode.";
+      mapInfoText.text = "You have no maps available. Collect maps in defense mode to play attack mode.";
     }
 
     defenseModeButton.GetComponent<Button>().onClick.AddListener(OnClickDefenseMode);
