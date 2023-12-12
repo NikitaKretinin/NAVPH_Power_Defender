@@ -5002,7 +5002,7 @@ GameObject:
   - component: {fileID: 1447760509}
   m_Layer: 0
   m_Name: Map
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5156,9 +5156,6 @@ MonoBehaviour:
   - {fileID: 608675223}
   waveEnemyCounts: 030000000400000002000000
   wavePassed: 000000
-  globalInventoryObject: {fileID: 0}
-  enemiesSpawned: 0
-  enemiesKilled: 0
   mapCollected: 0
 --- !u!1 &1600805043
 GameObject:
