@@ -19,11 +19,11 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerDamageableCollider") && Time.time - lastAttackTime >= attackSpeed)
         {
-            if (other.gameObject.transform.parent.TryGetComponent<Damageable>(out var enemyDamageable))
+            if (other.gameObject.transform.parent.TryGetComponent<Damageable>(out var playerDamageable))
             {
                 StartCoroutine(thisEnemy.AttackCo());
                 var damage = thisEnemy.GetComponent<Damageable>().GetDamage();
-                enemyDamageable.TakeDamage(damage);
+                playerDamageable.TakeDamage(damage);
 
                 // Update the time of the last attack.
                 lastAttackTime = Time.time;
@@ -36,11 +36,11 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Base") && Time.time - lastAttackTime >= attackSpeed)
         {
-            if (other.gameObject.TryGetComponent<Damageable>(out var enemyDamageable))
+            if (other.gameObject.TryGetComponent<Damageable>(out var baseDamageable))
             {
                 StartCoroutine(thisEnemy.AttackCo());
                 var damage = thisEnemy.GetComponent<Damageable>().GetDamage();
-                enemyDamageable.TakeDamage(damage);
+                baseDamageable.TakeDamage(damage);
 
                 // Update the time of the last attack.
                 lastAttackTime = Time.time;
