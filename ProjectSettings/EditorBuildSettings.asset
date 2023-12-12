@@ -30,9 +30,6 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/AttackModeLevel4.unity
     guid: d3b23e50aa0194041b34b192e056814b
   - enabled: 1
-    path: Assets/Resources/Scenes/AttackModeLevel5.unity
-    guid: 92b9311dae937e245b12a6296b87f0d3
-  - enabled: 1
     path: Assets/Resources/Scenes/DefeatScreen.unity
     guid: 2c503bb6bdf0d794fa3a765947428445
   m_configObjects: {}
