@@ -24,7 +24,7 @@ public class LevelEndMenu : MonoBehaviour
         if (
           SceneUtility.GetBuildIndexByScenePath(
             InterScene.ATTACK_MODE_LEVEL_BASE + GlobalInventoryManager.GetCurrentAttackLevel()
-          ) == -1
+          ) == -1 || GlobalInventoryManager.GetAvailableMapCount() == 0
         )
         {
           levelButton.GetComponent<Button>().interactable = false;
