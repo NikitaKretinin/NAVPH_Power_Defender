@@ -20,7 +20,7 @@ public class LevelEndMenu : MonoBehaviour
       if (InterScene.gameMode == GameMode.Attack)
       {
         levelButton.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Next Attack Level";
-        if (SceneUtility.GetBuildIndexByScenePath("AttackModeLevel" + GlobalInventoryManager.GetCurrentAttackLevel()) == -1)
+        if (SceneUtility.GetBuildIndexByScenePath(InterScene.ATTACK_MODE_LEVEL_BASE + GlobalInventoryManager.GetCurrentAttackLevel()) == -1)
         {
           levelButton.GetComponent<Button>().interactable = false;
         }
@@ -34,11 +34,11 @@ public class LevelEndMenu : MonoBehaviour
 
   public void OnClickLevel()
   {
-    SceneManager.LoadScene("PlantSelection");
+    SceneManager.LoadScene(InterScene.PLANT_SELECTION);
   }
 
   public void OnClickMainMenu()
   {
-    SceneManager.LoadScene("MainMenu");
+    SceneManager.LoadScene(InterScene.MAIN_MENU);
   }
 }

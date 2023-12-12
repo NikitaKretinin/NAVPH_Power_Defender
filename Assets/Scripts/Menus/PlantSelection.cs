@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PlantSelection : MonoBehaviour
 {
-  readonly string PLANT_INFO = "PlantInfoNoImage";
   private GlobalInventory globalInventory = null;
   [SerializeField] GameObject confirmButton;
   [SerializeField] GameObject backButton;
@@ -50,18 +49,18 @@ public class PlantSelection : MonoBehaviour
 
     if (InterScene.gameMode == GameMode.Defense)
     {
-      SceneManager.LoadScene("DefenseMode");
+      SceneManager.LoadScene(InterScene.DEFENSE_MODE);
     }
     else if (InterScene.gameMode == GameMode.Attack)
     {
-      SceneManager.LoadScene("AttackModeLevel" + globalInventory.currentAttackLevel);
+      SceneManager.LoadScene(InterScene.ATTACK_MODE_LEVEL_BASE + globalInventory.currentAttackLevel);
     }
   }
 
   private void Start()
   {
     globalInventory = GlobalInventoryManager.GetGlobalInventory();
-    var sprites = Resources.LoadAll<Sprite>(InterScene.imagePath);
+    var sprites = Resources.LoadAll<Sprite>(InterScene.IMAGE_PATH);
 
     GameObject[] availablePlantSlots = GameObject.FindGameObjectsWithTag("AvailablePlantSlot");
     selectedPlantSlots = GameObject.FindGameObjectsWithTag("SelectedPlantSlot");
@@ -79,7 +78,7 @@ public class PlantSelection : MonoBehaviour
         var iCopy = i;
         availablePlantSlots[i].GetComponent<Button>().onClick.AddListener(() => SelectPlant(iCopy, sprites));
 
-        var plantInfo = availablePlantSlots[i].transform.Find(PLANT_INFO);
+        var plantInfo = availablePlantSlots[i].transform.Find(InterScene.PLANT_INFO_NO_IMG_OBJECT);
         plantInfo.Find("Name").GetComponent<TextMeshProUGUI>().text += globalInventory.plants[i].name;
         plantInfo.Find("Effect").GetComponent<TextMeshProUGUI>().text += FruitsEffects.GetEffectDescription(globalInventory.plants[i].effect);
         plantInfo.Find("RipeTime").GetComponent<TextMeshProUGUI>().text += globalInventory.plants[i].ripeTime + " seconds";
@@ -101,6 +100,6 @@ public class PlantSelection : MonoBehaviour
     }
 
     confirmButton.GetComponent<Button>().onClick.AddListener(OnConfirmButtonClicked);
-    backButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene("MainMenu"));
+    backButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene(InterScene.MAIN_MENU));
   }
 }

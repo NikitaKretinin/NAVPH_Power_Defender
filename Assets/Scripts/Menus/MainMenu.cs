@@ -27,7 +27,7 @@ public class ModeButtons : MonoBehaviour
   void Start()
   {
     mapCount = GlobalInventoryManager.GetAvailableMapCount();
-    if (SceneUtility.GetBuildIndexByScenePath("AttackModeLevel" + GlobalInventoryManager.GetCurrentAttackLevel()) == -1)
+    if (SceneUtility.GetBuildIndexByScenePath(InterScene.ATTACK_MODE_LEVEL_BASE + GlobalInventoryManager.GetCurrentAttackLevel()) == -1)
     {
       // If the player has cleared all attack levels, reset the game
       resetGame = true;
@@ -55,7 +55,7 @@ public class ModeButtons : MonoBehaviour
   void OnClickDefenseMode()
   {
     InterScene.gameMode = GameMode.Defense;
-    SceneManager.LoadScene("PlantSelection");
+    SceneManager.LoadScene(InterScene.PLANT_SELECTION);
   }
 
   void OnClickAttackMode()
@@ -63,7 +63,7 @@ public class ModeButtons : MonoBehaviour
     if (resetGame)
     {
       GlobalInventoryManager.ResetGameJson();
-      SceneManager.LoadScene("MainMenu");
+      SceneManager.LoadScene(InterScene.MAIN_MENU);
     }
     else
     {
@@ -71,7 +71,7 @@ public class ModeButtons : MonoBehaviour
 
       if (GlobalInventoryManager.GetAvailableMapCount() > 0)
       {
-        SceneManager.LoadScene("PlantSelection");
+        SceneManager.LoadScene(InterScene.PLANT_SELECTION);
       }
     }
   }

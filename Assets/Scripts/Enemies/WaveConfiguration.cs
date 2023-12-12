@@ -38,7 +38,7 @@ public class WaveConfiguration : MonoBehaviour
         {
             GlobalInventoryManager.AddMap();
             GlobalInventoryManager.SwitchToNextDefenseLevel();
-            SceneManager.LoadScene("VictoryScreen");
+            SceneManager.LoadScene(InterScene.VICTORY_SCREEN);
         }
     }
 

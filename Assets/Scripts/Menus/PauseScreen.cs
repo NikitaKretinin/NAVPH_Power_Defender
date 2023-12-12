@@ -33,7 +33,7 @@ public class PauseBehavior : MonoBehaviour
     if (confirmedExit)
     {
       Time.timeScale = 1;
-      SceneManager.LoadScene("MainMenu");
+      SceneManager.LoadScene(InterScene.MAIN_MENU);
     }
     else
     {
