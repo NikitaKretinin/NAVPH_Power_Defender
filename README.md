@@ -1,6 +1,7 @@
 # Power Defender
 
 Creators: Mykyta Kretinin, Andrii Rybak, Viktor Modroczký
+Course: [Game Development and Design @ FIIT STU](https://gamedev.flamingchain.com/), 2023
 
 Power Defender a is 2D Top-Down Defense RTS with RPG elements. The game is built using Unity engine. The gameplay trailer can be found [here](https://www.youtube.com/watch?v=LoE9kuoLRnI&t).
 
