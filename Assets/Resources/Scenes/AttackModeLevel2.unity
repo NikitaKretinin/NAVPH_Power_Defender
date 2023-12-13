@@ -180,6 +180,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: attackRadius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
@@ -629,6 +633,10 @@ PrefabInstance:
     - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: chaseRadius
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: attackRadius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: targetPlayer
@@ -9713,6 +9721,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: attackRadius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: targetPlayer
       value: 
       objectReference: {fileID: 521362727}
@@ -9796,6 +9808,10 @@ PrefabInstance:
     - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: chaseRadius
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: attackRadius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: targetPlayer
@@ -10471,6 +10487,10 @@ PrefabInstance:
     - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: chaseRadius
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: attackRadius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: targetPlayer
@@ -51653,6 +51673,10 @@ PrefabInstance:
     - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: chaseRadius
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
+      propertyPath: attackRadius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2629804891631527698, guid: 2dcb30083bf80a8418e4ec735a04962b, type: 3}
       propertyPath: targetPlayer
